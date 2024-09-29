@@ -1,0 +1,21 @@
+
+$colors: (
+  var(--primary),
+  var(--accent),
+  var(--secondary),
+);
+
+.services{
+
+    .service_card{
+
+        border-bottom-width: 10px;
+        
+        @for $i from 1 through 3 {
+            &:nth-child(3n + #{$i}) {
+                border-color: nth($colors, $i);
+                
+            }
+        }
+    }
+}

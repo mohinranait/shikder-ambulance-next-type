@@ -39,10 +39,6 @@ const FeatureSection: React.FC = () => {
                 slidesPerView: 3,
                 spaceBetween: 15,
               },
-              1100: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
             }}
           >
             {posts?.map((post, index) => (

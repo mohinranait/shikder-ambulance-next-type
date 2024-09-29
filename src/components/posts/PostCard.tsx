@@ -11,7 +11,7 @@ interface Props {
 
 const PostCard: React.FC<Props> = ({ post }) => {
   return (
-    <div className="bg-white relative">
+    <div className="bg-white backdrop-blur-3xl dark:bg-black relative">
       <div className="absolute top-2 z-10 flex gap-1 items-center left-2 bg-black px-2 py-1 text-white rounded-2xl ">
         Feature
       </div>
@@ -34,7 +34,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
             src={"/images/avater/profile1.png"}
             width={40}
             height={40}
-            className="bg-white ring-2 ring-offset-2 w-8 h-8 rounded-full "
+            className="bg-white ring-2 ring-primary ring-offset-2 w-8 h-8 rounded-full "
             alt="Avater"
           />
           <span className="w-3 h-3 ring-2  rounded-full bg-green-600 absolute top-0 -right-1 ring-white"></span>
