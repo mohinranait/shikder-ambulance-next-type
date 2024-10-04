@@ -67,15 +67,15 @@ module.exports = {
           theme: '#1d232a',
         }
       },
-      blue:{
+      purple:{
         colors:{
-          primary : '#615EFC',
-          secondary: '#7E8EF1',
+          primary : '#ff0000',
+          secondary: '#eec861',
           accent : '#D1D8C5',
           black : '#141a16',
           white: '#fff',
           gray: '#808080',
-          theme: '#0a0c85',
+          theme: '#f5f5f5',
         }
       },
       orange:{
@@ -92,4 +92,3 @@ module.exports = {
     }
   })],
 }
-

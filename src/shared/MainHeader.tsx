@@ -18,7 +18,9 @@ const MainHeader: FC = () => {
     >
       <div className="container flex items-center ">
         <NavbarBrand>
-          <p className="font-bold text-inherit">SKA</p>
+          <Link href={"/"} className="font-bold text-inherit">
+            SKA
+          </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           {headerMenus?.map((menu, index) => (

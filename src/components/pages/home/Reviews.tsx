@@ -10,7 +10,7 @@ import Image from "next/image";
 const Reviews = () => {
   return (
     <>
-      <section className="py-10 home_category_section ">
+      <section className="py-10 bg-white dark:bg-black home_category_section ">
         <div className="container ">
           <div className="mb-4 lg:w-1/2 mx-auto ">
             <h2 className="text-3xl font-semibold text-center">Reviews</h2>
@@ -22,11 +22,11 @@ const Reviews = () => {
           <div className="   mt-10">
             <Swiper className="mySwiper ">
               <SwiperSlide>
-                <div className="min-h-[350px] relative flex items-center justify-center bg-white">
+                <div className="min-h-[350px] relative flex items-center justify-center bg-white dark:bg-black">
                   <Image
                     alt="Avater"
                     src="/images/avater/profile1.png"
-                    className="w-[100px] h-[100px] rounded-full absolute top-5 left-16 "
+                    className="w-10 h-10 sm:w-16 lg:w-[100px] sm:h-16  lg:h-[100px] rounded-full  absolute top-2 lg:top-5 left-5 "
                     width={200}
                     height={200}
                   />
@@ -34,7 +34,7 @@ const Reviews = () => {
                   <Image
                     alt="Avater"
                     src="/images/avater/profile1.png"
-                    className="w-[100px] h-[100px] rounded-full absolute bottom-5 left-16 "
+                    className=" w-10 h-10 sm:w-16 lg:w-[100px]  sm:h-16 lg:h-[100px] rounded-full absolute bottom-0 left-5 top-[45%] lg:bottom-5 lg:left-16 "
                     width={200}
                     height={200}
                   />
@@ -42,25 +42,18 @@ const Reviews = () => {
                   <Image
                     alt="Avater"
                     src="/images/avater/profile1.png"
-                    className="w-[100px] h-[100px] rounded-full absolute top-5 right-16"
+                    className="w-10 h-10 sm:w-16 lg:w-[100px] sm:h-16  lg:h-[100px] rounded-full  absolute top-2 lg:top-5 right-5"
                     width={200}
                     height={200}
                   />
                   <Image
                     alt="Avater"
                     src="/images/avater/profile1.png"
-                    className="w-[100px] h-[100px] rounded-full absolute bottom-5 right-16"
+                    className="w-10 h-10 sm:w-16 lg:w-[100px]  sm:h-16 lg:h-[100px] rounded-full absolute bottom-0 right-5 top-[45%] lg:bottom-5 lg:right-16"
                     width={200}
                     height={200}
                   />
                   <div className="flex flex-col  justify-center items-center px-10 gap-5 pt-8">
-                    <div className="lg:w-1/2">
-                      <p className="text-center text-gray text-base ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sapiente, itaque impedit doloremque accusantium minima
-                        nostrum. Eveniet tempora fugit quod perferendis.
-                      </p>
-                    </div>
                     <div className="">
                       <Image
                         alt="Avater"
@@ -71,11 +64,18 @@ const Reviews = () => {
                       />
                     </div>
                     <div>
-                      <p className="text-base text-black text-center">
+                      <p className="text-base text-primary  text-center">
                         Sakib Rahul{" "}
                       </p>
                       <p className="text-xs font-normal text-center">
                         Sakib Rahul{" "}
+                      </p>
+                    </div>
+                    <div className="lg:w-1/2">
+                      <p className="text-center text-gray text-base ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Sapiente, itaque impedit doloremque accusantium minima
+                        nostrum. Eveniet tempora fugit quod perferendis.
                       </p>
                     </div>
                   </div>
