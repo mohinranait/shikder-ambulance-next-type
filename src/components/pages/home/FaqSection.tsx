@@ -32,6 +32,7 @@ const FaqSection = () => {
               variant="splitted"
               className="flex flex-col gap-4 "
               showDivider={false}
+              defaultExpandedKeys={["1"]}
             >
               <AccordionItem
                 key="1"

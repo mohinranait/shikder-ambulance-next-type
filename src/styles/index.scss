@@ -1,2 +1,8 @@
+@import './common/mixins.scss';
+// Pages
+
+// Components
 @import "./components/main_header";
 @import "./components/home/ServicesSection.scss";
+@import "./pages/contact_us";
+@import "./components/footer";

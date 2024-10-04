@@ -1,0 +1,266 @@
+.contact-wrapper {
+    // background-color: var(--primary);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+
+    @include getDown(992px) {
+    }
+
+    @include getDown(683px) {
+        padding: 30px 0;
+    }
+
+    .contact-box {
+        border-radius: 10px;
+        // background: linear-gradient(
+        //     134deg,
+        //     rgba(var(--primary), 0.1) 1.77%,
+        //     rgba(var(--primary), 0.1) 98.9%
+        // );
+        padding: 50px;
+        width: 100%;
+        height: 100%;
+
+        @include getDown(992px) {
+            padding: 30px;
+        }
+
+        @include getDown(683px) {
+            padding: 20px;
+        }
+
+        .icon-box {
+            width: 68px;
+            height: 68px;
+            padding: 20px;
+            border-radius: 50%;
+            background: linear-gradient(
+                116deg,
+                var(--primary) 0.99%,
+                var(--primary) 78.16%
+            );
+            box-shadow: 0px 8.16px 13.6px 0px rgba(var(--primary), 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+
+            @include getDown(992px) {
+                width: 55px;
+                height: 55px;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            @include getDown(683px) {
+                width: 52px;
+                height: 52px;
+                padding: 14px;
+                margin-bottom: 15px;
+            }
+        }
+
+        h1 {
+            // color: $rich-black;
+
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 24px;
+
+            @include getDown(992px) {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            @include getDown(683px) {
+                font-size: 20px;
+                margin-bottom: 18px;
+            }
+        }
+
+        p {
+            // color: $black;
+
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 10px;
+
+            @include getDown(992px) {
+                font-size: 18px;
+            }
+
+            @include getDown(683px) {
+                font-size: 16px;
+                margin-bottom: 14px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .shape {
+        position: absolute;
+        bottom: 20%;
+        left: 0%;
+        max-width: 100px;
+
+        .img {
+            max-width: 100%;
+        }
+    }
+}
+
+.contact-form {
+    padding: 100px 0 100px 135px;
+    background-image: url('/assests/images/contact-bg.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include getDown(992px) {
+        padding: 45px 30px 74px 30px;
+    }
+
+    @include getDown(683px) {
+        padding: 30px 30px 74px 30px;
+    }
+
+    .form-wrapper {
+        max-width: 788px;
+        margin: auto;
+    }
+
+    .right-img {
+        width: 100%;
+    }
+
+    .form-wrapper {
+        h1 {
+            color: var(--white);
+            text-align: center;
+
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-transform: capitalize;
+            margin-bottom: 40px;
+
+            @include getDown(992px) {
+                font-size: 35px;
+                text-align: start;
+                margin-bottom: 25px;
+            }
+
+            @include getDown(683px) {
+                font-size: 20px;
+                text-align: start;
+                margin-bottom: 16px;
+            }
+        }
+
+        .input-box {
+            label {
+                color: var(--white);
+
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                margin-bottom: 12px;
+                display: block;
+
+                @include getDown(992px) {
+                    font-size: 15px;
+                }
+
+                @include getDown(683px) {
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .input {
+                border-radius: 10px;
+                border: 1px solid rgba(var(--white), 0.6);
+                background: rgba(var(--white), 0.2);
+                backdrop-filter: blur(52px);
+                padding: 20px 24px;
+
+                color: var(--white);
+
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-bottom: 30px;
+
+                @include getDown(992px) {
+                    padding: 15px 20px;
+                    margin-bottom: 23px;
+                }
+
+                @include getDown(683px) {
+                    font-size: 14px;
+                    padding: 10px 16px;
+                    border-radius: 8px;
+                    margin-bottom: 15px;
+                }
+            }
+
+            .submit-btn {
+                color: var(--white);
+
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                padding: 13px 29px;
+                border-radius: 10px;
+                background: var(--primary);
+
+                @include getDown(992px) {
+                    font-size: 15px;
+                    width: 100%;
+                }
+
+                @include getDown(683px) {
+                    font-size: 12px;
+                    padding: 8px 16px;
+                }
+
+                &:hover {
+                    background: var(--priamry);
+                }
+            }
+        }
+    }
+}
+
+.desktop-img {
+    display: block;
+
+    // @include getDown(992px) {
+    //     display: none;
+    // }
+}
+
+.mobile-img {
+    display: none;
+
+    @include getDown(992px) {
+        display: block;
+        margin-top: 30px;
+        margin-bottom: 24px;
+        border-radius: 20px;
+    }
+}

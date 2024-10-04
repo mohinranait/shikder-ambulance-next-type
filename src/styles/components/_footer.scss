@@ -1,0 +1,281 @@
+.footer-wrapper {
+    // background-image: url('/assests/images/footer-wave.svg');
+    background-color: #0B192C;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    // margin-top: -220px;
+    position: relative;
+    overflow: hidden;
+
+    @include getDown(785px) {
+        margin-top: -320px;
+    }
+
+    .innerbg {
+        background-image: url('/assests/images/footer-left\ \(1\).svg'),
+            url('/assests/images/footer-right.svg');
+        background-repeat: no-repeat, no-repeat;
+        background-position: left, right;
+    }
+
+    .inner-wrapper {
+        padding-top: 209px;
+        padding-bottom: 52px;
+
+        @include getDown(785px) {
+            padding-top: 300px;
+            padding-bottom: 16px;
+        }
+
+        .section-title {
+            max-width: 700px;
+            margin: auto;
+
+            p {
+                color: var(--white);
+                text-align: center;
+
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 26px;
+            }
+        }
+
+        .footer-link {
+            padding: 80px 0 56px 0;
+            border-top: 1px solid rgba($color: var(--white), $alpha: 0.16);
+            border-bottom: 1px solid rgba($color: var(--white), $alpha: 0.16);
+
+            @include getDown(992px) {
+                padding: 30px 0 30px 0;
+            }
+
+            .title {
+                color: var(--white);
+
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                margin-bottom: 40px;
+            }
+
+            .link-list {
+                li {
+                    margin-bottom: 8px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .link {
+                        color: var(--gray);
+
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 32px;
+                    }
+                }
+            }
+
+            .contact-box {
+                margin-top: 38px;
+
+                h5 {
+                    color: var(--gray);
+
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 32px;
+                }
+
+                h2 {
+                    color: var(--gray);
+
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 32px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+            }
+        }
+
+        .small-footer {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include getDown(992px) {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: start;
+                gap: 10px;
+            }
+
+            p {
+                // color: var(--black);
+
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            ul {
+                display: flex;
+
+                @include getDown(992px) {
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 10px;
+                }
+
+                li {
+                    padding-left: 27px;
+
+                    @include getDown(992px) {
+                        padding-left: 0px;
+                    }
+
+                    a {
+                        color: var(--gray);
+
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+
+    .icon {
+        position: absolute;
+    }
+
+    .icon1 {
+        top: 320px;
+        left: 28px;
+        height: 180px;
+        width: 212px;
+
+        @include getDown(785px) {
+            height: 46px;
+            width: 89px;
+            top: 370px;
+        }
+    }
+
+    .icon2 {
+        top: 200px;
+        right: 66px;
+        height: 172px;
+        width: 137px;
+
+        @include getDown(785px) {
+            height: 60px;
+            width: 47px;
+            top: 260px;
+        }
+    }
+
+    .icon3 {
+        left: 101px;
+        bottom: 45px;
+        height: 195px;
+        width: 169px;
+
+        @include getDown(785px) {
+            height: 60px;
+            width: 47px;
+            top: 450px;
+        }
+    }
+
+    .icon4 {
+        right: 0;
+        bottom: 169px;
+        height: 224px;
+        width: 248px;
+
+        @include getDown(785px) {
+            height: 86px;
+            width: 78px;
+            bottom: 150px;
+            right: 50px;
+        }
+    }
+}
+
+.subscribe-wrapper {
+    max-width: 488px;
+    margin: 24px auto;
+    position: relative;
+
+    .subscribe-input {
+        padding: 18px 69px 18px 30px;
+        color: #1c1c1e99;
+
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.32px;
+        border: none;
+        border-radius: 12px;
+        background: var(--white);
+        width: 100%;
+
+        @include getDown(992px) {
+            padding: 12px 16px 12px 16px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        &:focus {
+            border: none;
+        }
+    }
+
+    .subscribe-btn {
+        border-radius: 12px;
+        background: linear-gradient(
+            116deg,
+            red 0.99%,
+            blue 78.16%
+        );
+        box-shadow: 0px 6px 10px 0px blue;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 12px;
+        height: 40px;
+        width: 57px;
+        margin: auto 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include getDown(992px) {
+            height: 30px;
+            width: 38px;
+        }
+    }
+}
+
+.topleftbg {
+    background-image: url('/assests/images/blogbg.svg');
+    background-position: 0;
+    background-repeat: no-repeat;
+    padding-bottom: 150px;
+    padding-top: 100px;
+}

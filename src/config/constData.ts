@@ -8,6 +8,7 @@ interface HeaderMenus {
 export const headerMenus : HeaderMenus[] = [
     {_id: '1', path:'/', label:"Home"},
     {_id: '2', path:'/about-us', label:"About"},
+    {_id: '5', path:'/services', label:"Service"},
     {_id: '3', path:'/contact-us', label:"Contact"},
     {_id: '4', path:'/blogs', label:"Blog"},
 ]

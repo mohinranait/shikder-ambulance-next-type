@@ -1,3 +1,49 @@
 .main_header{
     // background-color: var(--primary) !important;
 }
+
+.section-title {
+    text-align: center;
+
+    h1 {
+        // color: $black;
+
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 6px;
+
+        @include getDown(992px) {
+            margin-bottom: 15px;
+            font-size: 35px;
+        }
+
+        @include getDown(683px) {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+    }
+
+    p {
+        // color: var(--Body-text-colorColor, #5c5958);
+        text-align: center;
+
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 34px;
+        max-width: 657px;
+        margin: auto;
+
+        @include getDown(992px) {
+            font-size: 18px;
+            line-height: normal;
+        }
+
+        @include getDown(683px) {
+            font-size: 14px;
+            line-height: normal;
+        }
+    }
+}

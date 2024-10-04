@@ -4,3 +4,9 @@ export interface Post {
     image: string,
     rating: number,
 }
+
+export interface TSvgTypes {
+    width?: string | number;
+    height?: string | number;
+    stroke?: string ;
+}

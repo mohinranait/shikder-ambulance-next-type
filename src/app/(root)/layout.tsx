@@ -1,17 +1,19 @@
-import MainHeader from '@/shared/MainHeader'
-import React from 'react'
+import MainFooter from "@/shared/MainFooter";
+import MainHeader from "@/shared/MainHeader";
+import React from "react";
 
 interface Props {
-    children: React.ReactNode,
+  children: React.ReactNode;
 }
 
-const MainLayout : React.FC<Props>= ({children}) => {
+const MainLayout: React.FC<Props> = ({ children }) => {
   return (
-    <main className='bg-theme'>
+    <main className="bg-theme">
       <MainHeader />
       {children}
-      </main>
-  )
-}
+      <MainFooter />
+    </main>
+  );
+};
 
-export default MainLayout
+export default MainLayout;
