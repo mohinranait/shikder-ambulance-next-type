@@ -3,8 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary : #615EFC;
+  --primary-mute : #615efc17;
   --secondary: #7E8EF1;
   --accent : #D1D8C5;
   --black : #141a16;

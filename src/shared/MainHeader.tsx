@@ -12,7 +12,10 @@ import Link from "next/link";
 
 const MainHeader: FC = () => {
   return (
-    <Navbar className=" main_header bg-transparent i px-0 " maxWidth="lg">
+    <Navbar
+      className=" w-full main_header bg-transparent i px-0 "
+      maxWidth="full"
+    >
       <div className="container flex items-center ">
         <NavbarBrand>
           <p className="font-bold text-inherit">SKA</p>

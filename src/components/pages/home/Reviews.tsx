@@ -10,7 +10,7 @@ import Image from "next/image";
 const Reviews = () => {
   return (
     <>
-      <section className="py-10 home_category_section">
+      <section className="py-10 home_category_section ">
         <div className="container ">
           <div className="mb-4 lg:w-1/2 mx-auto ">
             <h2 className="text-3xl font-semibold text-center">Reviews</h2>
@@ -20,9 +20,9 @@ const Reviews = () => {
             </p>
           </div>
           <div className="   mt-10">
-            <Swiper className="mySwiper">
+            <Swiper className="mySwiper ">
               <SwiperSlide>
-                <div className="min-h-[350px] relative flex items-center justify-center bg-slate-100">
+                <div className="min-h-[350px] relative flex items-center justify-center bg-white">
                   <Image
                     alt="Avater"
                     src="/images/avater/profile1.png"
@@ -82,7 +82,7 @@ const Reviews = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="min-h-[350px] relative flex items-center justify-center bg-slate-100">
+                <div className="min-h-[350px] relative flex items-center justify-center bg-white">
                   <div>
                     <div className="mb-4">
                       <Image
@@ -105,7 +105,7 @@ const Reviews = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="min-h-[350px] relative flex items-center justify-center bg-slate-100">
+                <div className="min-h-[350px] relative flex items-center justify-center bg-white">
                   <div>
                     <div className="mb-4">
                       <Image

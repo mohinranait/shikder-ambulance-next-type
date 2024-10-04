@@ -1,5 +1,6 @@
 import AboutSection from "@/components/pages/home/AboutSection";
 import BannerSection from "@/components/pages/home/BannerSection";
+import FaqSection from "@/components/pages/home/FaqSection";
 import FeatureSection from "@/components/pages/home/FeatureSection";
 import Reviews from "@/components/pages/home/Reviews";
 import ServicesSection from "@/components/pages/home/ServicesSection";
@@ -13,6 +14,7 @@ const Home = () => {
       <AboutSection />
       <FeatureSection />
       <Reviews />
+      <FaqSection />
       <section>
         <div className="container bg-yellow-600">asdf</div>
       </section>

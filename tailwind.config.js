@@ -23,7 +23,22 @@ module.exports = {
       container:{
         center:true,
         padding: '1rem', 
-       
+        screens: {
+          DEFAULT: '100%', // Full width by default
+          xs: '500px',
+          sm: '640px',
+          md: '768px',
+          lg: '992px',
+          xl: '1024px',
+          '2xl': '1200px',
+        },
+      },
+      colors: {
+        primary: 'var(--primary)',
+        'primary-mute': 'var(--primary-mute)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        white: 'rgba(255, 255, 255, 1)'
       }
     },
   },
