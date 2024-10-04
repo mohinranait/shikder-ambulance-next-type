@@ -38,7 +38,7 @@ module.exports = {
           black : '#2b3440',
           white: '#fff',
           gray: '#808080',
-          theme: '#ffffff',
+          theme: '#f5f5f5',
         }
       },
       dark:{

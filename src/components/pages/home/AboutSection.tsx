@@ -48,7 +48,7 @@ const AboutSection = () => {
             </div>
           </div>
           <div className="lg:col-span-2 p-8">
-            <h2 className="text-4xl text-black">About me</h2>
+            <h2 className="text-4xl ">About me</h2>
             <p className="text-gray text-base font-medium">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
               doloremque amet impedit quidem architecto cumque minus provident

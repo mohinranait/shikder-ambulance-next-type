@@ -11,7 +11,7 @@ interface Props {
 
 const PostCard: React.FC<Props> = ({ post }) => {
   return (
-    <div className="bg-white relative">
+    <div className="dark:bg-black bg-white relative">
       <div className="absolute top-2 z-10 flex gap-1 items-center left-2 bg-black px-2 py-1 text-white rounded-2xl ">
         Feature
       </div>

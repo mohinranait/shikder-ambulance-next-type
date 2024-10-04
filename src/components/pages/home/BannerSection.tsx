@@ -23,8 +23,8 @@ const BannerSection = () => {
               Rerum expedita molestiae consequuntur ullam animi dolore.
             </p>
             <div className="flex items-center justify-center gap-4 mt-4">
-              <Button>Call Now</Button>
-              <Button>Explore</Button>
+              <Button className="bg-primary text-white">Call Now</Button>
+              <Button className="bg-secondary text-white">Explore</Button>
             </div>
           </div>
         </div>
