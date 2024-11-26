@@ -3,6 +3,7 @@ import { Post } from "@/types/dataType";
 
 import { Clock, DoorOpen, Heart, Map, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface Props {
@@ -20,13 +21,15 @@ const PostCard: React.FC<Props> = ({ post }) => {
       </div>
 
       <div className="mb-3 overflow-hidden">
-        <Image
-          src={post?.image}
-          width={400}
-          height={200}
-          alt={post?.title}
-          className="w-full hover:scale-125 transition duration-300 hover:rotate-1"
-        />
+        <Link href={`${post._id}`}>
+          <Image
+            src={post?.image}
+            width={400}
+            height={200}
+            alt={post?.title}
+            className="w-full hover:scale-125 transition duration-300 hover:rotate-1"
+          />
+        </Link>
       </div>
       <div className="px-4 flex justify-end gap-2 -mt-7 relative ">
         <div className="relative">

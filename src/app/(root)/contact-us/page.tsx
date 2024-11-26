@@ -8,7 +8,7 @@ const ContactUs = () => {
   return (
     <>
       <section className="contact-wrapper dark:bg-background-white">
-        <div className="container">
+        <div className="container max-w-[1200px]">
           <div className="lg:10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             <Card shadow="sm" className="shadow-none" isPressable>
               <CardBody className="overflow-visible p-0">
@@ -104,13 +104,19 @@ const ContactUs = () => {
       </section>
 
       <section
-        className="pb-[150px] dark:bg-background-white"
+        className="py-[100px] dark:bg-background-white"
         style={{ backgroundImage: `url('/images/background/contact-bg.png')` }}
       >
-        <div className="contact-form">
+        <div className="container mx-auto max-w-[1200px]">
           <div className="grid grid-cols-1 items-center gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-10">
             <div>
               <div className="form-wrapper">
+                <h2 className="text-white mb-2 text-2xl font-semibold">
+                  Get Touch{" "}
+                </h2>
+                <p className="text-white text-base font-medium mb-8 md:pr-16 ">
+                  Lorem ipsum dolor sit amet consectetur adipisicing
+                </p>
                 <ContactUsForm />
               </div>
             </div>

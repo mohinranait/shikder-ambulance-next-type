@@ -118,12 +118,12 @@
 }
 
 .contact-form {
-    padding: 100px 0 100px 135px;
+  
     background-image: url('/assests/images/contact-bg.png');
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-    max-width: 100%;
+
     overflow: hidden;
 
     @include getDown(992px) {
