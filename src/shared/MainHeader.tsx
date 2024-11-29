@@ -15,7 +15,6 @@ import { usePathname } from "next/navigation";
 
 const MainHeader: FC = () => {
   const path = usePathname();
-  console.log(path);
 
   return (
     <Navbar
@@ -43,12 +42,10 @@ const MainHeader: FC = () => {
         </NavbarContent>
         <NavbarContent justify="end">
           <ThemeModalButton />
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
-          </NavbarItem>
+
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Sign Up
+            <Button as={Link} color="primary" href="/login" variant="flat">
+              Login
             </Button>
           </NavbarItem>
         </NavbarContent>

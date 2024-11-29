@@ -56,6 +56,7 @@ const WhyChooseMe = () => {
             height={300}
             alt="iamge"
             src={"/images/ambulance.jpg"}
+            className="w-full"
           />
         </div>
       </div>
