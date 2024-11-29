@@ -2,6 +2,7 @@
 import Navbar from "@/components/dashboard/Shared/Navbar";
 import ReactSidebarPro from "@/components/dashboard/Shared/ReactSidebarPro";
 import React, { FC, useState } from "react";
+import "@mdxeditor/editor/style.css";
 
 type DashboardLayoutTypes = {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ const DashboardLayout: FC<DashboardLayoutTypes> = ({ children }) => {
       <div className="flex w-[calc(100vw-250px)] flex-grow flex-col gap-4">
         <Navbar isLeftBar={isLeftBar} setIsLeftBar={setIsLeftBar} />
 
-        <div className="px-6 ">{children}</div>
+        <div className="px-6 mb-10">{children}</div>
       </div>
     </div>
   );
