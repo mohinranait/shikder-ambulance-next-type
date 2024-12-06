@@ -24,6 +24,8 @@ const NewPost = () => {
               type="text"
               label="Post Title"
               placeholder="Enter title"
+              value=""
+              onChange={() => {}}
             />
           </div>
           <div>
@@ -36,6 +38,8 @@ const NewPost = () => {
                     name="slug"
                     placeholder="Enter slug"
                     className="py-[2px] focus-visible:border-slate-200 focus-visible:outline-slate-200 "
+                    value=""
+                    onChange={() => {}}
                   />
                   <Button
                     type="button"
@@ -75,6 +79,8 @@ const NewPost = () => {
                   label="SEO Title"
                   placeholder="SEO title"
                   className="!border-slate-300 border-1 !py-2"
+                  value=""
+                  onChange={() => {}}
                 />
 
                 <div>
