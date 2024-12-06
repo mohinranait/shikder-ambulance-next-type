@@ -1,7 +1,8 @@
 import connectDb from "@/config/databaseConfig";
 import User from "@/models/UserModal";
 import { NextRequest, NextResponse } from "next/server"; // Import types from Next.js
-
+import bcrypt from "bcryptjs";
+import { userSchemaValidationServer } from "@/velidations/registrationSchema";
 export const dynamic = "force-static"; // Adjust based on the caching requirements
 
 /**
@@ -13,32 +14,39 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     try {
        
         const body = await request.json();
-
+        await userSchemaValidationServer.validate(body, { abortEarly: false })
         // Connect to the database
         await connectDb();
+        const {password,email} = body
+
+        // CHECK EXISTES USER
+        const existsUser = await User.findOne({email});
+        if(existsUser){
+            return NextResponse.json({success:false, message: "This user already exists"},{status:409})
+        }
+
+        // CREATE HASH Password
+        const hasPass = bcrypt.hashSync(password, 10);
 
         // Create a new user document
-        const user = await User.create(body);
+        let user = await User.create({...body, password: hasPass});
+        user = user.toObject()
+        delete user.password
 
         console.log("User created successfully:", user);
 
         // Return a success response with the created user
-        return NextResponse.json({ data: user }, { status: 201 });
+        return NextResponse.json({  user, success:true, message:"Register successfull" }, { status: 201 });
     } catch (error) {
-        console.error("Error creating user:", error);
-
+              
         // Return an error response
         return NextResponse.json(
-            { error: "Failed to create user", details: error instanceof Error ? error.message : error },
+            { 
+                success: false, 
+                message: error instanceof Error ? error.message : error },
             { status: 500 }
         );
     }
 }
 
 
-/**
- * 
- * 
- * 
- * 
-*/

@@ -8,6 +8,7 @@ type Props = {
   labelCss?: string;
   name: string;
   value: string;
+  error?: string | null;
   onChange?: (value: string) => void;
   rest?: React.InputHTMLAttributes<HTMLInputElement>;
 };
@@ -20,6 +21,7 @@ const InputElement: FC<Props> = ({
   className,
   labelCss,
   value,
+  error,
   onChange,
   ...rest
 }) => {
@@ -34,12 +36,13 @@ const InputElement: FC<Props> = ({
         <input
           name={name}
           type={type}
-          className={` focus-visible:border-primary w-full focus-visible:outline-primary focus-visible:outline-none focus-visible:outline-offset-0 py-[10px] rounded px-3  ${className}`}
+          className={`  w-full  focus-visible:outline-none border-2 border-slate-300  py-[10px] rounded px-3  ${className}`}
           placeholder={placeholder}
           {...rest}
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
         />
+        {error && <p className="text-red-500 text-sm"> {error} </p>}
       </div>
     </div>
   );
