@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import InputElement from "../elements/InputElement";
 import { Button } from "@nextui-org/button";
@@ -14,6 +15,8 @@ const LoginForm = () => {
           type="email"
           placeholder="Enter email"
           className="!border-slate-300 border-1"
+          value=""
+          onChange={() => {}}
         />
         <InputElement
           label="Password"
@@ -21,6 +24,8 @@ const LoginForm = () => {
           type="password"
           placeholder="Enter Password"
           className="!border-slate-300 border-1"
+          value=""
+          onChange={() => {}}
         />
         <div>
           <Button

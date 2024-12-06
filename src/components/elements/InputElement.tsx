@@ -7,9 +7,9 @@ type Props = {
   label?: string;
   labelCss?: string;
   name: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  rest?: any;
+  value: string;
+  onChange?: (value: string) => void;
+  rest?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 const InputElement: FC<Props> = ({
@@ -19,8 +19,8 @@ const InputElement: FC<Props> = ({
   type,
   className,
   labelCss,
-  onChange,
   value,
+  onChange,
   ...rest
 }) => {
   return (
@@ -36,9 +36,9 @@ const InputElement: FC<Props> = ({
           type={type}
           className={` focus-visible:border-primary w-full focus-visible:outline-primary focus-visible:outline-none focus-visible:outline-offset-0 py-[10px] rounded px-3  ${className}`}
           placeholder={placeholder}
-          value={value}
-          onChange={onChange}
           {...rest}
+          value={value}
+          onChange={(e) => onChange && onChange(e.target.value)}
         />
       </div>
     </div>
