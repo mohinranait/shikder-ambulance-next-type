@@ -1,12 +1,48 @@
 "use client";
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import InputElement from "../elements/InputElement";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
+import { BASE_URL } from "@/config/accessEnv";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
+
+    try {
+      // setIsLoading(true);
+      const res = await signIn("credentials", { ...form, redirect: false });
+      console.log(res);
+
+      // const res = await fetch(`${BASE_URL}/api/user/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     "content-type": "Application/json",
+      //   },
+      //   body: JSON.stringify(form),
+      // });
+      // const data = await res.json();
+
+      // console.log(data);
+      // if (data.success) {
+      //   setIsLoading(false);
+      //   toast.success("Login successfull");
+      // }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <form className="w-full">
+    <form onSubmit={handleSubmit} className="w-full">
       <h1 className="text-2xl text-slate-800 font-semibold">Login </h1>
       <div className="flex flex-col gap-4 mt-4">
         <InputElement
@@ -15,8 +51,8 @@ const LoginForm = () => {
           type="email"
           placeholder="Enter email"
           className="!border-slate-300 border-1"
-          value=""
-          onChange={() => {}}
+          value={form?.email}
+          onChange={(e) => setForm((prev) => ({ ...prev, email: e }))}
         />
         <InputElement
           label="Password"
@@ -24,13 +60,15 @@ const LoginForm = () => {
           type="password"
           placeholder="Enter Password"
           className="!border-slate-300 border-1"
-          value=""
-          onChange={() => {}}
+          value={form?.password}
+          onChange={(e) => setForm((prev) => ({ ...prev, password: e }))}
         />
         <div>
           <Button
             type="submit"
             className="w-full bg-primary text-white rounded-md"
+            isLoading={isLoading}
+            isDisabled={isLoading}
           >
             Login
           </Button>

@@ -11,10 +11,13 @@ import ThemeModalButton from "@/components/themes/ThemeModalButton";
 import { headerMenus } from "@/config/constData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 // import { usePathname } from "next/navigation";
 
 const MainHeader: FC = () => {
   const path = usePathname();
+  const session = useSession();
+  console.log(session);
 
   return (
     <Navbar
