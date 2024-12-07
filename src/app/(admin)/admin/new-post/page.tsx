@@ -1,16 +1,40 @@
 "use client";
 import AddNewRow from "@/components/dashboard/posts/AddNewRow";
 import InputElement from "@/components/elements/InputElement";
+
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
 const NewPost = () => {
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [slug, setSlug] = useState<string>("");
+  // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
+  const [form, setForm] = useState({
+    title: "",
+    slug: "",
+    contactNumber: "",
+    layouts: {
+      banner: true,
+      sidebar: "posts",
+      isSidebar: "right",
+      comments: true,
+    },
+    seoTitle: "",
+    seoDescription: "",
+    seoKeyword: [],
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log("Data");
+  };
   return (
     <div className="flex flex-col gap-4">
-      <form action="" className="flex flex-col gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div className="flex w-full justify-between  ">
           <p className="text-lg font-semibold text-slate-600">Post</p>
           <Button className="bg-primary text-white py-1 px-6 rounded">
@@ -24,8 +48,8 @@ const NewPost = () => {
               type="text"
               label="Post Title"
               placeholder="Enter title"
-              value=""
-              onChange={() => {}}
+              value={title}
+              onChange={setTitle}
             />
           </div>
           <div>
@@ -38,8 +62,8 @@ const NewPost = () => {
                     name="slug"
                     placeholder="Enter slug"
                     className="py-[2px] focus-visible:border-slate-200 focus-visible:outline-slate-200 "
-                    value=""
-                    onChange={() => {}}
+                    value={slug}
+                    onChange={setSlug}
                   />
                   <Button
                     type="button"
