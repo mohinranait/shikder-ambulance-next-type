@@ -18,7 +18,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         // Connect to the database
         await connectDb();
         const {password,email} = body
-
+        console.log({body});
+        
         // CHECK EXISTES USER
         const existsUser = await User.findOne({email});
         if(existsUser){

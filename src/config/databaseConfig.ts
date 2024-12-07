@@ -10,7 +10,7 @@ const connectDb = async () : Promise<void> => {
         console.log("Connect DB");
         
     } catch (error) {
-        console.log(error);
+        console.log({error});
         
     }    
 }

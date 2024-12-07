@@ -60,6 +60,7 @@ const ReactSidebarPro: FC<ReactSidebarProTypes> = ({
             <MenuItem component={<Link href="/admin/dashboard" />}>
               Dashboard
             </MenuItem>
+
             <SubMenu label="Manage Posts">
               <MenuItem component={<Link href="/admin/all-posts" />}>
                 All Posts
@@ -69,6 +70,7 @@ const ReactSidebarPro: FC<ReactSidebarProTypes> = ({
                 New post{" "}
               </MenuItem>
             </SubMenu>
+            <MenuItem component={<Link href="/admin/media" />}>Media</MenuItem>
             <SubMenu label="Manage users">
               <MenuItem component={<Link href="/admin/users/active" />}>
                 Active users{" "}

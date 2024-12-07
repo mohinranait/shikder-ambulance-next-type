@@ -7,15 +7,17 @@ const BlogDetailsPage = () => {
   return (
     <main className="mb-20">
       <section>
-        <div className="container py-20 lg:px-32 xl:px-48 ">
-          <h1 className="text-center font-bold text-3xl text-slate-950 mb-3">
-            Shikder ambulance serivce in Dhaka city
-          </h1>
-          <p className="lg:px-20 text-center ">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex neque
-            accusamus magni? Perferendis consectetur ipsa rerum, harum molestias
-            ratione magni?
-          </p>
+        <div className="container flex items-center  md:min-h-[calc(100vh-200px)] py-20 lg:px-32 xl:px-48 ">
+          <div className="flex flex-col gap-3">
+            <h1 className="text-center font-bold text-3xl md:text-4xl lg:text-5xl text-slate-950 mb-3">
+              Shikder ambulance serivce in Dhaka city
+            </h1>
+            <p className="lg:px-20 text-center ">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex neque
+              accusamus magni? Perferendis consectetur ipsa rerum, harum
+              molestias ratione magni?
+            </p>
+          </div>
         </div>
       </section>
       <section>
