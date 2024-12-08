@@ -70,7 +70,9 @@ const ReactSidebarPro: FC<ReactSidebarProTypes> = ({
                 New post{" "}
               </MenuItem>
             </SubMenu>
-            <MenuItem component={<Link href="/admin/media" />}>Media</MenuItem>
+            <MenuItem component={<Link href="/admin/file-media" />}>
+              Media
+            </MenuItem>
             <SubMenu label="Manage users">
               <MenuItem component={<Link href="/admin/users/active" />}>
                 Active users{" "}
