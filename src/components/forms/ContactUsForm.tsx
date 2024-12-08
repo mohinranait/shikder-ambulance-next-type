@@ -11,6 +11,7 @@ const ContactUsForm = () => {
           type="text"
           placeholder="Full Name"
           className="bg-transparent text-white placeholder:text-slate-200"
+          value=""
         />
 
         <InputElement
@@ -18,6 +19,7 @@ const ContactUsForm = () => {
           type="number"
           className="bg-transparent text-white placeholder:text-slate-200"
           placeholder="Number"
+          value=""
         />
       </div>
 
@@ -26,6 +28,7 @@ const ContactUsForm = () => {
         type="text"
         className="bg-transparent text-white placeholder:text-slate-200"
         placeholder="Address"
+        value=""
       />
 
       <div className="bg-slate-200 rounded backdrop-blur-md bg-opacity-20">

@@ -4,7 +4,13 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
-// import { NextResponse } from "next/server";
+
+interface UserSession {
+  id: string;
+  name: string;
+  email: string;
+  status: string;
+}
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -39,7 +45,7 @@ const authOptions: NextAuthOptions = {
         }
 
         // Exclude sensitive fields (e.g., password)
-        const userData = {
+        const userData: UserSession = {
           id: user._id.toString(),
           name: `${user.name.firstName} ${user.name.lastName}`,
           email: user.email,
@@ -55,13 +61,15 @@ const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       // When user logs in, add user data to token
       if (user) {
-        token.user = user; // Attach user object to the token
+        token.user = user as UserSession; // Attach user object to the token
       }
       return token;
     },
     async session({ session, token }) {
-      // Expose user data from the token in the session
-      session.user = token.user as typeof token.user;
+      // Safely cast token.user and assign it to session.user
+      if (token?.user) {
+        session.user = token.user as UserSession;
+      }
       return session;
     },
   },
