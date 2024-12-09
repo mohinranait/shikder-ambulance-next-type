@@ -1,5 +1,5 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -16,8 +16,11 @@ import { useSession } from "next-auth/react";
 
 const MainHeader: FC = () => {
   const path = usePathname();
-  const session = useSession();
-  console.log(session);
+  const { status, data } = useSession();
+  console.log(data);
+
+  const [userLabel, setUserLabel] = useState<string>("");
+  console.log(data?.user?.name);
 
   return (
     <Navbar
@@ -47,9 +50,17 @@ const MainHeader: FC = () => {
           <ThemeModalButton />
 
           <NavbarItem>
-            <Button as={Link} color="primary" href="/login" variant="flat">
-              Login
-            </Button>
+            {status == "loading" ? (
+              <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2  bg-slate-200  flex items-center justify-center"></span>
+            ) : status == "authenticated" ? (
+              <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2 ring-primary bg-primary text-white flex items-center justify-center">
+                ME
+              </span>
+            ) : (
+              <Button as={Link} color="primary" href="/login" variant="flat">
+                Login
+              </Button>
+            )}
           </NavbarItem>
         </NavbarContent>
       </div>

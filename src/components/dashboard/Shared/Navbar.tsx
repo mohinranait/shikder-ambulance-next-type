@@ -1,6 +1,7 @@
 "use client";
 
 import { Earth, Menu, Search, Settings } from "lucide-react";
+import { signOut } from "next-auth/react";
 import React, { FC } from "react";
 
 type ReactSidebarProTypes = {
@@ -33,6 +34,9 @@ const Navbar: FC<ReactSidebarProTypes> = ({ setIsLeftBar }) => {
         </div>
         <div className="w-full md:w-auto">
           <ul className="flex items-center gap-5 lg:justify-end">
+            <li>
+              <button onClick={() => signOut()}>Logout</button>
+            </li>
             <li>
               <span>
                 <Earth />
