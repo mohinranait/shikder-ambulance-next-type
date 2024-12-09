@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Middleware function
 export async function middleware(request: NextRequest) {
   // Check for session token in cookies
-  const token = request.cookies.get(process.env.NODE_ENV === "production" 
-    ? "__Secure-next-auth.session-token" 
-    : "next-auth.session-token"
-  );
+  const token = request.cookies.get("__Secure-next-auth.session-token");
 
   if (!token) {
     // Redirect to login if token is missing
