@@ -3,9 +3,8 @@ import React, { FormEvent, useState } from "react";
 import InputElement from "../elements/InputElement";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { BASE_URL } from "@/config/accessEnv";
 import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
+
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
@@ -22,13 +21,6 @@ const LoginForm = () => {
 
     try {
       // setIsLoading(true);
-      const res = await signIn("credentials", { ...form, redirect: false });
-      console.log(res);
-      if (res?.ok) {
-        toast.success("Login successfull");
-        router.push("/");
-      }
-
       // const res = await fetch(`${BASE_URL}/api/user/login`, {
       //   method: "POST",
       //   headers: {
@@ -37,7 +29,6 @@ const LoginForm = () => {
       //   body: JSON.stringify(form),
       // });
       // const data = await res.json();
-
       // console.log(data);
       // if (data.success) {
       //   setIsLoading(false);
