@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/providers/AuthProvider";
 import { Earth, Menu, Search, Settings } from "lucide-react";
 
 import React, { FC } from "react";
@@ -10,6 +11,7 @@ type ReactSidebarProTypes = {
 };
 
 const Navbar: FC<ReactSidebarProTypes> = ({ setIsLeftBar }) => {
+  const { signOut } = useAuth();
   return (
     <div className="sticky z-50 w-full right-0 top-0">
       <div className="flex  w-full z-30 flex-col items-center justify-between gap-3 bg-white px-6 py-2 text-center text-xl shadow-sm md:flex-row lg:h-[66px]">
@@ -35,7 +37,7 @@ const Navbar: FC<ReactSidebarProTypes> = ({ setIsLeftBar }) => {
         <div className="w-full md:w-auto">
           <ul className="flex items-center gap-5 lg:justify-end">
             <li>
-              <button>Logout</button>
+              <button onClick={() => signOut()}>Logout</button>
             </li>
             <li>
               <span>

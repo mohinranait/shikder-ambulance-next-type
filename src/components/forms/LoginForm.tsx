@@ -1,13 +1,18 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import InputElement from "../elements/InputElement";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
 import { useRouter } from "next/navigation";
+import useAxios from "@/hooks/useAxios";
+import { useAuth } from "@/providers/AuthProvider";
 
 const LoginForm = () => {
+  const { user, setUser } = useAuth();
+
+  const axios = useAxios();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [form, setForm] = useState({
     email: "",
@@ -15,25 +20,24 @@ const LoginForm = () => {
   });
   const router = useRouter();
 
+  // If user is already login
+  if (user) {
+    router.push("/");
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
 
     try {
-      // setIsLoading(true);
-      // const res = await fetch(`${BASE_URL}/api/user/login`, {
-      //   method: "POST",
-      //   headers: {
-      //     "content-type": "Application/json",
-      //   },
-      //   body: JSON.stringify(form),
-      // });
-      // const data = await res.json();
-      // console.log(data);
-      // if (data.success) {
-      //   setIsLoading(false);
-      //   toast.success("Login successfull");
-      // }
+      setIsLoading(true);
+      const { data } = await axios.post("/user/login", form);
+
+      if (data.success) {
+        setIsLoading(false);
+        setUser(data?.payload);
+        toast.success("Login successfull");
+        router.push("/");
+      }
     } catch (error) {
       console.log(error);
     }

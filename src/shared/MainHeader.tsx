@@ -11,9 +11,11 @@ import ThemeModalButton from "@/components/themes/ThemeModalButton";
 import { headerMenus } from "@/config/constData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/providers/AuthProvider";
 // import { usePathname } from "next/navigation";
 
 const MainHeader: FC = () => {
+  const { user, isLoading } = useAuth();
   const path = usePathname();
 
   const [userLabel, setUserLabel] = useState<string>("");
@@ -46,15 +48,17 @@ const MainHeader: FC = () => {
           <ThemeModalButton />
 
           <NavbarItem>
-            <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2  bg-slate-200  flex items-center justify-center"></span>
-
-            <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2 ring-primary bg-primary text-white flex items-center justify-center">
-              ME
-            </span>
-
-            <Button as={Link} color="primary" href="/login" variant="flat">
-              Login
-            </Button>
+            {isLoading ? (
+              <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2  bg-slate-200  flex items-center justify-center"></span>
+            ) : user ? (
+              <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2 ring-primary bg-primary text-white flex items-center justify-center">
+                {user?.name?.firstName?.slice(0, 1)}
+              </span>
+            ) : (
+              <Button as={Link} color="primary" href="/login" variant="flat">
+                Login
+              </Button>
+            )}
           </NavbarItem>
         </NavbarContent>
       </div>

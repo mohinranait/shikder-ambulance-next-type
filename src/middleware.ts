@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   // Check for session token in cookies
   const token = request.cookies.get("access_token");
-
+  
   if (!token) {
     // Redirect to login if token is missing
     return NextResponse.redirect(new URL("/login", request.url));
@@ -16,5 +16,5 @@ export async function middleware(request: NextRequest) {
 
 // Config to match all paths under /admin/*
 export const config = {
-  matcher: ["/admin/:path*"], // Protect all routes under /admin
+  matcher: ["/admin/:path*"],
 };

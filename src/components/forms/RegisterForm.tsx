@@ -8,6 +8,7 @@ import { userRegistrationSchemaValidation } from "@/velidations/registrationSche
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/providers/AuthProvider";
 export type TUserCreate = {
   name: {
     firstName: string;
@@ -22,6 +23,7 @@ export type TUserCreate = {
 type TError = Record<string, string | null>;
 
 const RegisterForm = () => {
+  const { user } = useAuth();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<TError>({});
@@ -36,6 +38,11 @@ const RegisterForm = () => {
     status: "Pending",
   });
 
+  // If user is already login
+  if (user) {
+    router.push("/");
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -47,7 +54,7 @@ const RegisterForm = () => {
       setError({});
 
       setIsLoading(true);
-      const res = await fetch(`${BASE_URL}/api/user/create`, {
+      const res = await fetch(`${BASE_URL}/user/create`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
