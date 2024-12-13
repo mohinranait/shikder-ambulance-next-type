@@ -1,24 +1,30 @@
+
+
 export type TPostFormData = {
-    author: string; 
+    _id?: string; 
+    author:  string; 
     title: string;
-    slug?: string; 
+    slug?: string;
     image?: {
-      featuresImage?: string;
-      thumbnail?: string;
+        featuresImage?:  string; 
+        thumbnail?:  string;
     };
+    content?: string;
     contents?: Array<{
-      priority?: string;
-      content?: string;
+        priority?: string;
+        content?: string;
     }>;
+    status: "Publish" | "Unpublish"; 
     contactNumber?: string;
     layouts?: {
-      banner?: boolean;
-      sidebar?: "posts" | "comments" | "author"; 
-      isSidebar?: "right" | "left" | "both" | "none"; 
-      comments?: boolean;
+        banner?: boolean;
+        sidebar?: "posts" | "comments" | "author"; 
+        isSidebar?: "right" | "left" | "both" | "none"; 
+        comments?: boolean;
     };
     seoTitle?: string;
     seoDescription?: string;
-    seoKeyword?: string[]; 
+    seoKeyword?: string[];
+    createdAt?: Date; 
+    updatedAt?: Date; 
 }
-  

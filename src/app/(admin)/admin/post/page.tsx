@@ -1,21 +1,40 @@
 "use client";
-import AddNewRow from "@/components/dashboard/posts/AddNewRow";
+
+import ImageUploadCom from "@/common/ImageUploadCom";
+import { MarkdownEditor } from "@/components/elements/ForwardRefEditor";
 import InputElement from "@/components/elements/InputElement";
+import useAxios from "@/hooks/useAxios";
+import { TPostFormData } from "@/types/post.types";
+import { MDXEditorMethods } from "@mdxeditor/editor";
 
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import React, { FormEvent, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
 const NewPost = () => {
+  const path = usePathname();
+  const router = useRouter();
+  const params = useSearchParams();
+  const urlSlug = params?.get("link");
+  const axios = useAxios();
+  const [updatePost, setUpdatePost] = useState<TPostFormData | null>();
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
-  const [slug, setSlug] = useState<string>("");
+  const [content, setContent] = useState<string>("# Hello");
+  const editorRef = useRef<MDXEditorMethods>(null);
+
+  const [isSlug, setIsSlug] = useState<string>("");
   // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
   const [form, setForm] = useState({
     title: "",
     slug: "",
     contactNumber: "",
+    content: "",
+    image: {
+      featuresImage: "",
+      thumbnail: "",
+    },
     layouts: {
       banner: true,
       sidebar: "posts",
@@ -27,17 +46,63 @@ const NewPost = () => {
     seoKeyword: [],
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onChangeMarkdown = () => {
+    const text = editorRef.current?.getMarkdown();
+    setContent(text ?? "# Hello");
+  };
+
+  console.log(form);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("Data");
+    try {
+      if (params?.get("link")) {
+        const { data } = await axios.patch(`/post/${updatePost?._id}`, {
+          ...form,
+          content,
+        });
+        if (data?.success) {
+          router.push(`${path}?link=${data?.payload?.post?.slug}`);
+          // editorRef.current?.setMarkdown("");
+        }
+      } else {
+        const { data } = await axios.post(`/post`, { ...form, content });
+        console.log(data);
+        if (data?.success) {
+          setUpdatePost(data?.payload?.post);
+          router.push(`${path}?link=${data?.payload?.post?.slug}`);
+          // editorRef.current?.setMarkdown("");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const { data } = await axios.get(`/post/${urlSlug}`);
+        if (data?.success) {
+          setUpdatePost(data?.payload?.post);
+          setForm((prev) => ({ ...prev, ...data?.payload?.post }));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [urlSlug, axios]);
+
   return (
     <div className="flex flex-col gap-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div className="flex w-full justify-between  ">
           <p className="text-lg font-semibold text-slate-600">Post</p>
-          <Button className="bg-primary text-white py-1 px-6 rounded">
+          <Button
+            type="submit"
+            className="bg-primary text-white py-1 px-6 rounded"
+          >
             Save
           </Button>
         </div>
@@ -48,8 +113,18 @@ const NewPost = () => {
               type="text"
               label="Post Title"
               placeholder="Enter title"
-              value={title}
-              onChange={setTitle}
+              value={form?.title}
+              onChange={(e) => {
+                setForm((prev) => {
+                  const update = { ...prev, title: e };
+                  const sl = update?.title?.split(" ").join("-").toLowerCase();
+
+                  setIsSlug(sl);
+                  return update;
+                });
+                if (form?.title) {
+                }
+              }}
             />
           </div>
           <div>
@@ -62,8 +137,8 @@ const NewPost = () => {
                     name="slug"
                     placeholder="Enter slug"
                     className="py-[2px] focus-visible:border-slate-200 focus-visible:outline-slate-200 "
-                    value={slug}
-                    onChange={setSlug}
+                    value={form?.slug}
+                    onChange={(e) => setForm((prev) => ({ ...prev, slug: e }))}
                   />
                   <Button
                     type="button"
@@ -76,11 +151,14 @@ const NewPost = () => {
               ) : (
                 <React.Fragment>
                   <Link className="text-blue-500 hover:underline" href="">
-                    dhaka-ambulance-service
+                    {form?.slug ? form?.slug : isSlug}
                   </Link>
                   <FaEdit
                     className="cursor-pointer"
-                    onClick={() => setIsEditSlug(true)}
+                    onClick={() => {
+                      setIsEditSlug(true);
+                      setForm((prev) => ({ ...prev, slug: isSlug }));
+                    }}
                   />
                 </React.Fragment>
               )}
@@ -89,7 +167,13 @@ const NewPost = () => {
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 ">
           <div className="xl:col-span-2 2xl:col-span-3 flex flex-col gap-3 ">
-            <AddNewRow />
+            <div className="bg-white border border-slate-200 p-3">
+              <MarkdownEditor
+                ref={editorRef}
+                markdown={content}
+                onChange={onChangeMarkdown}
+              />
+            </div>
             <div className="bg-white border border-slate-200 p-3">
               <div className="border-b mb-3 border-slate-200">
                 <p className="text-lg  text-slate-700 font-semibold pb-2">
@@ -103,8 +187,10 @@ const NewPost = () => {
                   label="SEO Title"
                   placeholder="SEO title"
                   className="!border-slate-300 border-1 !py-2"
-                  value=""
-                  onChange={() => {}}
+                  value={form?.seoTitle}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, seoTitle: e }))
+                  }
                 />
 
                 <div>
@@ -112,12 +198,20 @@ const NewPost = () => {
                     Description
                   </label>
                   <textarea
+                    onChange={(e) =>
+                      setForm((prev) => ({
+                        ...prev,
+                        seoDescription: e?.target?.value,
+                      }))
+                    }
                     name=""
                     id=""
                     rows={3}
                     placeholder="Write your message..."
                     className=" border-slate-300 border-1 m-0 placeholder:text-slate-200 p-0 focus-visible:outline-offset-0  bg-transparent text-white w-full focus-visible:outline-primary py-2 rounded px-3 "
-                  ></textarea>
+                  >
+                    {form?.seoDescription}
+                  </textarea>
                 </div>
               </div>
             </div>
@@ -138,9 +232,18 @@ const NewPost = () => {
                     <input
                       id="fullWidth"
                       type="radio"
-                      value={"Full Width"}
+                      value={"none"}
                       name="cances"
                       className="hidden peer"
+                      onChange={(e) =>
+                        setForm((prev) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            isSidebar: e.target.value,
+                          },
+                        }))
+                      }
                     />{" "}
                     <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
                     Full Width
@@ -152,9 +255,18 @@ const NewPost = () => {
                     <input
                       id="leftSidebar"
                       type="radio"
-                      value={"Left Sidebar"}
+                      value={"left"}
                       name="cances"
                       className="hidden peer"
+                      onChange={(e) =>
+                        setForm((prev) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            isSidebar: e.target.value,
+                          },
+                        }))
+                      }
                     />{" "}
                     <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
                     Left Sidebar
@@ -166,12 +278,44 @@ const NewPost = () => {
                     <input
                       id="rightSidebar"
                       type="radio"
-                      value={"Right Sidebar"}
+                      value={"right"}
                       name="cances"
                       className="hidden peer"
+                      onChange={(e) =>
+                        setForm((prev) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            isSidebar: e.target.value,
+                          },
+                        }))
+                      }
                     />{" "}
                     <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
                     Right Sidebar
+                  </label>
+                  <label
+                    htmlFor="both"
+                    className="py-1 px-2 flex gap-2  cursor-pointer rounded-md items-center"
+                  >
+                    <input
+                      id="both"
+                      type="radio"
+                      value={"both"}
+                      name="cances"
+                      className="hidden peer"
+                      onChange={(e) =>
+                        setForm((prev) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            isSidebar: e.target.value,
+                          },
+                        }))
+                      }
+                    />{" "}
+                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
+                    No Sidebar
                   </label>
                 </div>
               </div>
@@ -183,50 +327,18 @@ const NewPost = () => {
                 </p>
               </div>
               <div>
-                <div className="text-slate-600 flex flex-col gap-2">
-                  <label
-                    htmlFor="fullWidth"
-                    className="py-1 px-2 flex gap-2 cursor-pointer  rounded-md items-center"
-                  >
-                    <input
-                      id="fullWidth"
-                      type="radio"
-                      value={"Full Width"}
-                      name="cances"
-                      className="hidden peer"
-                    />{" "}
-                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
-                    Full Width
-                  </label>
-                  <label
-                    htmlFor="leftSidebar"
-                    className="py-1 px-2 flex gap-2  cursor-pointer rounded-md items-center"
-                  >
-                    <input
-                      id="leftSidebar"
-                      type="radio"
-                      value={"Left Sidebar"}
-                      name="cances"
-                      className="hidden peer"
-                    />{" "}
-                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
-                    Left Sidebar
-                  </label>
-                  <label
-                    htmlFor="rightSidebar"
-                    className="py-1 px-2 flex gap-2  cursor-pointer rounded-md items-center"
-                  >
-                    <input
-                      id="rightSidebar"
-                      type="radio"
-                      value={"Right Sidebar"}
-                      name="cances"
-                      className="hidden peer"
-                    />{" "}
-                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
-                    Right Sidebar
-                  </label>
-                </div>
+                <ImageUploadCom
+                  url={form?.image?.featuresImage}
+                  cb={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      image: {
+                        ...prev.image,
+                        featuresImage: e,
+                      },
+                    }))
+                  }
+                />
               </div>
             </div>
           </div>

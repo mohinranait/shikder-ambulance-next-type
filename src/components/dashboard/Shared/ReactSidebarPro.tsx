@@ -65,7 +65,7 @@ const ReactSidebarPro: FC<ReactSidebarProTypes> = ({
               <MenuItem component={<Link href="/admin/all-posts" />}>
                 All Posts
               </MenuItem>
-              <MenuItem component={<Link href="/admin/new-post" />}>
+              <MenuItem component={<Link href="/admin/post" />}>
                 {" "}
                 New post{" "}
               </MenuItem>

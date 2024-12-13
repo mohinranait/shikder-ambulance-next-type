@@ -1,19 +1,29 @@
+import { TMediaType } from "@/types/media.type";
 import Image from "next/image";
-import React, { FC } from "react";
+import { log } from "node:console";
+import React, { FC, useState } from "react";
 
 type Props = {
-  selected?: boolean;
+  img: TMediaType;
+  setSelectedImg: React.Dispatch<React.SetStateAction<TMediaType | null>>;
 };
-const ImageCard: FC<Props> = ({ selected }) => {
+const ImageCard: FC<Props> = ({ img, setSelectedImg }) => {
+  const [selected, setSelected] = useState<string>("");
+  console.log(img);
+
   return (
     <div
+      onClick={() => {
+        setSelectedImg(img);
+        setSelected(img?._id);
+      }}
       className={`border cursor-pointer flex flex-col gap-2  rounded-md ${
-        selected ? "border-primary" : "border-slate-300"
+        selected === img?._id ? "border-primary" : "border-slate-300"
       } `}
     >
       <div className="w-full overflow-hidden">
         <Image
-          src={"/images/contact-img.webp"}
+          src={img?.fileUrl}
           width={100}
           height={100}
           alt="image"

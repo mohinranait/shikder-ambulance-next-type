@@ -5,6 +5,8 @@ import "./../styles/index.scss";
 import { Providers } from "@/providers/Providers";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/providers/AuthProvider";
+import ImageProvider from "@/providers/ImageProvider";
+import MediaModal from "@/common/MediaModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +35,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}  antialiased overflow-x-hidden`}
       >
         <AuthProvider>
-          <Providers>{children}</Providers>
+          <ImageProvider>
+            <Providers>
+              {children}
+              <MediaModal />
+            </Providers>
+          </ImageProvider>
         </AuthProvider>
         <Toaster />
       </body>
