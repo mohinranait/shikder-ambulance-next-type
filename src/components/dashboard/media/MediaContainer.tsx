@@ -85,7 +85,7 @@ const MediaContainer = () => {
                         type="button"
                         className="w-full bg-primary text-white"
                       >
-                        Add media
+                        Insert
                       </Button>
                     </div>
                   </div>

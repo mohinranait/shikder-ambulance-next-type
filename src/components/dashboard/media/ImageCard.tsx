@@ -17,7 +17,7 @@ const ImageCard: FC<Props> = ({ img, setSelectedImg }) => {
         setSelectedImg(img);
         setSelected(img?._id);
       }}
-      className={`border cursor-pointer flex flex-col gap-2  rounded-md ${
+      className={`border  cursor-pointer flex flex-col gap-2  rounded-md ${
         selected === img?._id ? "border-primary" : "border-slate-300"
       } `}
     >
@@ -27,7 +27,7 @@ const ImageCard: FC<Props> = ({ img, setSelectedImg }) => {
           width={100}
           height={100}
           alt="image"
-          className="w-full rounded-t"
+          className="w-full max-h-[120px] object-cover rounded-t"
         />
       </div>
       <div className="py-1 px-2">

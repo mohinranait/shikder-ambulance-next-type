@@ -11,7 +11,9 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
+import { TagsInput } from "react-tag-input-component";
 
 const NewPost = () => {
   const path = usePathname();
@@ -23,8 +25,9 @@ const NewPost = () => {
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
   const [content, setContent] = useState<string>("# Hello");
   const editorRef = useRef<MDXEditorMethods>(null);
-
+  const [tags, setTags] = useState<string[]>([]);
   const [isSlug, setIsSlug] = useState<string>("");
+  const [formLoading, setFormLoading] = useState<boolean>(false);
   // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
   const [form, setForm] = useState({
     title: "",
@@ -56,18 +59,28 @@ const NewPost = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!form?.title || form?.title?.trim() == "") {
+      toast.error("Post title is required");
+      return;
+    }
     try {
+      setFormLoading(true);
       if (params?.get("link")) {
         const { data } = await axios.patch(`/post/${updatePost?._id}`, {
           ...form,
           content,
+          seoKeyword: tags,
         });
         if (data?.success) {
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
           // editorRef.current?.setMarkdown("");
         }
       } else {
-        const { data } = await axios.post(`/post`, { ...form, content });
+        const { data } = await axios.post(`/post`, {
+          ...form,
+          content,
+          seoKeyword: tags,
+        });
         console.log(data);
         if (data?.success) {
           setUpdatePost(data?.payload?.post);
@@ -75,23 +88,29 @@ const NewPost = () => {
           // editorRef.current?.setMarkdown("");
         }
       }
+      setFormLoading(false);
     } catch (error) {
+      setFormLoading(false);
       console.log(error);
     }
   };
 
   useEffect(() => {
-    (async function () {
-      try {
-        const { data } = await axios.get(`/post/${urlSlug}`);
-        if (data?.success) {
-          setUpdatePost(data?.payload?.post);
-          setForm((prev) => ({ ...prev, ...data?.payload?.post }));
+    if (urlSlug) {
+      (async function () {
+        try {
+          const { data } = await axios.get(`/post/${urlSlug}`);
+          if (data?.success) {
+            setUpdatePost(data?.payload?.post);
+            setForm((prev) => ({ ...prev, ...data?.payload?.post }));
+            setTags(data?.payload?.post?.seoKeyword);
+            editorRef.current?.setMarkdown(data?.payload?.post?.content);
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+      })();
+    }
   }, [urlSlug, axios]);
 
   return (
@@ -102,6 +121,7 @@ const NewPost = () => {
           <Button
             type="submit"
             className="bg-primary text-white py-1 px-6 rounded"
+            isLoading={formLoading && true}
           >
             Save
           </Button>
@@ -207,11 +227,22 @@ const NewPost = () => {
                     name=""
                     id=""
                     rows={3}
+                    value={form?.seoDescription}
                     placeholder="Write your message..."
-                    className=" border-slate-300 border-1 m-0 placeholder:text-slate-200 p-0 focus-visible:outline-offset-0  bg-transparent text-white w-full focus-visible:outline-primary py-2 rounded px-3 "
-                  >
-                    {form?.seoDescription}
-                  </textarea>
+                    className=" border-slate-300 border-1 m-0 text-slate-800 placeholder:text-slate-200 p-0 focus-visible:outline-offset-0  bg-transparent  w-full focus-visible:outline-primary py-2 rounded px-3 "
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label htmlFor="" className="flex mb-[2px]">
+                    Tags
+                  </label>
+                  <TagsInput
+                    value={tags}
+                    onChange={setTags}
+                    name="fruits"
+                    placeHolder="Enter tags"
+                  />
                 </div>
               </div>
             </div>
@@ -233,6 +264,9 @@ const NewPost = () => {
                       id="fullWidth"
                       type="radio"
                       value={"none"}
+                      checked={
+                        form?.layouts?.isSidebar == "none" ? true : false
+                      }
                       name="cances"
                       className="hidden peer"
                       onChange={(e) =>
@@ -258,6 +292,9 @@ const NewPost = () => {
                       value={"left"}
                       name="cances"
                       className="hidden peer"
+                      checked={
+                        form?.layouts?.isSidebar == "left" ? true : false
+                      }
                       onChange={(e) =>
                         setForm((prev) => ({
                           ...prev,
@@ -281,6 +318,9 @@ const NewPost = () => {
                       value={"right"}
                       name="cances"
                       className="hidden peer"
+                      checked={
+                        form?.layouts?.isSidebar == "right" ? true : false
+                      }
                       onChange={(e) =>
                         setForm((prev) => ({
                           ...prev,
@@ -304,6 +344,9 @@ const NewPost = () => {
                       value={"both"}
                       name="cances"
                       className="hidden peer"
+                      checked={
+                        form?.layouts?.isSidebar == "both" ? true : false
+                      }
                       onChange={(e) =>
                         setForm((prev) => ({
                           ...prev,

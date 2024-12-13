@@ -30,6 +30,7 @@
     "react-pro-sidebar": "^1.1.0",
     "react-responsive": "^10.0.0",
     "react-star-ratings": "^2.3.0",
+    "react-tag-input-component": "^2.0.2",
     "swiper": "^11.1.14",
     "yup": "^1.5.0",
     "zod": "^3.23.8"

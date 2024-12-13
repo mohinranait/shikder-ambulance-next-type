@@ -1,7 +1,9 @@
 "use client";
+import CustomTable from "@/common/CustomTable";
 import useAxios from "@/hooks/useAxios";
 import { TPostFormData } from "@/types/post.types";
 import { Button } from "@nextui-org/button";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -12,9 +14,108 @@ const AllPosts = () => {
   const axios = useAxios();
   console.log(posts);
 
+  const columns = [
+    {
+      title: "Post",
+      dataIndex: "action",
+      key: "action",
+      render: (_: string, record: any) => {
+        return (
+          <div className="flex gap-2">
+            <div>
+              <Image
+                src={record?.image?.featuresImage || "/placeholder.jpg"}
+                width={50}
+                height={50}
+                alt="image"
+              />
+            </div>
+            <div>
+              <p>{record?.title}</p>
+              <div className="flex gap-2">
+                {" "}
+                <Link
+                  href={`/admin/post?link=${record?.slug}`}
+                  className="text-primary text-xs hover:underline "
+                >
+                  Edit
+                </Link>
+                <Link
+                  href={`/${record?.slug}`}
+                  className="text-primary text-xs hover:underline "
+                >
+                  View
+                </Link>
+                <span className="text-primary text-xs cursor-pointer hover:underline ">
+                  Delete permaently
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+      },
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status: string) => {
+        return (
+          <div className="flex gap-[6px]">
+            {status == "Publish" ? (
+              <span className="rounded bg-green-600 inline-flex text-xs px-2 py-[2px] text-white">
+                {status}
+              </span>
+            ) : (
+              <span className="rounded bg-red-600 inline-flex text-xs px-2 py-[2px] text-white">
+                {status}
+              </span>
+            )}
+          </div>
+        );
+      },
+    },
+    {
+      title: "Transcribed By",
+      dataIndex: "creator",
+      key: "creator",
+      render: (creator: string) => {
+        return (
+          <div className="flex gap-[6px]">
+            <Image
+              src={"/assests/avater/avater1.png"}
+              className="mt-[4px] h-[16px] w-[16px] rounded-full ring-1 ring-primary"
+              alt="avater"
+              width={20}
+              height={20}
+            />
+            <div>
+              <p className="text-text-gray">{creator}</p>
+              <p className="text-[11px] text-text-gray">CEO</p>
+            </div>
+          </div>
+        );
+      },
+    },
+    {
+      title: "Transcribed Date",
+      dataIndex: "date",
+      key: "date",
+      render: (date: string) => {
+        return (
+          <>
+            <p className="text-nowrap text-text-gray">{date}</p>
+            <p className="text-sm text-text-gray">11:00 AM</p>
+          </>
+        );
+      },
+    },
+  ];
+
   useEffect(() => {
     (async function () {
       try {
+        setIsLoading(true);
         const { data } = await axios.get(`/posts?access=all`);
         if (data?.success) {
           setPosts(data?.payload?.posts);
@@ -28,16 +129,21 @@ const AllPosts = () => {
       }
     })();
   }, []);
+
+  if (isLoading) {
+    return "Loading...";
+  }
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-full justify-between items-center py-3 px-3 rounded shadow-md bg-white">
         <p className="text-lg font-semibold text-slate-600">Posts</p>
       </div>
       <div className="flex justify-between items-center">
-        <Link href={`/admin/post`}>
-          <Button className="bg-primary text-white py-1 rounded ">
-            Add New Post
-          </Button>
+        <Link
+          href={`/admin/post`}
+          className="bg-primary text-white px-3 py-2 rounded "
+        >
+          Add New Post
         </Link>
         <div>
           <input
@@ -48,64 +154,7 @@ const AllPosts = () => {
         </div>
       </div>
       <div>
-        <div className="overflow-x-auto ">
-          <table className=" w-full border border-slate-300 shadow-md   mx-auto border-gray-100  ">
-            <thead>
-              <tr className="bg-white text-slate-900">
-                <th className="py-3 px-6 font-medium text-left ">Post</th>
-                <th className="py-3 px-6 font-medium text-left ">Age</th>
-                <th className="py-3 px-6 font-medium text-left ">Gender</th>
-                <th className="py-3 px-6 font-medium   text-end">Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              {posts?.map((post, index) => (
-                <tr
-                  key={index}
-                  className="hover:bg-gray-50 transition duration-300"
-                >
-                  <td className="py-4 px-6 border-b border-slate-300">
-                    <div>
-                      <div></div>
-                      <div>
-                        <p>{post?.title}</p>
-                        <div className="flex gap-2">
-                          {" "}
-                          <Link
-                            href={`/admin/post?link=${post?.slug}`}
-                            className="text-primary text-xs hover:underline "
-                          >
-                            Edit
-                          </Link>
-                          <Link
-                            href={`/${post?.slug}`}
-                            className="text-primary text-xs hover:underline "
-                          >
-                            View
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-4 px-6 border-b border-slate-300">19</td>
-                  <td className="py-4 px-6 border-b border-slate-300">Male</td>
-                  <td className="py-4 px-6 border-b border-slate-300 text-end">
-                    Mirpur 15, Dhaka
-                  </td>
-                </tr>
-              ))}
-
-              {/* <tr className="hover:bg-gray-50 transition duration-300">
-                <td className="py-4 px-6 border-b border-slate-300">Shiyam </td>
-                <td className="py-4 px-6 border-b border-slate-300">19</td>
-                <td className="py-4 px-6 border-b border-slate-300">Male</td>
-                <td className="py-4 px-6 border-b border-slate-300 text-end">
-                  Mirpur 15, Dhaka
-                </td>
-              </tr> */}
-            </tbody>
-          </table>
-        </div>
+        <CustomTable dataSource={posts} columns={columns} />
       </div>
     </div>
   );

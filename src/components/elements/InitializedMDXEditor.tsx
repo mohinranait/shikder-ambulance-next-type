@@ -52,17 +52,15 @@ export default function InitializedMDXEditor({
           toolbarClassName: "my-classname",
           toolbarContents: () => (
             <>
-              <DiffSourceToggleWrapper>
-                <UndoRedo />
-                <ListsToggle />
-                <BoldItalicUnderlineToggles />
-                <BlockTypeSelect />
-                <CodeToggle />
-                <CreateLink />
-                <InsertImage />
-                <InsertTable />
-                <InsertThematicBreak />
-              </DiffSourceToggleWrapper>
+              <UndoRedo />
+              <ListsToggle />
+              <BoldItalicUnderlineToggles />
+              <BlockTypeSelect />
+              <CodeToggle />
+              <CreateLink />
+              <InsertImage />
+              <InsertTable />
+              <InsertThematicBreak />
             </>
           ),
         }),
