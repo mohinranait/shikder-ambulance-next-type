@@ -74,6 +74,10 @@ const AuthProvider: FC<Props> = ({ children }) => {
     })();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading user...</div>;
+  }
+
   return <AuthContext.Provider value={obj}>{children}</AuthContext.Provider>;
 };
 
