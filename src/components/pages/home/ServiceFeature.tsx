@@ -63,7 +63,7 @@ const ServiceFeature = () => {
             width={400}
             height={300}
             alt="iamge"
-            src={"/images/ambulance.jpg"}
+            src={"/images/ambulnace.jpg"}
             className="w-full"
           />
         </div>

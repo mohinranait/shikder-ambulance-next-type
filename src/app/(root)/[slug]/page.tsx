@@ -9,6 +9,7 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
   const res = await fetch(`${BASE_URL}/post/${params?.slug}`);
   const data = await res.json();
+  console.log({ data: data?.payload?.post });
 
   const obj: TPostFormData = {
     _id: "",
