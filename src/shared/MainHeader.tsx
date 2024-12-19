@@ -51,12 +51,9 @@ const MainHeader: FC = () => {
             {isLoading ? (
               <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2  bg-slate-200  flex items-center justify-center"></span>
             ) : user ? (
-              <div>
-                <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2 ring-primary bg-primary text-white flex items-center justify-center">
-                  {user?.name?.firstName?.slice(0, 1)}
-                </span>
-                <Link href={"/admin/dashboard"}>Dash</Link>
-              </div>
+              <span className="w-8 h-8 font-semibold rounded-full ring-1 ring-offset-2 ring-primary bg-primary text-white flex items-center justify-center">
+                {user?.name?.firstName?.slice(0, 1)}
+              </span>
             ) : (
               <Button as={Link} color="primary" href="/login" variant="flat">
                 Login

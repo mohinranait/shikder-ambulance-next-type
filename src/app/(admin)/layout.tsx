@@ -3,6 +3,7 @@ import Navbar from "@/components/dashboard/Shared/Navbar";
 import ReactSidebarPro from "@/components/dashboard/Shared/ReactSidebarPro";
 import React, { FC, Suspense, useState } from "react";
 import "@mdxeditor/editor/style.css";
+import withAuth from "@/hooks/withAuth";
 
 type DashboardLayoutTypes = {
   children: React.ReactNode;
@@ -25,4 +26,4 @@ const DashboardLayout: FC<DashboardLayoutTypes> = ({ children }) => {
   );
 };
 
-export default DashboardLayout;
+export default withAuth(DashboardLayout);

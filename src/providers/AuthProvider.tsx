@@ -1,7 +1,5 @@
 "use client";
-import useAxios from "@/hooks/useAxios";
-import { TUser } from "@/types/usersTypes";
-import { useRouter } from "next/navigation";
+
 import React, {
   createContext,
   FC,
@@ -9,8 +7,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
-
-export const AuthContext = createContext<TContextType | null>(null);
+import { useRouter } from "next/navigation";
+import useAxios from "@/hooks/useAxios";
+import { TUser } from "@/types/usersTypes";
+import PageLoader from "@/components/loader/PageLoader";
 
 type TContextType = {
   user: TUser | null;
@@ -20,6 +20,8 @@ type TContextType = {
   signOut: () => void;
 };
 
+export const AuthContext = createContext<TContextType | null>(null);
+
 type Props = {
   children: React.ReactNode;
 };
@@ -27,67 +29,58 @@ type Props = {
 const AuthProvider: FC<Props> = ({ children }) => {
   const axios = useAxios();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<TUser | null>(null);
-  console.log(isLoading);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const signOut = async () => {
     try {
       const { data } = await axios.post(`/user/logout`, {});
       if (data?.success) {
         setUser(null);
-        router.push("/");
+        router.push("/login");
       }
     } catch (error) {
-      console.log("Signout not working");
+      console.error("Signout failed", error);
     }
   };
 
-  const obj: TContextType = {
-    user,
-    setUser,
-    isLoading,
-    setIsLoading,
-    signOut,
-  };
-
   useEffect(() => {
-    (async function () {
+    (async () => {
       try {
-        if (user) return;
-        setIsLoading(true);
         const { data } = await axios.get(`/user`);
-
         if (data?.success) {
-          setUser(data?.payload);
-          setIsLoading(false);
+          setUser(data.payload);
         } else {
-          //   const { data } = await axios.post(`/user/logout`, {});
           setUser(null);
-          setIsLoading(false);
         }
       } catch (error) {
+        console.error("Authentication error:", error);
         setUser(null);
+      } finally {
         setIsLoading(false);
-        console.log("Unauthenticated");
       }
     })();
   }, []);
 
   if (isLoading) {
-    return <div>Loading user...</div>;
+    return <PageLoader />;
   }
 
-  return <AuthContext.Provider value={obj}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{ user, setUser, isLoading, setIsLoading, signOut }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-// Export useAuth hooks for use all components
 export const useAuth = (): TContextType => {
-  const authCon = useContext(AuthContext);
-  if (!authCon) {
+  const context = useContext(AuthContext);
+  if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
-  return authCon;
+  return context;
 };
 
 export default AuthProvider;
