@@ -3,6 +3,9 @@ import CustomTable from "@/common/CustomTable";
 import useAxios from "@/hooks/useAxios";
 import { TPostFormData } from "@/types/post.types";
 import { Button } from "@nextui-org/button";
+import dayjs from "dayjs";
+import { Plus } from "lucide-react";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -75,14 +78,18 @@ const AllPosts = () => {
     },
 
     {
-      title: "Transcribed Date",
-      dataIndex: "date",
-      key: "date",
-      render: (date: string) => {
+      title: "Created Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (createdAt: string) => {
         return (
           <>
-            <p className="text-nowrap text-text-gray">{date}</p>
-            <p className="text-sm text-text-gray">11:00 AM</p>
+            <p className="text-nowrap text-text-gray">
+              {moment(createdAt).format("MMM DD, YYYY")}
+            </p>
+            <p className="text-sm text-text-gray">
+              {moment(createdAt).format("hh:mm A")}
+            </p>
           </>
         );
       },
@@ -118,8 +125,9 @@ const AllPosts = () => {
       <div className="flex justify-between items-center">
         <Link
           href={`/admin/post`}
-          className="bg-primary text-white px-3 py-2 rounded"
+          className="bg-primary flex items-center gap-1 text-sm text-white px-3 py-2 rounded"
         >
+          <Plus />
           Add New Post
         </Link>
         <div>

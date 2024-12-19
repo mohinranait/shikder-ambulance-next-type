@@ -3,24 +3,31 @@
 import ImageUploadCom from "@/common/ImageUploadCom";
 import { MarkdownEditor } from "@/components/elements/ForwardRefEditor";
 import InputElement from "@/components/elements/InputElement";
+import BlogView from "@/components/pages/blogs/BlogView";
 import useAxios from "@/hooks/useAxios";
+import { useAuth } from "@/providers/AuthProvider";
 import { TPostFormData } from "@/types/post.types";
 import { MDXEditorMethods } from "@mdxeditor/editor";
 
 import { Button } from "@nextui-org/button";
+import { Save } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
+import { FcCancel } from "react-icons/fc";
+import { RxCross2 } from "react-icons/rx";
 import { TagsInput } from "react-tag-input-component";
 
 const NewPost = () => {
   const path = usePathname();
+  const { user } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
   const urlSlug = params?.get("link");
   const axios = useAxios();
+  const [isView, setIsView] = useState<boolean>(false);
   const [updatePost, setUpdatePost] = useState<TPostFormData | null>();
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
   const [content, setContent] = useState<string>("# Hello");
@@ -29,8 +36,9 @@ const NewPost = () => {
   const [isSlug, setIsSlug] = useState<string>("");
   const [formLoading, setFormLoading] = useState<boolean>(false);
   // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<TPostFormData>({
     title: "",
+    author: user?._id || "",
     slug: "",
     contactNumber: "",
     content: "",
@@ -45,9 +53,12 @@ const NewPost = () => {
       comments: true,
     },
     seoTitle: "",
+    status: "Publish",
     seoDescription: "",
     seoKeyword: [],
   });
+
+  console.log(JSON.stringify(form));
 
   const onChangeMarkdown = () => {
     const text = editorRef.current?.getMarkdown();
@@ -74,6 +85,8 @@ const NewPost = () => {
         if (data?.success) {
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
           // editorRef.current?.setMarkdown("");
+        } else {
+          toast.error("Somthing wrong");
         }
       } else {
         const { data } = await axios.post(`/post`, {
@@ -91,6 +104,7 @@ const NewPost = () => {
       setFormLoading(false);
     } catch (error) {
       setFormLoading(false);
+      toast.error("Somthing wrong");
       console.log(error);
     }
   };
@@ -118,13 +132,23 @@ const NewPost = () => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div className="flex w-full justify-between  ">
           <p className="text-lg font-semibold text-slate-600">Post</p>
-          <Button
-            type="submit"
-            className="bg-primary text-white py-1 px-6 rounded"
-            isLoading={formLoading && true}
-          >
-            Save
-          </Button>
+          <div className="flex gap-2 items-center">
+            <Button
+              type="button"
+              className="bg-slate-900  text-white py-1 px-4 rounded"
+              onClick={() => setIsView(true)}
+            >
+              Quick View
+            </Button>
+            <Button
+              type="submit"
+              className="bg-primary text-white py-1 px-4 rounded"
+              isLoading={formLoading && true}
+            >
+              {!formLoading && <Save size={18} />}
+              {params?.get("link") ? "Update" : "Save"}
+            </Button>
+          </div>
         </div>
         <div className="flex flex-col gap-3">
           <div>
@@ -157,7 +181,7 @@ const NewPost = () => {
                     name="slug"
                     placeholder="Enter slug"
                     className="py-[2px] focus-visible:border-slate-200 focus-visible:outline-slate-200 "
-                    value={form?.slug}
+                    value={form?.slug || ""}
                     onChange={(e) => setForm((prev) => ({ ...prev, slug: e }))}
                   />
                   <Button
@@ -207,7 +231,7 @@ const NewPost = () => {
                   label="SEO Title"
                   placeholder="SEO title"
                   className="!border-slate-300 border-1 !py-2"
-                  value={form?.seoTitle}
+                  value={form?.seoTitle || ""}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, seoTitle: e }))
                   }
@@ -270,11 +294,11 @@ const NewPost = () => {
                       name="cances"
                       className="hidden peer"
                       onChange={(e) =>
-                        setForm((prev) => ({
+                        setForm((prev: TPostFormData) => ({
                           ...prev,
                           layouts: {
                             ...prev.layouts,
-                            isSidebar: e.target.value,
+                            isSidebar: "none",
                           },
                         }))
                       }
@@ -300,7 +324,7 @@ const NewPost = () => {
                           ...prev,
                           layouts: {
                             ...prev.layouts,
-                            isSidebar: e.target.value,
+                            isSidebar: "left",
                           },
                         }))
                       }
@@ -326,7 +350,7 @@ const NewPost = () => {
                           ...prev,
                           layouts: {
                             ...prev.layouts,
-                            isSidebar: e.target.value,
+                            isSidebar: "right",
                           },
                         }))
                       }
@@ -352,7 +376,7 @@ const NewPost = () => {
                           ...prev,
                           layouts: {
                             ...prev.layouts,
-                            isSidebar: e.target.value,
+                            isSidebar: "both",
                           },
                         }))
                       }
@@ -371,7 +395,7 @@ const NewPost = () => {
               </div>
               <div>
                 <ImageUploadCom
-                  url={form?.image?.featuresImage}
+                  url={form?.image?.featuresImage || ""}
                   cb={(e) =>
                     setForm((prev) => ({
                       ...prev,
@@ -387,6 +411,18 @@ const NewPost = () => {
           </div>
         </div>
       </form>
+
+      {isView && (
+        <div className="absolute bottom-0 top-0 left-0 w-full right-0 min-h-screen bg-[#f5f5f5] z-[9999]">
+          <span
+            onClick={() => setIsView(false)}
+            className="w-10 h-10 cursor-pointer  rounded-full bg-slate-200 flex items-center justify-center  top-3 right-3 fixed"
+          >
+            <RxCross2 />{" "}
+          </span>
+          <BlogView blog={form} />
+        </div>
+      )}
     </div>
   );
 };

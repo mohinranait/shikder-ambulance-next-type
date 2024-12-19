@@ -1,15 +1,33 @@
 "use client";
 
 import PostCard from "@/components/posts/PostCard";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import { posts } from "@/config/constData";
+// import { posts } from "@/config/constData";
+import { TPostFormData } from "@/types/post.types";
+import { getPosts } from "@/actions/postApi";
 
 const FeatureSection: React.FC = () => {
+  const [posts, setPosts] = useState<TPostFormData[]>([]);
+  useEffect(() => {
+    (async function () {
+      try {
+        const res = await getPosts();
+
+        if (res?.success) {
+          setPosts(res?.payload?.posts);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+  console.log(posts);
+
   return (
     <section className="py-10 home_category_section">
       <div className="container ">

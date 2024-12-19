@@ -8,3 +8,13 @@ export const getAllMedia = async () => {
         return error
     }
 }
+
+// Get all posts with query
+export const getPosts = async () => {
+    try {
+        const {data} = await instance.get(`/posts`);
+        return data;
+    } catch (error) {
+        return error
+    }
+}

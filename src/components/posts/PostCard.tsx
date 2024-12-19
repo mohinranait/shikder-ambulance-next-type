@@ -1,5 +1,6 @@
 import RatingComponent from "@/common/RatingComponent,";
-import { Post } from "@/types/dataType";
+import { TPostFormData } from "@/types/post.types";
+// import { Post } from "@/types/dataType";
 
 import { Clock, DoorOpen, Heart, Map, Phone } from "lucide-react";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
-  post: Post;
+  post: TPostFormData;
 }
 
 const PostCard: React.FC<Props> = ({ post }) => {
@@ -20,10 +21,10 @@ const PostCard: React.FC<Props> = ({ post }) => {
         <Heart size={20} /> 45
       </div>
 
-      <div className="mb-3 overflow-hidden">
-        <Link href={`${post._id}`}>
+      <div className="mb-3 h-[200px] overflow-hidden">
+        <Link href={`${post.slug}`}>
           <Image
-            src={post?.image}
+            src={post?.image?.featuresImage || ""}
             width={400}
             height={200}
             alt={post?.title}
@@ -46,7 +47,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
       <div className="px-3">
         <p className="text-xl text-gray-700 font-medium">{post?.title}</p>
         <div className="flex gap-2 items-center text-sm text-gray-400">
-          <RatingComponent rating={post?.rating} />
+          <RatingComponent rating={4} />
           51 Reivews
         </div>
       </div>

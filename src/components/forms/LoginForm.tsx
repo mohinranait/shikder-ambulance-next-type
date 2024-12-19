@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useAxios from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -18,11 +18,15 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
+
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/";
 
   // If user is already login
   if (user) {
-    router.push("/");
+    router.push(redirectPath);
+    return null;
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -36,7 +40,7 @@ const LoginForm = () => {
         setIsLoading(false);
         setUser(data?.payload);
         toast.success("Login successfull");
-        router.push("/");
+        router.push(redirectPath);
       }
     } catch (error) {
       console.log(error);

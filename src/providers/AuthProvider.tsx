@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useAxios from "@/hooks/useAxios";
 import { TUser } from "@/types/usersTypes";
 import PageLoader from "@/components/loader/PageLoader";
@@ -37,7 +37,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
       const { data } = await axios.post(`/user/logout`, {});
       if (data?.success) {
         setUser(null);
-        router.push("/login");
+        router.push(`/login`);
       }
     } catch (error) {
       console.error("Signout failed", error);

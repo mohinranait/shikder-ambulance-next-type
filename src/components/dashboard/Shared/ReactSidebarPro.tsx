@@ -1,7 +1,14 @@
 "use client";
+import { Image, Plus, User, Users } from "lucide-react";
 import Link from "next/link";
 import React, { FC } from "react";
-import { MdCancel } from "react-icons/md";
+import { FaPenRuler } from "react-icons/fa6";
+import {
+  MdCancel,
+  MdDashboard,
+  MdOutlineAlignHorizontalLeft,
+  MdOutlineNewLabel,
+} from "react-icons/md";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { useMediaQuery } from "react-responsive";
 
@@ -57,39 +64,39 @@ const ReactSidebarPro: FC<ReactSidebarProTypes> = ({
             </div>
           </div>
           <Menu className="">
-            <MenuItem component={<Link href="/admin/dashboard" />}>
+            <MenuItem
+              icon={<MdDashboard size={20} />}
+              component={<Link href="/admin/dashboard" />}
+            >
               Dashboard
             </MenuItem>
 
-            <SubMenu label="Manage Posts">
-              <MenuItem component={<Link href="/admin/all-posts" />}>
+            <SubMenu icon={<FaPenRuler size={16} />} label="Manage Posts">
+              <MenuItem
+                icon={<MdOutlineAlignHorizontalLeft />}
+                component={<Link href="/admin/all-posts" />}
+              >
                 All Posts
               </MenuItem>
-              <MenuItem component={<Link href="/admin/post" />}>
+              <MenuItem
+                icon={<MdOutlineNewLabel />}
+                component={<Link href="/admin/post" />}
+              >
                 {" "}
                 New post{" "}
               </MenuItem>
             </SubMenu>
-            <MenuItem component={<Link href="/admin/file-media" />}>
+            <MenuItem
+              icon={<Image size={18} />}
+              component={<Link href="/admin/file-media" />}
+            >
               Media
             </MenuItem>
-            <SubMenu label="Manage users">
-              <MenuItem component={<Link href="/admin/users/active" />}>
+            <SubMenu icon={<Users size={18} />} label="Manage users">
+              <MenuItem icon={<User size={18} />} component={<Link href="#" />}>
                 Active users{" "}
               </MenuItem>
-              <MenuItem component={<Link href="/admin/users/rejected" />}>
-                Band users{" "}
-              </MenuItem>
-              <MenuItem component={<Link href="/admin/users/pending" />}>
-                Pending users{" "}
-              </MenuItem>
-              <MenuItem component={<Link href="/admin/users" />}>
-                All users
-              </MenuItem>
-              <MenuItem> KYC Pending </MenuItem>
             </SubMenu>
-            <MenuItem>Documentation </MenuItem>
-            <MenuItem> Calendar </MenuItem>
           </Menu>
         </Sidebar>
       </div>

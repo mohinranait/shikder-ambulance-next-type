@@ -45,7 +45,7 @@ const MainHeader: FC = () => {
           ))}
         </NavbarContent>
         <NavbarContent justify="end">
-          <ThemeModalButton />
+          {/* <ThemeModalButton /> */}
 
           <NavbarItem>
             {isLoading ? (
