@@ -3,6 +3,7 @@
 import ImageUploadCom from "@/common/ImageUploadCom";
 import { MarkdownEditor } from "@/components/elements/ForwardRefEditor";
 import InputElement from "@/components/elements/InputElement";
+import QuillEditor from "@/components/elements/QuillEditor";
 import BlogView from "@/components/pages/blogs/BlogView";
 import useAxios from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
@@ -58,14 +59,12 @@ const NewPost = () => {
     seoKeyword: [],
   });
 
-  console.log(JSON.stringify(form));
+  // const onChangeMarkdown = () => {
+  //   const text = editorRef.current?.getMarkdown();
+  //   setContent(text ?? "# Hello");
+  // };
 
-  const onChangeMarkdown = () => {
-    const text = editorRef.current?.getMarkdown();
-    setContent(text ?? "# Hello");
-  };
-
-  console.log(form);
+  console.log(content);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -118,7 +117,7 @@ const NewPost = () => {
             setUpdatePost(data?.payload?.post);
             setForm((prev) => ({ ...prev, ...data?.payload?.post }));
             setTags(data?.payload?.post?.seoKeyword);
-            editorRef.current?.setMarkdown(data?.payload?.post?.content);
+            setContent(data?.payload?.post?.content);
           }
         } catch (error) {
           console.log(error);
@@ -212,11 +211,15 @@ const NewPost = () => {
         <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 ">
           <div className="xl:col-span-2 2xl:col-span-3 flex flex-col gap-3 ">
             <div className="bg-white border border-slate-200 p-3">
-              <MarkdownEditor
+              <QuillEditor
+                editorValue={content || ""}
+                setEditorValue={setContent}
+              />
+              {/* <MarkdownEditor
                 ref={editorRef}
                 markdown={content}
                 onChange={onChangeMarkdown}
-              />
+              /> */}
             </div>
             <div className="bg-white border border-slate-200 p-3">
               <div className="border-b mb-3 border-slate-200">
