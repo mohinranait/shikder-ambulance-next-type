@@ -7,7 +7,9 @@ import React from "react";
 const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
   console.log(params.slug);
 
-  const res = await fetch(`${BASE_URL}/post/${params?.slug}`);
+  const res = await fetch(`${BASE_URL}/post/${params?.slug}`, {
+    cache: "no-store",
+  });
   const data = await res.json();
   console.log({ data: data?.payload?.post });
 

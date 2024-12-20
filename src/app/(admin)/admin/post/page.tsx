@@ -220,7 +220,7 @@ const NewPost = () => {
             </div>
             <div className="bg-white border border-slate-200 p-3">
               <div className="border-b mb-3 border-slate-200">
-                <p className="text-lg  text-slate-700 font-semibold pb-2">
+                <p className="text-base  text-slate-700 font-semibold pb-2">
                   Post SEO
                 </p>
               </div>
@@ -274,8 +274,8 @@ const NewPost = () => {
           <div className="col-span-1 flex flex-col gap-3">
             <div className="bg-white border border-slate-200 p-3 ">
               <div className="border-b mb-3 border-slate-200">
-                <p className="text-lg  text-slate-700 font-semibold pb-2">
-                  Layout
+                <p className="text-base  text-slate-700 font-semibold pb-2">
+                  Canvas layout
                 </p>
               </div>
               <div>
@@ -382,14 +382,14 @@ const NewPost = () => {
                       }
                     />{" "}
                     <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
-                    No Sidebar
+                    Dual Sidebar
                   </label>
                 </div>
               </div>
             </div>
             <div className="bg-white border border-slate-200 p-3 ">
               <div className="border-b mb-3 border-slate-200">
-                <p className="text-lg  text-slate-700 font-semibold pb-2">
+                <p className="text-base  text-slate-700 font-semibold pb-2">
                   Feature image
                 </p>
               </div>
