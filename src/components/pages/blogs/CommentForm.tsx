@@ -1,18 +1,24 @@
 "use client";
 import { instance } from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
+import { TPostFormData } from "@/types/post.types";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import toast from "react-hot-toast";
 
-const CommentForm = () => {
+type Props = {
+  blog: TPostFormData;
+};
+
+const CommentForm: FC<Props> = ({ blog }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { user } = useAuth();
   const [isError, setIsError] = useState<string>("");
   const [form, setForm] = useState({
     content: "",
     star: 5,
+    postId: blog?._id,
   });
 
   // handle submit comment

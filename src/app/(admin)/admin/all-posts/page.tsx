@@ -2,19 +2,22 @@
 import CustomTable from "@/common/CustomTable";
 import useAxios from "@/hooks/useAxios";
 import { TPostFormData } from "@/types/post.types";
-import { Button } from "@nextui-org/button";
-import dayjs from "dayjs";
 import { Plus } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
+type TQuery = {
+  limit?: string;
+  access?: string;
+  search?: string;
+};
 const AllPosts = () => {
   const [posts, setPosts] = useState<TPostFormData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const axios = useAxios();
+  const [search, setSearch] = useState<string>("");
 
   const columns = [
     {
@@ -96,26 +99,42 @@ const AllPosts = () => {
     },
   ];
 
-  useEffect(() => {
-    (async function () {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get(`/posts?access=all`);
-        if (data?.success) {
-          setPosts(data?.payload?.posts);
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to load posts.");
-      } finally {
-        setIsLoading(false);
+  const handleCallAPI = async ({
+    limit = "20",
+    access = "admin",
+    search = "",
+  }: TQuery) => {
+    const query: TQuery = {
+      limit,
+      access,
+      search,
+    };
+
+    const queryString = new URLSearchParams(
+      Object.fromEntries(Object.entries(query).filter(([_, v]) => v != null))
+    ).toString();
+
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get(`/posts?${queryString}`);
+      if (data?.success) {
+        setPosts(data?.payload?.posts);
       }
-    })();
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to load posts.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    handleCallAPI({});
   }, [axios]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  const handleSearch = () => {
+    handleCallAPI({ search: search });
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -134,12 +153,24 @@ const AllPosts = () => {
           <input
             placeholder="Search..."
             type="search"
-            className="border-slate-300 border py-1 px-2 focus-visible:outline-none focus-visible:border-primary rounded-md"
+            onChange={(e) => setSearch(e.target.value)}
+            className="border-slate-300 border py-1 px-2 focus-visible:outline-none focus-visible:border-primary rounded-l"
           />
+          <button
+            type="button"
+            onClick={() => handleSearch()}
+            className="py-1 px-2 bg-primary text-white rounded-r"
+          >
+            Search
+          </button>
         </div>
       </div>
       <div>
-        <CustomTable dataSource={posts} columns={columns} />
+        {isLoading ? (
+          <p>Loading</p>
+        ) : (
+          <CustomTable dataSource={posts} columns={columns} />
+        )}
       </div>
     </div>
   );

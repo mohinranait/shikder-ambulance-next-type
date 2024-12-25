@@ -3,6 +3,7 @@ import { TPostFormData } from "@/types/post.types";
 // import { Post } from "@/types/dataType";
 
 import { Clock, DoorOpen, Heart, Map, Phone } from "lucide-react";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +14,7 @@ interface Props {
 
 const PostCard: React.FC<Props> = ({ post }) => {
   return (
-    <div className="dark:bg-black bg-white relative">
+    <article className="dark:bg-black min-h-[300px] bg-white relative">
       <div className="absolute top-2 z-10 flex gap-1 items-center left-2 bg-black px-2 py-1 text-white rounded-2xl ">
         Feature
       </div>
@@ -44,14 +45,20 @@ const PostCard: React.FC<Props> = ({ post }) => {
           <span className="w-3 h-3 ring-2  rounded-full bg-green-600 absolute top-0 -right-1 ring-white"></span>
         </div>
       </div>
-      <div className="px-3">
+      <div className="px-3 pb-3">
         <p className="text-xl text-gray-700 font-medium">{post?.title}</p>
-        <div className="flex gap-2 items-center text-sm text-gray-400">
+        <p className="text-sm text-gray-100 font-medium">
+          {moment(post?.createdAt).format("MMM DD, YYYY")}
+        </p>
+        <p className="text-sm text-gray-300">
+          {post?.shortDescription?.slice(0, 100)}
+        </p>
+        {/* <div className="flex gap-2 items-center text-sm text-gray-400">
           <RatingComponent rating={4} />
           51 Reivews
-        </div>
+        </div> */}
       </div>
-      <ul className="flex flex-col gap-2 px-3 pb-3 mt-3">
+      {/* <ul className="flex flex-col gap-2 px-3 pb-3 mt-3">
         <li className="flex gap-2 items-center text-sm text-gray-500">
           {" "}
           <Map className="text-primary" size={15} />{" "}
@@ -71,8 +78,8 @@ const PostCard: React.FC<Props> = ({ post }) => {
           <DoorOpen className="text-primary" size={15} />{" "}
           <span>Open: 7:00 AM - 4:00 PM</span>{" "}
         </li>
-      </ul>
-    </div>
+      </ul> */}
+    </article>
   );
 };
 

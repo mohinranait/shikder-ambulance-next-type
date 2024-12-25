@@ -13,35 +13,33 @@ type Props = {
 };
 
 const BlogView: FC<Props> = ({ blog }) => {
+  let bgImage: string = "";
+  if (blog?.layouts?.banner) {
+    bgImage = blog?.image?.featuresImage || "";
+  }
   return (
     <main className="mb-20">
       <section
         style={{
-          backgroundImage: `url(${blog?.image?.featuresImage})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div
-          className={`${
-            blog?.image?.featuresImage && "bg-slate-900 bg-opacity-75"
-          } `}
-        >
-          <div className="container flex items-center  md:min-h-[calc(100vh-200px)] py-20 lg:px-32 xl:px-48 ">
+        <div className={`${bgImage && "bg-slate-900 bg-opacity-75"} `}>
+          <div className="container justify-center flex items-center  md:min-h-[calc(100vh-200px)] py-20 lg:px-32 xl:px-48 ">
             <div className="flex flex-col gap-3">
               <h1
                 className={`text-center font-bold text-3xl md:text-4xl lg:text-5xl  mb-3 ${
-                  blog?.image?.featuresImage ? "text-white" : "text-slate-950"
+                  bgImage ? "text-white" : "text-slate-950"
                 } `}
               >
                 {blog?.title}
               </h1>
               <p
                 className={`lg:px-20 text-center  ${
-                  blog?.image?.featuresImage
-                    ? "text-slate-400"
-                    : "text-slate-600"
+                  bgImage ? "text-slate-400" : "text-slate-600"
                 }`}
               >
                 {blog?.shortDescription}
@@ -75,7 +73,7 @@ const BlogView: FC<Props> = ({ blog }) => {
             } flex flex-col gap-3 `}
           >
             <MainBody blog={blog} />
-            <CommentSection />
+            <CommentSection blog={blog} />
           </div>
           {(blog?.layouts?.isSidebar === "right" ||
             blog?.layouts?.isSidebar === "both") && <RightSidebar />}

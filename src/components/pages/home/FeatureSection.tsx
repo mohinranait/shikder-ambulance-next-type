@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-// import { posts } from "@/config/constData";
 import { TPostFormData } from "@/types/post.types";
 import { getPosts } from "@/actions/postApi";
 
@@ -16,7 +15,7 @@ const FeatureSection: React.FC = () => {
   useEffect(() => {
     (async function () {
       try {
-        const res = await getPosts();
+        const res = await getPosts({ limit: "5", access: "user" });
 
         if (res?.success) {
           setPosts(res?.payload?.posts);
@@ -26,7 +25,6 @@ const FeatureSection: React.FC = () => {
       }
     })();
   }, []);
-  console.log(posts);
 
   return (
     <section className="py-10 home_category_section">

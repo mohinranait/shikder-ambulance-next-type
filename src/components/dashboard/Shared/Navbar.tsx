@@ -15,6 +15,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import { GiPostStamp } from "react-icons/gi";
 import { SiPostcss } from "react-icons/si";
+import { useRouter } from "next/navigation";
 
 type ReactSidebarProTypes = {
   isLeftBar?: boolean;
@@ -23,7 +24,7 @@ type ReactSidebarProTypes = {
 
 const Navbar: FC<ReactSidebarProTypes> = ({ setIsLeftBar }) => {
   const { signOut, user } = useAuth();
-  console.log(user);
+  const router = useRouter();
 
   return (
     <div className="sticky z-50 w-full right-0 top-0">
@@ -95,6 +96,15 @@ const Navbar: FC<ReactSidebarProTypes> = ({ setIsLeftBar }) => {
                     className="py-[6px] hover:bg-slate-100 rounded-sm"
                     key="edit"
                     startContent={<SiPostcss className="w-4" />}
+                    onClick={() => router.push(`/admin/users/update-profile`)}
+                  >
+                    Update Profile
+                  </DropdownItem>
+                  <DropdownItem
+                    className="py-[6px] hover:bg-slate-100 rounded-sm"
+                    key="edit"
+                    startContent={<SiPostcss className="w-4" />}
+                    onClick={() => router.push(`/admin/all-posts`)}
                   >
                     Posts
                   </DropdownItem>
