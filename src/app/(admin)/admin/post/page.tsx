@@ -2,7 +2,7 @@
 
 import ImageUploadCom from "@/common/ImageUploadCom";
 import InputElement from "@/components/elements/InputElement";
-import QuillEditor from "@/components/elements/QuillEditor";
+
 import BlogView from "@/components/pages/blogs/BlogView";
 import useAxios from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
@@ -11,6 +11,7 @@ import { MDXEditorMethods } from "@mdxeditor/editor";
 
 import { Button } from "@nextui-org/button";
 import { Save } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
@@ -18,6 +19,10 @@ import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { TagsInput } from "react-tag-input-component";
+
+const QuillEditor = dynamic(() => import("@/components/elements/QuillEditor"), {
+  ssr: false,
+});
 
 const NewPost = () => {
   const path = usePathname();
