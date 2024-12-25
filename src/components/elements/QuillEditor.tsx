@@ -1,5 +1,4 @@
-// components/QuillEditor.tsx
-"use client"; // Mark this as a client-side component
+"use client";
 
 import React, { useState, useEffect, FC } from "react";
 import ReactQuill from "react-quill";

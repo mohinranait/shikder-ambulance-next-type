@@ -20,6 +20,22 @@ import { FaEdit } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { TagsInput } from "react-tag-input-component";
+import { Select, SelectItem } from "@nextui-org/react";
+export const animals = [
+  { key: "cat", label: "Cat" },
+  { key: "dog", label: "Dog" },
+  { key: "elephant", label: "Elephant" },
+  { key: "lion", label: "Lion" },
+  { key: "tiger", label: "Tiger" },
+  { key: "giraffe", label: "Giraffe" },
+  { key: "dolphin", label: "Dolphin" },
+  { key: "penguin", label: "Penguin" },
+  { key: "zebra", label: "Zebra" },
+  { key: "shark", label: "Shark" },
+  { key: "whale", label: "Whale" },
+  { key: "otter", label: "Otter" },
+  { key: "crocodile", label: "Crocodile" },
+];
 
 const NewPost = () => {
   const path = usePathname();
@@ -36,11 +52,13 @@ const NewPost = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [isSlug, setIsSlug] = useState<string>("");
   const [formLoading, setFormLoading] = useState<boolean>(false);
+
   // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
   const [form, setForm] = useState<TPostFormData>({
     title: "",
     author: user?._id || "",
     slug: "",
+    shortDescription: "",
     contactNumber: "",
     content: "",
     image: {
@@ -215,6 +233,27 @@ const NewPost = () => {
                 editorValue={content || ""}
                 setEditorValue={setContent}
               />
+
+              <div className="mt-4">
+                <label htmlFor="" className="flex mb-[2px]">
+                  Short Description
+                </label>
+                <textarea
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      shortDescription: e?.target?.value,
+                    }))
+                  }
+                  name=""
+                  id=""
+                  rows={3}
+                  value={form?.shortDescription}
+                  placeholder="Write your message..."
+                  className=" border-slate-300 border-1 m-0 text-slate-800 placeholder:text-slate-200 p-0 focus-visible:outline-offset-0  bg-transparent  w-full focus-visible:outline-primary py-2 rounded px-3 "
+                ></textarea>
+              </div>
+
               {/* <MarkdownEditor
                 ref={editorRef}
                 markdown={content}
@@ -319,9 +358,7 @@ const NewPost = () => {
                       value={"left"}
                       name="cances"
                       className="hidden peer"
-                      checked={
-                        form?.layouts?.isSidebar == "left" ? true : false
-                      }
+                      checked={form?.layouts?.isSidebar == "left"}
                       onChange={(e) =>
                         setForm((prev) => ({
                           ...prev,
@@ -388,6 +425,138 @@ const NewPost = () => {
                     Dual Sidebar
                   </label>
                 </div>
+              </div>
+            </div>
+            <div className="bg-white border border-slate-200 p-3 ">
+              <div className="border-b mb-3 border-slate-200">
+                <p className="text-base  text-slate-700 font-semibold pb-2">
+                  Attributes
+                </p>
+              </div>
+              <div>
+                <div className="text-slate-600 mb-2 flex flex-col gap-1">
+                  <label
+                    htmlFor="bshow"
+                    className="py-1 px-2 flex gap-2 cursor-pointer  rounded-md items-center"
+                  >
+                    <input
+                      id="bshow"
+                      type="radio"
+                      value={"true"}
+                      checked={form?.layouts?.banner == true}
+                      name="banner"
+                      className="hidden peer"
+                      onChange={(e) =>
+                        setForm((prev: TPostFormData) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            banner: true,
+                          },
+                        }))
+                      }
+                    />{" "}
+                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
+                    Banner is visiable;
+                  </label>
+                  <label
+                    htmlFor="bhide"
+                    className="py-1 px-2 flex gap-2  cursor-pointer rounded-md items-center"
+                  >
+                    <input
+                      id="bhide"
+                      type="radio"
+                      value={"false"}
+                      name="banner"
+                      className="hidden peer"
+                      checked={form?.layouts?.banner == false}
+                      onChange={(e) =>
+                        setForm((prev) => ({
+                          ...prev,
+                          layouts: {
+                            ...prev.layouts,
+                            banner: false,
+                          },
+                        }))
+                      }
+                    />{" "}
+                    <div className="w-4 h-4 rounded-full border-2 p-1 border-gray-300 peer-checked:border-primary  transition peer-checked:before:w-2 peer-checked:before:h-2 peer-checked:before:bg-primary peer-checked:before:absolute peer-checked:before:rounded-full peer-checked:before:top-2/4 peer-checked:before:left-2/4 relative peer-checked:before:-translate-x-2/4 peer-checked:before:-translate-y-2/4 "></div>
+                    Banner is hidden;
+                  </label>
+                </div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="status">Status</label>
+                <select
+                  name="status"
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      status: e.target.value as "Publish" | "Unpublish",
+                    }))
+                  }
+                  className="w-full py-[10px] focus-visible:outline-none border rounded border-slate-300"
+                  id="status"
+                >
+                  <option
+                    value="Publish"
+                    selected={form?.status === "Publish"}
+                    className="py-1 px-3"
+                  >
+                    Public
+                  </option>
+                  <option
+                    value="Unpublish"
+                    selected={form?.status === "Unpublish"}
+                    className="py-1 px-3"
+                  >
+                    Un-Public
+                  </option>
+                </select>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="status">User comments</label>
+                <select
+                  name="status"
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      layouts: {
+                        ...prev?.layouts,
+                        comments: e.target.value === "true" ? true : false,
+                      },
+                    }))
+                  }
+                  className="w-full py-[10px] focus-visible:outline-none border rounded border-slate-300"
+                  id="status"
+                >
+                  <option
+                    value={"true"}
+                    selected={form?.layouts?.comments === true && true}
+                    className="py-1 px-3"
+                  >
+                    Show comment
+                  </option>
+                  <option
+                    value={"false"}
+                    selected={form?.layouts?.comments === false && false}
+                    className="py-1 px-3"
+                  >
+                    Hide comment
+                  </option>
+                </select>
+              </div>
+              <div>
+                <InputElement
+                  name="contactNumber"
+                  type="text"
+                  label="Contact Number"
+                  placeholder="Enter phone"
+                  value={form?.contactNumber || ""}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, contactNumber: e }))
+                  }
+                />
               </div>
             </div>
             <div className="bg-white border border-slate-200 p-3 ">

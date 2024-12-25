@@ -6,6 +6,7 @@ import { TPostFormData } from "@/types/post.types";
 import MainBody from "./MainBody";
 import RightSidebar from "./RightSidebar";
 import LeftSidebar from "./LeftSidebar";
+import CommentSection from "./CommentSection";
 
 type Props = {
   blog: TPostFormData;
@@ -43,10 +44,18 @@ const BlogView: FC<Props> = ({ blog }) => {
                     : "text-slate-600"
                 }`}
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
-                neque accusamus magni? Perferendis consectetur ipsa rerum, harum
-                molestias ratione magni?
+                {blog?.shortDescription}
               </p>
+              {blog?.contactNumber && (
+                <div className="flex justify-center">
+                  <Link
+                    href={`tel:${blog?.contactNumber}`}
+                    className="py-[10px] px-4 rounded-[100px] bg-primary text-white inline-block"
+                  >
+                    Call Ambulance
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -63,9 +72,10 @@ const BlogView: FC<Props> = ({ blog }) => {
                 : blog?.layouts?.isSidebar === "none"
                 ? "lg:col-span-2 xl:col-span-4"
                 : "lg:col-span-2 xl:col-span-2"
-            }  bg-white p-5 rounded`}
+            } flex flex-col gap-3 `}
           >
             <MainBody blog={blog} />
+            <CommentSection />
           </div>
           {(blog?.layouts?.isSidebar === "right" ||
             blog?.layouts?.isSidebar === "both") && <RightSidebar />}
