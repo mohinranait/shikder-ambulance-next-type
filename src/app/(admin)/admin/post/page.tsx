@@ -1,7 +1,6 @@
 "use client";
 
 import ImageUploadCom from "@/common/ImageUploadCom";
-import { MarkdownEditor } from "@/components/elements/ForwardRefEditor";
 import InputElement from "@/components/elements/InputElement";
 import QuillEditor from "@/components/elements/QuillEditor";
 import BlogView from "@/components/pages/blogs/BlogView";
@@ -17,25 +16,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
-import { FcCancel } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { TagsInput } from "react-tag-input-component";
-import { Select, SelectItem } from "@nextui-org/react";
-export const animals = [
-  { key: "cat", label: "Cat" },
-  { key: "dog", label: "Dog" },
-  { key: "elephant", label: "Elephant" },
-  { key: "lion", label: "Lion" },
-  { key: "tiger", label: "Tiger" },
-  { key: "giraffe", label: "Giraffe" },
-  { key: "dolphin", label: "Dolphin" },
-  { key: "penguin", label: "Penguin" },
-  { key: "zebra", label: "Zebra" },
-  { key: "shark", label: "Shark" },
-  { key: "whale", label: "Whale" },
-  { key: "otter", label: "Otter" },
-  { key: "crocodile", label: "Crocodile" },
-];
 
 const NewPost = () => {
   const path = usePathname();
