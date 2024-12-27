@@ -35,14 +35,14 @@ const BlogView: FC<Props> = ({ blog }) => {
                   bgImage ? "text-white" : "text-slate-950"
                 } `}
               >
-                {blog?.title}
+                {blog?.seoTitle || blog?.postTitle}
               </h1>
               <p
                 className={`lg:px-20 text-center  ${
                   bgImage ? "text-slate-400" : "text-slate-600"
                 }`}
               >
-                {blog?.shortDescription}
+                {blog?.seoDescription}
               </p>
               {blog?.contactNumber && (
                 <div className="flex justify-center">

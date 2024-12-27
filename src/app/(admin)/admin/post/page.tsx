@@ -42,7 +42,7 @@ const NewPost = () => {
 
   // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
   const [form, setForm] = useState<TPostFormData>({
-    title: "",
+    postTitle: "",
     author: user?._id || "",
     slug: "",
     shortDescription: "",
@@ -69,13 +69,11 @@ const NewPost = () => {
   //   setContent(text ?? "# Hello");
   // };
 
-  console.log(content);
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!form?.title || form?.title?.trim() == "") {
-      toast.error("Post title is required");
+    if (!form?.postTitle || form?.postTitle?.trim() == "") {
+      toast.error("Add title is required");
       return;
     }
     try {
@@ -89,8 +87,9 @@ const NewPost = () => {
         if (data?.success) {
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
           // editorRef.current?.setMarkdown("");
+          toast.success("Updated");
         } else {
-          toast.error("Somthing wrong");
+          toast.error(data?.message || "Somthing wrong");
         }
       } else {
         const { data } = await axios.post(`/post`, {
@@ -98,7 +97,6 @@ const NewPost = () => {
           content,
           seoKeyword: tags,
         });
-        console.log(data);
         if (data?.success) {
           setUpdatePost(data?.payload?.post);
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
@@ -120,6 +118,7 @@ const NewPost = () => {
           const { data } = await axios.get(`/post/${urlSlug}`);
           if (data?.success) {
             setUpdatePost(data?.payload?.post);
+            setIsSlug(data?.payload?.post?.slug);
             setForm((prev) => ({ ...prev, ...data?.payload?.post }));
             setTags(data?.payload?.post?.seoKeyword);
             setContent(data?.payload?.post?.content);
@@ -134,8 +133,11 @@ const NewPost = () => {
   return (
     <div className="flex flex-col gap-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <div className="flex w-full justify-between  ">
-          <p className="text-lg font-semibold text-slate-600">Post</p>
+        <div className="flex items-center w-full justify-between  ">
+          <p className="text-lg font-semibold text-slate-600">
+            {" "}
+            {params?.get("link") ? "Update Post" : "Create Post"}
+          </p>
           <div className="flex gap-2 items-center">
             <Button
               type="button"
@@ -157,21 +159,24 @@ const NewPost = () => {
         <div className="flex flex-col gap-3">
           <div>
             <InputElement
-              name="title"
+              name="postTitle"
               type="text"
-              label="Post Title"
-              placeholder="Enter title"
-              value={form?.title}
+              labelCss="text-lg"
+              label={params?.get("link") ? "Post title" : "Add new Post"}
+              placeholder="Add title"
+              className="focus-visible:border-primary py-[4px] text-[20px]"
+              value={form?.postTitle}
               onChange={(e) => {
                 setForm((prev) => {
-                  const update = { ...prev, title: e };
-                  const sl = update?.title?.split(" ").join("-").toLowerCase();
+                  const update = { ...prev, postTitle: e };
+                  const sl = update?.postTitle
+                    ?.split(" ")
+                    .join("-")
+                    .toLowerCase();
 
                   setIsSlug(sl);
                   return update;
                 });
-                if (form?.title) {
-                }
               }}
             />
           </div>
@@ -184,16 +189,16 @@ const NewPost = () => {
                     type="text"
                     name="slug"
                     placeholder="Enter slug"
-                    className="py-[2px] focus-visible:border-slate-200 focus-visible:outline-slate-200 "
+                    className="py-[2px] focus-visible:border-primary focus-visible:outline-none "
                     value={form?.slug || ""}
                     onChange={(e) => setForm((prev) => ({ ...prev, slug: e }))}
                   />
                   <Button
                     type="button"
-                    className="py-1 h-[26px] rounded px-1  bg-white border-2 text-primary border-primary"
+                    className="py-1 h-[26px] min-w-[36px] rounded px-1  bg-white border-2 text-primary border-primary"
                     onClick={() => setIsEditSlug(false)}
                   >
-                    Save Slug
+                    Ok
                   </Button>
                 </React.Fragment>
               ) : (
@@ -221,7 +226,7 @@ const NewPost = () => {
                 setEditorValue={setContent}
               />
 
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <label htmlFor="" className="flex mb-[2px]">
                   Short Description
                 </label>
@@ -239,7 +244,7 @@ const NewPost = () => {
                   placeholder="Write your message..."
                   className=" border-slate-300 border-1 m-0 text-slate-800 placeholder:text-slate-200 p-0 focus-visible:outline-offset-0  bg-transparent  w-full focus-visible:outline-primary py-2 rounded px-3 "
                 ></textarea>
-              </div>
+              </div> */}
 
               {/* <MarkdownEditor
                 ref={editorRef}
@@ -250,7 +255,7 @@ const NewPost = () => {
             <div className="bg-white border border-slate-200 p-3">
               <div className="border-b mb-3 border-slate-200">
                 <p className="text-base  text-slate-700 font-semibold pb-2">
-                  Post SEO
+                  SEO
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -259,7 +264,7 @@ const NewPost = () => {
                   name="meta_title"
                   label="SEO Title"
                   placeholder="SEO title"
-                  className="!border-slate-300 border-1 !py-2"
+                  className="!border-slate-300 border-1 focus-visible:!border-primary !py-2"
                   value={form?.seoTitle || ""}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, seoTitle: e }))
@@ -268,7 +273,7 @@ const NewPost = () => {
 
                 <div>
                   <label htmlFor="" className="flex mb-[2px]">
-                    Description
+                    Meta description
                   </label>
                   <textarea
                     onChange={(e) =>
@@ -539,6 +544,7 @@ const NewPost = () => {
                   type="text"
                   label="Contact Number"
                   placeholder="Enter phone"
+                  className="focus-visible:border-primary"
                   value={form?.contactNumber || ""}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, contactNumber: e }))

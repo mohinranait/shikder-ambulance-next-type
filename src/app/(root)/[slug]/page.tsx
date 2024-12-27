@@ -20,7 +20,7 @@ export async function generateMetadata({
   const previousImages = post?.image?.featuresImage;
 
   return {
-    title: post?.seoTitle || post?.title,
+    title: post?.seoTitle || post?.postTitle,
     description: post?.seoDescription,
     keywords: post?.seoKeyword,
 
