@@ -28,7 +28,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
             src={post?.image?.featuresImage || ""}
             width={400}
             height={200}
-            alt={post?.title}
+            alt={post?.seoTitle || post?.postTitle}
             className="w-full hover:scale-125 transition duration-300 hover:rotate-1"
           />
         </Link>
@@ -46,7 +46,9 @@ const PostCard: React.FC<Props> = ({ post }) => {
         </div>
       </div>
       <div className="px-3 pb-3">
-        <p className="text-xl text-gray-700 font-medium">{post?.title}</p>
+        <p className="text-xl text-gray-700 font-medium">
+          {post?.seoTitle || post?.postTitle}
+        </p>
         <p className="text-sm text-gray-100 font-medium">
           {moment(post?.createdAt).format("MMM DD, YYYY")}
         </p>

@@ -36,7 +36,7 @@ const AllPosts = () => {
               />
             </div>
             <div>
-              <p>{record?.title}</p>
+              <p>{record?.seoTitle || record?.postTitle}</p>
               <div className="flex gap-2">
                 <Link
                   href={`/admin/post?link=${record?.slug}`}

@@ -19,13 +19,15 @@ const AsidePosts = async () => {
                   src={post?.image?.featuresImage || "/placeholder.jpg"}
                   width={100}
                   height={100}
-                  alt={post?.title}
+                  alt={post?.seoTitle || post?.postTitle}
                   className="object-cover w-full"
                 />
               </div>
             </div>
             <div className="p-2 pl-0">
-              <p className="text-sm font-medium text-slate-700">{post.title}</p>
+              <p className="text-sm font-medium text-slate-700">
+                {post?.seoTitle || post?.postTitle}
+              </p>
             </div>
           </Link>
         </li>
