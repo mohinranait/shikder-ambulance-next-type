@@ -1,0 +1,162 @@
+// Base styling for the blog post container
+.blog-post-preview {
+    max-width: 800px; // Limit the width for better readability
+    margin: 0 auto; // Center the blog post
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+  
+    // Text styles
+    p {
+      margin: 1rem 0;
+      font-size: 1rem;
+      color: #333;
+    }
+  
+    // Heading styles
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 1.5rem 0 1rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.4;
+  
+      &::after {
+        content: ""; // Add a border or underline for visual effect
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: #007bff;
+        margin: 8px 0;
+      }
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.8rem;
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+    }
+  
+    h4 {
+      font-size: 1.2rem;
+    }
+  
+    // Link styles
+    a {
+      color: #007bff;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  
+    // Bold and italic text
+    strong {
+      font-weight: bold;
+      color: #000;
+    }
+  
+    em {
+      font-style: italic;
+      color: #555;
+    }
+  
+    // List styles
+    ul,
+    ol {
+      margin: 1rem 0;
+      padding-left: 2rem;
+  
+      li {
+        margin-bottom: 0.5rem;
+  
+        &:before {
+          content: "•"; // For unordered list bullets
+          display: inline-block;
+          margin-right: 0.5rem;
+          color: #007bff;
+        }
+      }
+  
+      ol li {
+        list-style: decimal; // Use numbers for ordered lists
+        &:before {
+          content: none; // Remove the bullet for ordered lists
+        }
+      }
+    }
+  
+    // Table styles
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+  
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+  
+      th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+  
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  
+    // Responsive adjustments
+    @media (max-width: 768px) {
+      padding: 10px;
+  
+      h1 {
+        font-size: 1.8rem;
+      }
+  
+      h2 {
+        font-size: 1.6rem;
+      }
+  
+      h3 {
+        font-size: 1.4rem;
+      }
+  
+      h4 {
+        font-size: 1.1rem;
+      }
+  
+      p,
+      ul,
+      ol {
+        font-size: 0.9rem;
+      }
+  
+      table {
+        font-size: 0.9rem;
+  
+        th,
+        td {
+          padding: 8px;
+        }
+      }
+    }
+  }
+  

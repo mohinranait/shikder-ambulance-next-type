@@ -9,7 +9,6 @@ type Props = {
 };
 const ImageCard: FC<Props> = ({ img, setSelectedImg }) => {
   const [selected, setSelected] = useState<string>("");
-  console.log(img);
 
   return (
     <div

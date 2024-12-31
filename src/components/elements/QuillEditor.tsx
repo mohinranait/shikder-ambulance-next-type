@@ -1,89 +1,94 @@
 "use client";
 
-import React, { useState, useEffect, FC, useRef } from "react";
+import { useImg } from "@/providers/ImageProvider";
+import React, { useEffect, FC, useRef, useMemo, useCallback } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+
 type Props = {
   editorValue: string;
   setEditorValue: React.Dispatch<React.SetStateAction<string>>;
 };
 const QuillEditor: FC<Props> = ({ editorValue, setEditorValue }) => {
   const quillRef = useRef<ReactQuill | null>(null);
-  const handleImageUpload = () => {
-    const quill = quillRef.current?.getEditor();
-    if (!quill) {
-      console.error("Quill instance is not initialized.");
-      return;
-    }
+  const { selectedImage, setSelectedImage, setImageModal } = useImg();
 
-    const input = document.createElement("input");
-    input.setAttribute("type", "file");
-    input.setAttribute("accept", "image/*");
-    input.click();
-
-    input.onchange = async () => {
-      const file = input.files?.[0];
-      if (file) {
-        const formData = new FormData();
-        formData.append("image", file);
-
-        // Replace this URL with your image upload API endpoint
-        const uploadUrl = "https://your-api-endpoint/upload-image";
-
-        try {
-          const response = await fetch(uploadUrl, {
-            method: "POST",
-            body: formData,
-          });
-
-          const data = await response.json();
-          const imageUrl = data.url; // Adjust based on your API's response
-
-          if (imageUrl) {
-            const quill = quillRef.current?.getEditor(); // Access the Quill instance
-            const range = quill?.getSelection();
-            if (range) {
-              // quill.insertEmbed(range.index, "image", imageUrl);
-            }
-          }
-        } catch (error) {
-          console.error("Error uploading image:", error);
-        }
-      }
-    };
-  };
-
-  const modules = {
-    toolbar: {
-      container: [
-        [{ header: [1, 2, false] }],
-        ["bold", "italic", "underline", "strike", "blockquote"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"],
-        ["clean"],
-      ],
-      // handlers: {
-      //   image: () => handleImageUpload(),
-      // },
-    },
-  };
-
-  const handleChange = (value: string) => {
-    setEditorValue(value);
-  };
+  const imageHandler = useCallback(() => {
+    setImageModal(true);
+  }, [setImageModal]);
 
   useEffect(() => {
-    // Any required effect, like loading Quill modules, can go here
-  }, []);
+    if (selectedImage && quillRef.current) {
+      const editor = quillRef.current.getEditor();
+      const url = selectedImage?.fileUrl;
+
+      if (url) {
+        const range = editor.getSelection();
+        if (range) {
+          editor.insertEmbed(range.index, "image", url);
+        }
+      }
+
+      setImageModal(false);
+      setSelectedImage(null);
+    }
+  }, [selectedImage, setImageModal, setSelectedImage]);
+
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          ["bold", "italic", "underline", "strike"],
+          [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+          ],
+          ["image", "link"],
+          [
+            {
+              color: [
+                "#000000", // Black
+                "#FFFFFF", // White
+                "#FF0000", // Red
+                "#00FF00", // Green
+                "#0000FF", // Blue
+                "#FFFF00", // Yellow
+                "#FFA500", // Orange
+                "#800080", // Purple
+                "#808080", // Gray
+                "#00FFFF", // Cyan
+                "#FFC0CB", // Pink
+                "#8B0000", // Dark Red
+                "#006400", // Dark Green
+                "#00008B", // Dark Blue
+                "#FFD700", // Gold
+                "#A52A2A", // Brown
+                "#800000", // Maroon
+                "#4B0082", // Indigo
+                "#F0E68C", // Khaki
+                "#B0E0E6", // Powder Blue
+              ],
+            },
+          ],
+        ],
+        handlers: {
+          image: imageHandler,
+        },
+      },
+    };
+  }, [imageHandler]);
 
   return (
     <div className="quill-editor">
       <ReactQuill
+        theme="snow"
         ref={quillRef}
         value={editorValue}
-        onChange={handleChange}
-        theme="snow"
         modules={modules}
+        onChange={setEditorValue}
       />
     </div>
   );
