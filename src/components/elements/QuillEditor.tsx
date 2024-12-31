@@ -62,9 +62,9 @@ const QuillEditor: FC<Props> = ({ editorValue, setEditorValue }) => {
         ["link", "image"],
         ["clean"],
       ],
-      handlers: {
-        image: () => handleImageUpload(),
-      },
+      // handlers: {
+      //   image: () => handleImageUpload(),
+      // },
     },
   };
 
