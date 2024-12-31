@@ -26,12 +26,12 @@ const ImageCard: FC<Props> = ({ img, setSelectedImg }) => {
           width={100}
           height={100}
           alt="image"
-          className="w-full max-h-[120px] object-cover rounded-t"
+          className="w-full max-h-[120px] object-cover rounded"
         />
       </div>
-      <div className="py-1 px-2">
+      {/* <div className="py-1 px-2">
         <p className="text-sm text-slate-500">photo.png</p>
-      </div>
+      </div> */}
     </div>
   );
 };

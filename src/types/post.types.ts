@@ -10,6 +10,7 @@ export type TPostFormData = {
         featuresImage?:  string; 
         thumbnail?:  string;
     };
+    publishDate: Date ;
     content?: string;
     contents?: Array<{
         priority?: string;

@@ -8,17 +8,29 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+
 type TQuery = {
   limit?: string;
   access?: string;
   search?: string;
 };
 const AllPosts = () => {
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [posts, setPosts] = useState<TPostFormData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+  const [isSelected, setIsSelected] = useState<TPostFormData | null>(null);
   const axios = useAxios();
   const [search, setSearch] = useState<string>("");
-
   const columns = [
     {
       title: "Post",
@@ -40,17 +52,25 @@ const AllPosts = () => {
               <div className="flex gap-2">
                 <Link
                   href={`/admin/post?link=${record?.slug}`}
+                  target="_blank"
                   className="text-primary text-xs hover:underline"
                 >
                   Edit
                 </Link>
                 <Link
                   href={`/${record?.slug}`}
+                  target="_blank"
                   className="text-primary text-xs hover:underline"
                 >
                   View
                 </Link>
-                <span className="text-primary text-xs cursor-pointer hover:underline">
+                <span
+                  onClick={() => {
+                    onOpen();
+                    setIsSelected(record);
+                  }}
+                  className="text-primary text-xs cursor-pointer hover:underline"
+                >
                   Delete permanently
                 </span>
               </div>
@@ -136,6 +156,23 @@ const AllPosts = () => {
     handleCallAPI({ search: search });
   };
 
+  // handle delete post
+  const handleDelete = async () => {
+    try {
+      setIsDeleteLoading(true);
+      const { data } = await axios.delete(`/post/${isSelected?._id}`);
+      if (data?.success) {
+        setIsDeleteLoading(false);
+        setPosts((prev) => prev?.filter((d) => d?._id !== isSelected?._id));
+        onClose();
+      } else {
+        toast.error("Somthing wrong");
+      }
+    } catch (error) {
+      toast.error("Somthing wrong");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-full justify-between items-center py-3 px-3 rounded shadow-md bg-white">
@@ -172,6 +209,46 @@ const AllPosts = () => {
           <CustomTable dataSource={posts} columns={columns} />
         )}
       </div>
+
+      <Modal
+        hideCloseButton={true}
+        backdrop="opaque"
+        classNames={{
+          backdrop:
+            "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
+        }}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
+        <ModalContent className="max-w-[350px] pt-10">
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <p className="text-center text-base md:text-lg">
+                  Are you sure want to delete this content?
+                </p>
+              </ModalBody>
+              <ModalFooter className="flex justify-center">
+                <Button
+                  className="bg-red-100 text-red-500 rounded  "
+                  variant="light"
+                  onPress={onClose}
+                >
+                  No
+                </Button>
+                <Button
+                  disabled={isDeleteLoading}
+                  isLoading={isDeleteLoading}
+                  onClick={handleDelete}
+                  className="bg-primary text-white rounded"
+                >
+                  Yes
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

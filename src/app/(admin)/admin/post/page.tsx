@@ -8,7 +8,7 @@ import useAxios from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
 import { TPostFormData } from "@/types/post.types";
 import { MDXEditorMethods } from "@mdxeditor/editor";
-
+import { DatePicker } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
 import { Save } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -39,8 +39,23 @@ const NewPost = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [isSlug, setIsSlug] = useState<string>("");
   const [formLoading, setFormLoading] = useState<boolean>(false);
+  const [date, setDate] = useState<Date>(new Date());
+  const [time, setTime] = useState<string>("00:00");
+  // const [publishDate, setPublishDate] = useState<Date>(new Date());
 
-  // const [setslugUpdate, setSetslugUpdate] = useState<boolean>(false);
+  const combineDateTime = (date: Date, time: string): Date => {
+    const dateObj = new Date(date);
+    const [hours, minutes] = time.split(":").map(Number);
+
+    dateObj.setHours(hours);
+    dateObj.setMinutes(minutes);
+
+    dateObj.setSeconds(0);
+    dateObj.setMilliseconds(0);
+
+    return dateObj;
+  };
+
   const [form, setForm] = useState<TPostFormData>({
     postTitle: "",
     author: user?._id || "",
@@ -52,6 +67,7 @@ const NewPost = () => {
       featuresImage: "",
       thumbnail: "",
     },
+    publishDate: new Date(),
     layouts: {
       banner: true,
       sidebar: "posts",
@@ -64,10 +80,11 @@ const NewPost = () => {
     seoKeyword: [],
   });
 
-  // const onChangeMarkdown = () => {
-  //   const text = editorRef.current?.getMarkdown();
-  //   setContent(text ?? "# Hello");
-  // };
+  useEffect(() => {
+    const pTime = combineDateTime(date, time);
+
+    setForm((prev) => ({ ...prev, publishDate: pTime }));
+  }, [date, time]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -111,6 +128,8 @@ const NewPost = () => {
     }
   };
 
+  console.log({ form });
+
   useEffect(() => {
     if (urlSlug) {
       (async function () {
@@ -131,7 +150,7 @@ const NewPost = () => {
   }, [urlSlug, axios]);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex post-form flex-col gap-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div className="flex items-center w-full justify-between  ">
           <p className="text-lg font-semibold text-slate-600">
@@ -220,7 +239,7 @@ const NewPost = () => {
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 ">
           <div className="xl:col-span-2 2xl:col-span-3 flex flex-col gap-3 ">
-            <div className="bg-white border border-slate-200 p-3">
+            <div className="bg-white border border-slate-200 p-1">
               <QuillEditor
                 editorValue={content || ""}
                 setEditorValue={setContent}
@@ -264,7 +283,7 @@ const NewPost = () => {
                   name="meta_title"
                   label="SEO Title"
                   placeholder="SEO title"
-                  className="!border-slate-300 border-1 focus-visible:!border-primary !py-2"
+                  className="!border-slate-300 !border-1 focus-visible:!border-primary !py-2"
                   value={form?.seoTitle || ""}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, seoTitle: e }))
@@ -300,6 +319,29 @@ const NewPost = () => {
                     onChange={setTags}
                     name="fruits"
                     placeHolder="Enter tags"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="bg-white border border-slate-200 p-3">
+              <div className="border-b mb-3 border-slate-200">
+                <p className="text-base  text-slate-700 font-semibold pb-2">
+                  Publish date
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="grid lg:grid-cols-2 gap-3  ">
+                  <input
+                    type="date"
+                    value={date.toISOString().split("T")[0]}
+                    onChange={(e) => setDate(new Date(e.target.value))}
+                    className="py-2 rounded px-3 border-1 border-slate-400 focus-visible:outline-none"
+                  />
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="py-2 rounded px-3 border-1 border-slate-400 focus-visible:outline-none"
                   />
                 </div>
               </div>
@@ -544,7 +586,7 @@ const NewPost = () => {
                   type="text"
                   label="Contact Number"
                   placeholder="Enter phone"
-                  className="focus-visible:border-primary"
+                  className="focus-visible:border-primary !border-1"
                   value={form?.contactNumber || ""}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, contactNumber: e }))
