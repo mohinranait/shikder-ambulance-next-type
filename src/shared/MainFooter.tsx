@@ -8,17 +8,6 @@ const MainFooter = () => {
       <div className="innerbg">
         <div className="inner-wrapper">
           <div className="container">
-            <div className="section-title white pb-[30px] lg:pb-[60px]">
-              <h1 className="text-white">
-                Get More Update! Subscribe Newsletter{" "}
-              </h1>
-              <p className="text-white">
-                Join us today and experience the power of AI-powered text
-                creation for yourself!
-              </p>
-              {/* <Subscribe /> */}
-            </div>
-
             <footer className="footer-link">
               <div className="grid grid-cols-4 gap-12">
                 <div className="col-span-2 lg:col-span-1">

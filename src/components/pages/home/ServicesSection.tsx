@@ -16,7 +16,7 @@ const ServicesSection = () => {
         <div className="grid pt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 services">
           <Card shadow="sm" className="shadow-none service_card" isPressable>
             <CardBody className="overflow-visible p-0">
-              <div className=" group flex flex-col gap-2 shadow p-4  bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
+              <div className=" group flex flex-col gap-2 shadow p-4 h-full bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
                 <span className="rounded-full group-hover:w-32 group-hover:h-32 transition-all duration-500 w-28  h-28 absolute -top-16 -right-16 bg-primary z-10"></span>
                 <span className="rounded-full group-hover:w-48 group-hover:h-48 transition-all duration-500 w-40 h-40 absolute -top-[90px] -right-[90px] bg-secondary z-0"></span>
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
@@ -31,7 +31,7 @@ const ServicesSection = () => {
           </Card>
           <Card shadow="sm" className="shadow-none service_card" isPressable>
             <CardBody className="overflow-visible p-0">
-              <div className=" flex group flex-col gap-2 shadow p-4  bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
+              <div className=" flex group flex-col gap-2 shadow p-4 h-full bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
                 <span className="rounded-full group-hover:w-32 group-hover:h-32 transition-all duration-500 w-28  h-28 absolute -top-16 -right-16 bg-primary z-10"></span>
                 <span className="rounded-full group-hover:w-48 group-hover:h-48 transition-all duration-500 w-40 h-40 absolute -top-[90px] -right-[90px] bg-secondary z-0"></span>
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
@@ -47,7 +47,7 @@ const ServicesSection = () => {
 
           <Card shadow="sm" className="shadow-none service_card" isPressable>
             <CardBody className="overflow-visible p-0">
-              <div className=" flex group flex-col gap-2 shadow p-4  bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
+              <div className=" flex group flex-col gap-2 shadow p-4 h-full bg-white dark:bg-black overflow-hidden rounded-[18px] relative">
                 <span className="rounded-full group-hover:w-32 group-hover:h-32 transition-all duration-500 w-28  h-28 absolute -top-16 -right-16 bg-primary z-10"></span>
                 <span className="rounded-full group-hover:w-48 group-hover:h-48 transition-all duration-500 w-40 h-40 absolute -top-[90px] -right-[90px] bg-secondary z-0"></span>
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
