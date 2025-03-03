@@ -7,11 +7,10 @@ const ServiceFeature = () => {
       <div className="container pb-4">
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">
-            Emergency ambulance service
+            Emergency ambulance Service
           </h2>
           <p className="text-center">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-            dolores?
+            Anytime, Anywhere Ambulance Support Available.
           </p>
         </div>
       </div>
@@ -21,13 +20,11 @@ const ServiceFeature = () => {
             Shikder ambulance service
           </h3>
           <p className="text-slate-700 font-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            voluptatem impedit at, itaque dolore quaerat iure quasi hic veniam
-            distinctio!
+          Shikder Ambulance service in Dhaka, Bangladesh. Looking for a reliable ambulance service you can count on? Look no further! Shikder Ambulance is dedicated to delivering top-notch medical transportation services in the area. Whether it's an urgent situation or a routine transfer, our team is fully prepared to manage the task effectively. Our courteous and expert professionals recognize the significance of both comfort and safety, prioritizing your well-being throughout the entire journey. Shikder Ambulance, and allow us to guide you to your destination with the most care and precision.
           </p>
           <div className="mt-4">
             <h3 className="text-xl font-semibold text-slate-800">
-              Facilities of ambulance
+              Facilities of Shikder Ambulance
             </h3>
           </div>
           <ul className="flex flex-col gap-1">
@@ -48,12 +45,12 @@ const ServiceFeature = () => {
             </li>
             <li>
               <p className="text-base font-medium text-slate-700">
-                Clean Oxigine{" "}
+              Clean & Hygienic Ambulances {" "}
               </p>
             </li>
             <li>
               <p className="text-base font-medium text-slate-700">
-                Service 24/4 hours open
+              Service: 24/7 Open
               </p>
             </li>
           </ul>

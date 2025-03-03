@@ -9,8 +9,7 @@ const ServicesSection = () => {
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">Services</h2>
           <p className="text-center">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-            dolores?
+            <b>The different types of Ambulances is Available in all districts of Bangladesh</b>
           </p>
         </div>
 
@@ -25,9 +24,7 @@ const ServicesSection = () => {
                 </div>
                 <p className="text-xl font-semibold text-black">Ac Ambulance</p>
                 <p className="text-gray text-base font-medium">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet beatae animi unde accusamus est. Obcaecati asperiores
-                  illo nihil harum ipsum.
+                AC Ambulance Service is Comfortable in Critical Times. The Ac Ambulance is the best quality to provide a patient a place to Another place or hospital. The best ambulance provide, the best Service for you!
                 </p>
               </div>
             </CardBody>
@@ -40,11 +37,9 @@ const ServicesSection = () => {
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
                   <FaCarSide size={35} className="text-primary" />
                 </div>
-                <p className="text-xl font-semibold text-black">Ac Ambulance</p>
+                <p className="text-xl font-semibold text-black">Non-Ac Ambulance</p>
                 <p className="text-gray text-base font-medium">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet beatae animi unde accusamus est. Obcaecati asperiores
-                  illo nihil harum ipsum.
+                  Non-Ac Ambulance is like Ac ambulance. The all Facilities have in it like Ac ambulance wihout Ac support. Ac Ammbulance and Non-Ac Ambulance same quality. 
                 </p>
               </div>
             </CardBody>
@@ -58,11 +53,9 @@ const ServicesSection = () => {
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
                   <FaCarSide size={35} className="text-primary" />
                 </div>
-                <p className="text-xl font-semibold text-black">Ac Ambulance</p>
+                <p className="text-xl font-semibold text-black">Freezing Ambulance</p>
                 <p className="text-gray text-base font-medium">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet beatae animi unde accusamus est. Obcaecati asperiores
-                  illo nihil harum ipsum.
+                  The freezing Ambulance is called the dead body carrier Ambulance. It is a dead body carrier ambulance. It has a frozen box. Keep the dead body for several days.
                 </p>
               </div>
             </CardBody>

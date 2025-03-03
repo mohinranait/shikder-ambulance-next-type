@@ -22,12 +22,11 @@ const BannerSection = () => {
               <br /> Service
             </h1>
             <p className="text-base text-black text-center dark:text-white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
-              Rerum expedita molestiae consequuntur ullam animi dolore.
+            Welcome to Shikder Ambulance Service in Dhaka, Bangladesh. Looking for a reliable Ambulance? You've come to the right place. We guarantee your safe and comfortable arrival at your destination.
             </p>
-            <div className="flex items-center justify-center gap-4 mt-4">
-              <Button className="bg-primary text-white">Call Now</Button>
+            <div className="flex items-center justify-center gap-4 mt-4">              
               <Button className="bg-secondary text-white">Explore</Button>
+              <Button className="bg-primary text-white">Call Now</Button>
             </div>
           </div>
         </div>
