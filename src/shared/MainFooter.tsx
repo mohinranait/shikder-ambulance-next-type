@@ -1,108 +1,137 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaLinkedin } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FiTwitter } from "react-icons/fi";
+import { FaYoutube } from "react-icons/fa";
+import { ChevronsRight } from "lucide-react";
 
 const MainFooter = () => {
   return (
     <div className="footer-wrapper">
       <div className="innerbg">
         <div className="inner-wrapper">
+          <div className="border-b pb-5 border-slate-800">
+            <ul className="flex  divide-slate-400  divide-x-1  items-center  justify-center">
+              <li className="leading-[10px]">
+                <Link
+                  href="/"
+                  className="px-3 leading-[12px] text-sm text-slate-500 hover:text-white"
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="leading-[10px]">
+                <Link
+                  href="/about-us"
+                  className="px-3 leading-[12px] text-sm text-slate-500 hover:text-white"
+                >
+                  About US
+                </Link>
+              </li>
+              <li className="leading-[10px]">
+                <Link
+                  href="/contact-us"
+                  className="px-3 leading-[12px] text-sm text-slate-500 hover:text-white"
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
           <div className="container">
             <footer className="footer-link">
-              <div className="grid grid-cols-4 gap-12">
+              <div className="grid  sm:grid-cols-4 gap-12">
                 <div className="col-span-2 lg:col-span-1">
-                  <h2 className="title">Social Media</h2>
-                  <ul className="link-list">
-                    <li>
-                      <Link className="link" href={"/"}>
-                        Facebook
+                  <h4 className="title text-slate-100">Social Media</h4>
+                  <ul className="link-list flex items-center gap-2">
+                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
+                      <Link
+                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
+                        href={"/"}
+                      >
+                        <FaFacebookF />
                       </Link>
                     </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        LinkedIn
+                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
+                      <Link
+                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
+                        href={"/"}
+                      >
+                        <FiTwitter />
                       </Link>
                     </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        Twitter
+                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
+                      <Link
+                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
+                        href={"/"}
+                      >
+                        <FaYoutube />
                       </Link>
                     </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        Instagram
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        Tiktok
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        YouTube
+                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
+                      <Link
+                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
+                        href={"/"}
+                      >
+                        <FaLinkedin />
                       </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-span-2 lg:col-span-1">
-                  <h2 className="title">Links</h2>
+                  <h2 className="title text-slate-100">Quick Links</h2>
                   <ul className="link-list">
-                    <li>
-                      <Link className="link" href={"/privacy-policy"}>
-                        Privacy Policy
+                    <li className="flex items-center gap-1">
+                      <ChevronsRight className="text-white" size={16} />
+                      <Link className="link" href={"/ac-ambulance-service"}>
+                        Ac, Non-Ac Ambulance
                       </Link>
                     </li>
-                    <li>
-                      <Link className="link" href={"/terms-condition"}>
-                        Terms & Conditions
+                    <li className="flex items-center gap-1">
+                      <ChevronsRight className="text-white" size={16} />
+                      <Link
+                        className="link"
+                        href={"/freezing-ambulance-service"}
+                      >
+                        Freezing Ambulance
                       </Link>
                     </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        Careers
+                    <li className="flex items-center gap-1">
+                      <ChevronsRight className="text-white" size={16} />
+                      <Link className="link" href={"/icu-ambulance-service"}>
+                        ICU, CCU, NICU Ambulance
                       </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-span-2 lg:col-span-1">
-                  <h2 className="title">Resources</h2>
+                  <h2 className="title text-slate-100">Resources</h2>
                   <ul className="link-list">
                     <li>
-                      <Link className="link" href={"/"}>
-                        AI Transcript
-                      </Link>
+                      <span className="link">
+                        Eskaton Road, Mogbazar, Dhaka-1217
+                      </span>
                     </li>
                     <li>
-                      <Link className="link" href={"/"}>
-                        AI Summaries
-                      </Link>
+                      <span className="link">Gulshan-1, Dhaka-1230</span>
                     </li>
                     <li>
-                      <Link className="link" href={"/"}>
-                        AI Podcast
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        AI Social Media Post
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="link" href={"/"}>
-                        AI Articles
-                      </Link>
+                      <span className="link">
+                        Basaboo Raod, Khilgaon, Dhaka-1214
+                      </span>
                     </li>
                   </ul>
                 </div>
                 <div className="col-span-2 lg:col-span-1">
-                  <h2 className="title">Need Help?</h2>
+                  <h2 className="title text-slate-100">Need Help?</h2>
                   <div className="contact-box">
                     <h5>Call us directly</h5>
                     <h2>
                       <svg
-                        width="20"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 20 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -117,11 +146,6 @@ const MainFooter = () => {
                             strokeLinejoin="round"
                           />
                         </g>
-                        <defs>
-                          <clipPath id="clip0_219_5167">
-                            <rect width="20" height="20" fill="white" />
-                          </clipPath>
-                        </defs>
                       </svg>
                       +123 456 76543
                     </h2>
@@ -130,8 +154,8 @@ const MainFooter = () => {
                     <h5>Call us directly</h5>
                     <h2>
                       <svg
-                        width="20"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 20 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -146,11 +170,6 @@ const MainFooter = () => {
                             strokeLinejoin="round"
                           />
                         </g>
-                        <defs>
-                          <clipPath id="clip0_219_5167">
-                            <rect width="20" height="20" fill="white" />
-                          </clipPath>
-                        </defs>
                       </svg>
                       +123 456 76543
                     </h2>
@@ -158,18 +177,15 @@ const MainFooter = () => {
                 </div>
               </div>
             </footer>
-            <div className="small-footer">
-              <p className="text-gray ">
-                copyright 2024 All rights reserved by Shikder ambulance
+          </div>
+          <div className=" border-t border-slate-800">
+            <div className="small-footer py-[12px] container px-3 md:px-0 justify-center">
+              <p className="text-gray text-center text-sm ">
+                Copyright © 2023
+                <span className="text-slate-300"> Shikderambulance</span>.
+                Developed by <span className="text-slate-300">Rentsheba</span>{" "}
+                All rights reserved.
               </p>
-              <ul>
-                <li>
-                  <Link href={"/"}>Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>Terms & Condition</Link>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

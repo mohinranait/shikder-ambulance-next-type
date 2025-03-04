@@ -1,6 +1,8 @@
 import React from "react";
 import { FaCarSide } from "react-icons/fa";
 import { Card, CardBody } from "@nextui-org/react";
+import { BiSolidAmbulance } from "react-icons/bi";
+import { LiaAmbulanceSolid } from "react-icons/lia";
 
 const ServicesSection = () => {
   return (
@@ -9,7 +11,10 @@ const ServicesSection = () => {
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">Services</h2>
           <p className="text-center">
-            <b>The different types of Ambulances is Available in all districts of Bangladesh</b>
+            <b>
+              The different types of Ambulances is Available in all districts of
+              Bangladesh
+            </b>
           </p>
         </div>
 
@@ -20,11 +25,14 @@ const ServicesSection = () => {
                 <span className="rounded-full group-hover:w-32 group-hover:h-32 transition-all duration-500 w-28  h-28 absolute -top-16 -right-16 bg-primary z-10"></span>
                 <span className="rounded-full group-hover:w-48 group-hover:h-48 transition-all duration-500 w-40 h-40 absolute -top-[90px] -right-[90px] bg-secondary z-0"></span>
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
-                  <FaCarSide size={35} className="text-primary" />
+                  <LiaAmbulanceSolid size={35} className="text-primary" />
                 </div>
                 <p className="text-xl font-semibold text-black">Ac Ambulance</p>
                 <p className="text-gray text-base font-medium">
-                AC Ambulance Service is Comfortable in Critical Times. The Ac Ambulance is the best quality to provide a patient a place to Another place or hospital. The best ambulance provide, the best Service for you!
+                  AC Ambulance Service is Comfortable in Critical Times. The Ac
+                  Ambulance is the best quality to provide a patient a place to
+                  Another place or hospital. The best ambulance provide, the
+                  best Service for you!
                 </p>
               </div>
             </CardBody>
@@ -37,9 +45,13 @@ const ServicesSection = () => {
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
                   <FaCarSide size={35} className="text-primary" />
                 </div>
-                <p className="text-xl font-semibold text-black">Non-Ac Ambulance</p>
+                <p className="text-xl font-semibold text-black">
+                  Non-Ac Ambulance
+                </p>
                 <p className="text-gray text-base font-medium">
-                  Non-Ac Ambulance is like Ac ambulance. The all Facilities have in it like Ac ambulance wihout Ac support. Ac Ammbulance and Non-Ac Ambulance same quality. 
+                  Non-Ac Ambulance is like Ac ambulance. The all Facilities have
+                  in it like Ac ambulance wihout Ac support. Ac Ammbulance and
+                  Non-Ac Ambulance same quality.
                 </p>
               </div>
             </CardBody>
@@ -51,11 +63,15 @@ const ServicesSection = () => {
                 <span className="rounded-full group-hover:w-32 group-hover:h-32 transition-all duration-500 w-28  h-28 absolute -top-16 -right-16 bg-primary z-10"></span>
                 <span className="rounded-full group-hover:w-48 group-hover:h-48 transition-all duration-500 w-40 h-40 absolute -top-[90px] -right-[90px] bg-secondary z-0"></span>
                 <div className="rounded-full w-24 h-24 flex items-center justify-center bg-slate-100">
-                  <FaCarSide size={35} className="text-primary" />
+                  <BiSolidAmbulance size={35} className="text-primary" />
                 </div>
-                <p className="text-xl font-semibold text-black">Freezing Ambulance</p>
+                <p className="text-xl font-semibold text-black">
+                  Freezing Ambulance
+                </p>
                 <p className="text-gray text-base font-medium">
-                  The freezing Ambulance is called the dead body carrier Ambulance. It is a dead body carrier ambulance. It has a frozen box. Keep the dead body for several days.
+                  The freezing Ambulance is called the dead body carrier
+                  Ambulance. It is a dead body carrier ambulance. It has a
+                  frozen box. Keep the dead body for several days.
                 </p>
               </div>
             </CardBody>

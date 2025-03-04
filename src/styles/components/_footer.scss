@@ -20,9 +20,9 @@
     }
 
     .inner-wrapper {
-        padding-top: 209px;
-        padding-bottom: 52px;
-
+        padding-top: 22px;
+        position: relative;
+        z-index: 1;
         @include getDown(785px) {
             padding-top: 300px;
             padding-bottom: 16px;
@@ -44,7 +44,7 @@
         }
 
         .footer-link {
-            padding: 80px 0 56px 0;
+            padding: 30px 0 20px 0;
             border-top: 1px solid rgba($color: var(--white), $alpha: 0.16);
             border-bottom: 1px solid rgba($color: var(--white), $alpha: 0.16);
 
@@ -53,18 +53,15 @@
             }
 
             .title {
-                color: var(--white);
-
-                font-size: 18px;
+                font-size: 16px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: normal;
-                margin-bottom: 40px;
+                margin-bottom: 12px;
             }
 
             .link-list {
                 li {
-                    margin-bottom: 8px;
 
                     &:last-child {
                         margin-bottom: 0;
@@ -75,22 +72,24 @@
 
                         font-size: 14px;
                         font-style: normal;
-                        font-weight: 600;
-                        line-height: 32px;
+                        font-weight: 400;
+                        line-height: 26px;
+                        &:hover{
+                            color: white;
+                        }
                     }
                 }
             }
 
             .contact-box {
-                margin-top: 38px;
-
+                margin-bottom: 10px;
                 h5 {
                     color: var(--gray);
 
                     font-size: 14px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 32px;
+                    line-height: 20px;
                 }
 
                 h2 {
@@ -98,8 +97,8 @@
 
                     font-size: 16px;
                     font-style: normal;
-                    font-weight: 600;
-                    line-height: 32px;
+                    font-weight:500;
+                    line-height: 24px;
                     display: flex;
                     align-items: center;
                     gap: 8px;
@@ -108,53 +107,23 @@
         }
 
         .small-footer {
-            padding: 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
 
             @include getDown(992px) {
                 padding: 15px 0;
                 flex-direction: column;
-                align-items: start;
+                align-items: center;
                 gap: 10px;
             }
 
             p {
-                // color: var(--black);
-
-                font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 26px;
             }
 
-            ul {
-                display: flex;
-
-                @include getDown(992px) {
-                    flex-direction: column;
-                    align-items: start;
-                    gap: 10px;
-                }
-
-                li {
-                    padding-left: 27px;
-
-                    @include getDown(992px) {
-                        padding-left: 0px;
-                    }
-
-                    a {
-                        color: var(--gray);
-
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 26px;
-                    }
-                }
-            }
+           
         }
     }
 
