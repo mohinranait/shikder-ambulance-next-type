@@ -1,3 +1,4 @@
+import CallButton from "@/components/utils/CallButton";
 import MainFooter from "@/shared/MainFooter";
 import MainHeader from "@/shared/MainHeader";
 import React from "react";
@@ -12,6 +13,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
       <MainHeader />
       {children}
       <MainFooter />
+      <CallButton />
     </main>
   );
 };
