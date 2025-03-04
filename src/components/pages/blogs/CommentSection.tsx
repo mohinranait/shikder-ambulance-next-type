@@ -7,6 +7,7 @@ type TCommentType = {
   _id: string;
   autor?: string;
   content: string;
+  name: string;
   star: number;
   createdAt: string;
   updatedAt: string;

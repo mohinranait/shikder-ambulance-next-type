@@ -73,7 +73,7 @@ const BlogView: FC<Props> = ({ blog }) => {
             } flex flex-col gap-3 `}
           >
             <MainBody blog={blog} />
-            <CommentSection blog={blog} />
+            {blog?.layouts?.comments && <CommentSection blog={blog} />}
           </div>
           {(blog?.layouts?.isSidebar === "right" ||
             blog?.layouts?.isSidebar === "both") && <RightSidebar />}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const AsidePosts = async () => {
-  const data = await getPosts({ limit: "8", access: "user" });
+  const data = await getPosts({ limit: "5", access: "user" });
   const posts = data?.payload?.posts;
   return (
     <ul className="flex flex-col gap-3">

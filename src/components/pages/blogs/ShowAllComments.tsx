@@ -6,6 +6,7 @@ type TCommentType = {
   _id: string;
   autor?: string;
   content: string;
+  name: string;
   star: number;
   createdAt: string;
   updatedAt: string;
@@ -32,6 +33,10 @@ const ShowAllComments: FC<Props> = ({ comments }) => {
           </div>
           <div className="w-full">
             <div>
+              {item?.name && (
+                <p className="font-semibold text-slate-700">{item?.name}</p>
+              )}
+
               <div className="flex gap-1">
                 {[1, 2, 3, 4, 5]?.map((star) => (
                   <FaStar
@@ -44,7 +49,7 @@ const ShowAllComments: FC<Props> = ({ comments }) => {
                 ))}
               </div>
 
-              <p>{item?.content}</p>
+              <p className="text-slate-600">{item?.content}</p>
               <p className="text-sm text-slate-500">
                 {moment(item?.createdAt).format("MMM DD, YYYY")}
               </p>
