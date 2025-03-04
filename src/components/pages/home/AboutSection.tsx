@@ -20,17 +20,13 @@ const AboutSection = () => {
                     <FaCar className="text-primary" size={50} />
                     {/* </div> */}
                     <p className="text-gray mt-5">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Adipisci facilis ipsam, quod autem voluptatibus suscipit
-                      totam. Deleniti veniam fugiat a?
+                    <b>Oxygen: </b>Oxygen therapy is the use of oxygen to treat various medical conditions, particularly those involving the respiratory system. It involves supplying additional oxygen to individuals whose bodies are unable to get sufficient oxygen naturally.
                     </p>
                   </div>
                   <div className="mr-8 pt-8">
                     <FaCableCar className="text-primary" size={50} />
                     <p className="text-gray mt-5">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Adipisci facilis ipsam, quod autem voluptatibus suscipit
-                      totam. Deleniti veniam fugiat a?
+                    <b>wheelchair: </b>A wheelchair is a mobility device designed to assist individuals who have difficulty walking due to illness, injury, or disability. There are two main types: manual wheelchairs that require physical effort to move, and electric wheelchairs that are powered by motors for easier movement.
                     </p>
                   </div>
                 </div>
@@ -38,17 +34,13 @@ const AboutSection = () => {
                   <div className="ml-8 pb-8 border-b border-slate-200">
                     <FaCableCar className="text-primary" size={50} />
                     <p className="text-gray mt-5">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Adipisci facilis ipsam, quod autem voluptatibus suscipit
-                      totam. Deleniti veniam fugiat a?
+                    <b>Stretcher: </b>A stretcher is a device used to carry patients who cannot move on their own, especially in emergencies. It provides a safe and stable way to transport patients, particularly those with injuries or who need medical care during transport.
                     </p>
                   </div>
                   <div className="ml-8 mt-8">
                     <FaCableCar className="text-primary" size={50} />
                     <p className="text-gray mt-5">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Adipisci facilis ipsam, quod autem voluptatibus suscipit
-                      totam. Deleniti veniam fugiat a?
+                    <b>Response Time:</b> The faster the ambulance can reach you, the better. Look for services that promise quick response times, and check reviews for reliability.
                     </p>
                   </div>
                 </div>

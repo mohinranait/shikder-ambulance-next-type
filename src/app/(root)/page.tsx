@@ -6,6 +6,7 @@ import FeatureSection from "@/components/pages/home/FeatureSection";
 import Reviews from "@/components/pages/home/Reviews";
 import ServiceFeature from "@/components/pages/home/ServiceFeature";
 import ServicesSection from "@/components/pages/home/ServicesSection";
+import StaticContent from "@/components/pages/home/StaticContent";
 import WhyChooseMe from "@/components/pages/home/WhyChooseMe";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <ServicesSection />
       <AboutSection />
       <WhyChooseMe />
+      <StaticContent />
       <FeatureSection />
       <Reviews />
       {/* <FaqSection /> */}

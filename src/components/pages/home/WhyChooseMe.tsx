@@ -7,11 +7,10 @@ const WhyChooseMe = () => {
       <div className="container pb-4">
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">
-            Why choose your service
+            Why Choose Our Services
           </h2>
           <p className="text-center">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-            dolores?
+            The best Service and Trusted Company.
           </p>
         </div>
       </div>
@@ -19,36 +18,22 @@ const WhyChooseMe = () => {
         <div>
           <div className="mt-4">
             <h3 className="text-xl font-semibold text-slate-800">
-              Facilities of ambulance
+            Available 24/7
             </h3>
+            <p>Seeking urgent medical help in Dhaka? Opt for our trustworthy 24/7 Ambulance Service in Dhaka. Count on us to stand by your side around the clock, ready to assist whenever you need us.</p>
           </div>
-          <ul className="flex flex-col gap-1">
-            <li>
-              <p className="text-base font-medium text-slate-700">
-                Compatitib pricing, High quality service
-              </p>
-            </li>
-            <li>
-              <p className="text-base font-medium text-slate-700">
-                We have strature available for transporting
-              </p>
-            </li>
-            <li>
-              <p className="text-base font-medium text-slate-700">
-                Service readit to away
-              </p>
-            </li>
-            <li>
-              <p className="text-base font-medium text-slate-700">
-                Clean Oxigine{" "}
-              </p>
-            </li>
-            <li>
-              <p className="text-base font-medium text-slate-700">
-                Service 24/4 hours open
-              </p>
-            </li>
-          </ul>
+          <div className="mt-4">
+            <h3 className="text-xl font-semibold text-slate-800">
+            Different Kinds of Ambulances
+            </h3>
+            <p>Ambulances are crafted in diverse types, each tailored to address distinct medical requirements and scenarios. Let's explore some varieties of ambulances.</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-xl font-semibold text-slate-800">
+            Quality and Low-Cost
+            </h3>
+            <p>In search of a cost-effective ambulance service? Look no further Ambulance is your go-to for top-notch emergency transportation at budget-friendly rates.</p>
+          </div>
         </div>
         <div>
           <Image
