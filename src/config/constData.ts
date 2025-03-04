@@ -14,6 +14,7 @@ export const headerMenus: HeaderMenus[] = [
             { _id: '1', path: '/ac-ambulance-service', label: "Ac Ambulance" },
             { _id: '2', path: '/non-ac-ambulance', label: "Non Ac Ambulance" },
             { _id: '3', path: '/freezing-ambulance-service', label: "Freezing Ambulance" },
+            { _id: '4', path: '/icu-ambulance-service', label: "ICU Ambulance" },
         ]
     },
     { _id: '3', path: '/contact-us', label: "Contact" },

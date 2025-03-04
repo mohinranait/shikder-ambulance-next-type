@@ -22,9 +22,11 @@ const BannerSection = () => {
               <br /> The Best Reliable 24/7
             </h1>
             <p className="text-base text-black text-center dark:text-white">
-            Welcome to Shikder Ambulance Service in Dhaka, Bangladesh. Looking for a reliable Ambulance? You've come to the right place. We guarantee your safe and comfortable arrival at your destination.
+              Welcome to Shikder Ambulance Service in Dhaka, Bangladesh. Looking
+              for a reliable Ambulance? You have come to the right place. We
+              guarantee your safe and comfortable arrival at your destination.
             </p>
-            <div className="flex items-center justify-center gap-4 mt-4">              
+            <div className="flex items-center justify-center gap-4 mt-4">
               <Button className="bg-secondary text-white">Explore</Button>
               <Button className="bg-primary text-white">Call Now</Button>
             </div>

@@ -16,7 +16,7 @@ import { headerMenus } from "@/config/constData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 // import { usePathname } from "next/navigation";
 
 const MainHeader: FC = () => {
@@ -37,74 +37,40 @@ const MainHeader: FC = () => {
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <Dropdown>
-            <NavbarItem>
-              <DropdownTrigger>
-                <Button
-                  disableRipple
-                  className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                  endContent={<Menu />}
-                  radius="sm"
-                  variant="light"
-                >
-                  Features
-                </Button>
-              </DropdownTrigger>
-            </NavbarItem>
-            <DropdownMenu
-              aria-label="ACME features"
-              itemClasses={{
-                base: "gap-4",
-              }}
-            >
-              <DropdownItem
-                key="autoscaling"
-                description="ACME scales apps based on demand and load"
-              >
-                Autoscaling
-              </DropdownItem>
-              <DropdownItem
-                key="usage_metrics"
-                description="Real-time metrics to debug issues"
-              >
-                Usage Metrics
-              </DropdownItem>
-              <DropdownItem
-                key="production_ready"
-                description="ACME runs on ACME, join us at web scale"
-              >
-                Production Ready
-              </DropdownItem>
-              <DropdownItem
-                key="99_uptime"
-                description="High availability and uptime guarantees"
-              >
-                +99% Uptime
-              </DropdownItem>
-              <DropdownItem
-                key="supreme_support"
-                description="Support team ready to respond"
-              >
-                +Supreme Support
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
           {headerMenus?.map((menu, index) => {
             if (menu.children) {
-              return <Dropdown>
-                <DropdownTrigger>
-                  <p className="cursor-pointer">Open Menu</p>
-                </DropdownTrigger>
-                <DropdownMenu aria-label="Static Actions">
-
-
-                  <DropdownItem key="copy">Copy link</DropdownItem>
-                  <DropdownItem key="edit">Edit file</DropdownItem>
-                  <DropdownItem key="delete" className="text-danger" color="danger">
-                    Delete file
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+              return (
+                <Dropdown key={index}>
+                  <DropdownTrigger>
+                    <Button
+                      disableRipple
+                      className="p-0 text-base bg-transparent data-[hover=true]:bg-transparent"
+                      endContent={<ChevronDown size={14} className="text-xs" />}
+                      radius="sm"
+                      variant="light"
+                    >
+                      Features
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu
+                    aria-label="Static Actions"
+                    className="w-48 space-y-6 rounded-sm"
+                  >
+                    {menu?.children?.map((child, index) => {
+                      return (
+                        <DropdownItem key={index}>
+                          <Link
+                            href={child?.path}
+                            className="py-2 inline-block"
+                          >
+                            {child?.label}
+                          </Link>
+                        </DropdownItem>
+                      );
+                    })}
+                  </DropdownMenu>
+                </Dropdown>
+              );
             } else {
               return (
                 <NavbarItem key={index}>
@@ -116,9 +82,8 @@ const MainHeader: FC = () => {
                     {menu?.label}
                   </Link>
                 </NavbarItem>
-              )
+              );
             }
-
           })}
         </NavbarContent>
         <NavbarContent justify="end">
