@@ -39,7 +39,7 @@ const CustomTable: FC<TableType> = ({ columns, dataSource, actionWidth }) => {
             {dataSource?.map((item, index) => (
               <tr
                 key={index}
-                className="hover:bg-gray-50 transition duration-300"
+                className=" hover:bg-white transition duration-300"
               >
                 {columns?.map((column, cIndex) => (
                   <td

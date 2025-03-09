@@ -7,6 +7,7 @@ import MainBody from "./MainBody";
 import RightSidebar from "./RightSidebar";
 import LeftSidebar from "./LeftSidebar";
 import CommentSection from "./CommentSection";
+import { Phone } from "lucide-react";
 
 type Props = {
   blog: TPostFormData;
@@ -50,7 +51,8 @@ const BlogView: FC<Props> = ({ blog }) => {
                     href={`tel:${blog?.contactNumber}`}
                     className="py-[10px] px-4 rounded-[100px] bg-primary text-white inline-block"
                   >
-                    Call Ambulance
+                    <Phone />
+                    {blog?.contactNumber || "Call Ambulance"}
                   </Link>
                 </div>
               )}
