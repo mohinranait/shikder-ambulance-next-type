@@ -21,6 +21,7 @@ const BlogView: FC<Props> = ({ blog }) => {
   return (
     <main className="mb-20">
       <section
+        className={`${!bgImage && 'bg-[#dfdffff7]'}`}
         style={{
           backgroundImage: `url(${bgImage})`,
           backgroundRepeat: "no-repeat",
@@ -32,16 +33,14 @@ const BlogView: FC<Props> = ({ blog }) => {
           <div className="container justify-center flex items-center  md:min-h-[calc(100vh-200px)] py-20 lg:px-32 xl:px-48 ">
             <div className="flex flex-col gap-3">
               <h1
-                className={`text-center font-bold text-3xl md:text-4xl lg:text-5xl  mb-3 ${
-                  bgImage ? "text-white" : "text-slate-950"
-                } `}
+                className={`text-center font-bold text-3xl md:text-4xl lg:text-5xl  mb-3 ${bgImage ? "text-white" : "text-slate-950"
+                  } `}
               >
                 {blog?.seoTitle || blog?.postTitle}
               </h1>
               <p
-                className={`lg:px-20 text-center  ${
-                  bgImage ? "text-slate-400" : "text-slate-600"
-                }`}
+                className={`lg:px-20 text-center  ${bgImage ? "text-slate-400" : "text-slate-600"
+                  }`}
               >
                 {blog?.seoDescription}
               </p>
@@ -49,7 +48,7 @@ const BlogView: FC<Props> = ({ blog }) => {
                 <div className="flex justify-center">
                   <Link
                     href={`tel:${blog?.contactNumber}`}
-                    className="py-[10px] px-4 rounded-[100px] bg-primary text-white inline-block"
+                    className="py-[10px] text-xl items-center inline-flex px-4 rounded-[100px] bg-primary text-white gap-1"
                   >
                     <Phone />
                     {blog?.contactNumber || "Call Ambulance"}
@@ -65,14 +64,13 @@ const BlogView: FC<Props> = ({ blog }) => {
           {(blog?.layouts?.isSidebar === "left" ||
             blog?.layouts?.isSidebar === "both") && <LeftSidebar />}
           <div
-            className={` ${
-              blog?.layouts?.isSidebar === "left" ||
+            className={` ${blog?.layouts?.isSidebar === "left" ||
               blog?.layouts?.isSidebar === "right"
-                ? "lg:col-span-2 xl:col-span-3"
-                : blog?.layouts?.isSidebar === "none"
+              ? "lg:col-span-2 xl:col-span-3"
+              : blog?.layouts?.isSidebar === "none"
                 ? "lg:col-span-2 xl:col-span-4"
                 : "lg:col-span-2 xl:col-span-2"
-            } flex flex-col gap-3 `}
+              } flex flex-col gap-3 `}
           >
             <MainBody blog={blog} />
             {blog?.layouts?.comments && <CommentSection blog={blog} />}

@@ -10,7 +10,7 @@ const MediaModal = () => {
     <React.Fragment>
       {imageModal && (
         <div className="w-full h-screen z-50   media_modal bg-slate-900   top-0 left-0 right-0 bottom-0  fixed">
-          <div className="bg-red-400">
+          <div className="">
             <div className="container relative media_modal_container mt-5 p-4 w-full">
               <span
                 onClick={() => {

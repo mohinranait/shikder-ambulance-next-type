@@ -1,12 +1,10 @@
 "use client";
-import { Image, User, Users } from "lucide-react";
+import { Image, LayoutDashboard, LayoutList, User, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC, useCallback } from "react";
-import { FaPenRuler } from "react-icons/fa6";
 import {
   MdCancel,
-  MdDashboard,
   MdOutlineAlignHorizontalLeft,
   MdOutlineNewLabel,
 } from "react-icons/md";
@@ -23,12 +21,12 @@ type ReactSidebarProTypes = {
 const menuItems = [
   {
     label: "Dashboard",
-    icon: <MdDashboard size={20} />,
+    icon: <LayoutDashboard size={16} />,
     path: "/admin/dashboard",
   },
   {
     label: "Manage Posts",
-    icon: <FaPenRuler size={16} />,
+    icon: <LayoutList size={16} />,
     subMenu: [
       { label: "New Post", icon: <MdOutlineNewLabel />, path: "/admin/post" },
       {

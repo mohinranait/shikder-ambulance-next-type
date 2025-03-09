@@ -199,47 +199,46 @@ const NewPost = () => {
               }}
             />
           </div>
-          <div>
-            <p className="flex items-center gap-1">
-              Link:{" "}
-              {isEditSlug ? (
-                <React.Fragment>
-                  <InputElement
-                    type="text"
-                    name="slug"
-                    placeholder="Enter slug"
-                    className="py-[2px] focus-visible:border-primary focus-visible:outline-none "
-                    value={form?.slug || ""}
-                    onChange={(e) => setForm((prev) => ({ ...prev, slug: e }))}
-                  />
-                  <Button
-                    type="button"
-                    className="py-1 h-[26px] min-w-[36px] rounded px-1  bg-white border-2 text-primary border-primary"
-                    onClick={() => setIsEditSlug(false)}
-                  >
-                    Ok
-                  </Button>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  <Link
-                    className="text-blue-500 hover:underline"
-                    target={params?.get("link") ? "_blank" : ""}
-                    href={params?.get("link") ? `/${form?.slug}` : ""}
-                  >
-                    {form?.slug ? form?.slug : isSlug}
-                  </Link>
-                  <FaEdit
-                    className="cursor-pointer"
-                    onClick={() => {
-                      setIsEditSlug(true);
-                      setForm((prev) => ({ ...prev, slug: isSlug }));
-                    }}
-                  />
-                </React.Fragment>
-              )}
-            </p>
-          </div>
+          {
+            form?.slug || isSlug &&
+            <div>
+              <p className="flex items-center gap-1">
+                Permalinks:{" "}
+                {isEditSlug ? (
+                  <React.Fragment>
+                    <InputElement
+                      type="text"
+                      name="slug"
+                      placeholder="Enter slug"
+                      className="py-[2px] focus-visible:border-primary focus-visible:outline-none "
+                      value={form?.slug || ""}
+                      onChange={(e) => setForm((prev) => ({ ...prev, slug: e }))}
+                    />
+                    <Button
+                      type="button"
+                      className="py-1 h-[26px] min-w-[36px] rounded px-1  bg-white border-2 text-primary border-primary"
+                      onClick={() => setIsEditSlug(false)}
+                    >
+                      Ok
+                    </Button>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <Link className="text-blue-500 hover:underline" href="">
+                      {form?.slug ? form?.slug : isSlug}
+                    </Link>
+                    <FaEdit
+                      className="cursor-pointer"
+                      onClick={() => {
+                        setIsEditSlug(true);
+                        setForm((prev) => ({ ...prev, slug: isSlug }));
+                      }}
+                    />
+                  </React.Fragment>
+                )}
+              </p>
+            </div>
+          }
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 ">
           <div className="xl:col-span-2 2xl:col-span-3 flex flex-col gap-3 ">
