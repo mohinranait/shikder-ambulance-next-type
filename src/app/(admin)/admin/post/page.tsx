@@ -202,7 +202,7 @@ const NewPost = () => {
 
           <div>
             <p className="flex items-center gap-1">
-              Permalinks:{" "}
+              Link:{" "}
               {isEditSlug ? (
                 <React.Fragment>
                   <InputElement
