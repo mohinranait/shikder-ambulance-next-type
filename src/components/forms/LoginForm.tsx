@@ -78,12 +78,12 @@ const LoginForm = () => {
             Login
           </Button>
         </div>
-        <p className="text-slate-700 text-center">
+        {/* <p className="text-slate-700 text-center">
           Create a new account{" "}
           <Link href={"/register"} className="text-primary hover:underline ">
             Register
           </Link>{" "}
-        </p>
+        </p> */}
       </div>
     </form>
   );

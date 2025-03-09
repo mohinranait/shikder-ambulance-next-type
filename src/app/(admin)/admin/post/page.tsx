@@ -201,7 +201,7 @@ const NewPost = () => {
           </div>
           <div>
             <p className="flex items-center gap-1">
-              Permalinks:{" "}
+              Link:{" "}
               {isEditSlug ? (
                 <React.Fragment>
                   <InputElement
@@ -222,7 +222,11 @@ const NewPost = () => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <Link className="text-blue-500 hover:underline" href="">
+                  <Link
+                    className="text-blue-500 hover:underline"
+                    target={params?.get("link") ? "_blank" : ""}
+                    href={params?.get("link") ? `/${form?.slug}` : ""}
+                  >
                     {form?.slug ? form?.slug : isSlug}
                   </Link>
                   <FaEdit
@@ -344,6 +348,18 @@ const NewPost = () => {
                     className="py-2 rounded px-3 border-1 border-slate-400 focus-visible:outline-none"
                   />
                 </div>
+              </div>
+            </div>
+            <div className="  p-3">
+              <div className="flex items-center justify-end gap-3">
+                <Button
+                  type="submit"
+                  className="bg-primary text-white py-1 px-4 rounded"
+                  isLoading={formLoading && true}
+                >
+                  {!formLoading && <Save size={18} />}
+                  {params?.get("link") ? "Update" : "Save"}
+                </Button>
               </div>
             </div>
           </div>
