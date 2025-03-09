@@ -11,7 +11,6 @@ import toast from "react-hot-toast";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
@@ -23,6 +22,7 @@ type TQuery = {
   access?: string;
   search?: string;
 };
+
 const AllPosts = () => {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [posts, setPosts] = useState<TPostFormData[]>([]);
@@ -30,10 +30,11 @@ const AllPosts = () => {
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<TPostFormData | null>(null);
   const axios = useAxios();
-  const [search, setSearch] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   const columns = [
     {
-      title: "Post",
+      title: "Post Name",
       dataIndex: "action",
       key: "action",
       render: (_: string, record: TPostFormData) => {
@@ -48,7 +49,11 @@ const AllPosts = () => {
               />
             </div>
             <div>
-              <p>{record?.seoTitle || record?.postTitle}</p>
+              <p>
+                <Link href={`/${record?.slug}`} target="_blank">
+                  {record?.postTitle}
+                </Link>
+              </p>
               <div className="flex gap-2">
                 <Link
                   href={`/admin/post?link=${record?.slug}`}
@@ -71,11 +76,26 @@ const AllPosts = () => {
                   }}
                   className="text-primary text-xs cursor-pointer hover:underline"
                 >
-                  Delete permanently
+                  Delete
                 </span>
               </div>
             </div>
           </div>
+        );
+      },
+    },
+    {
+      title: "Title",
+      dataIndex: "seoTitle",
+      key: "seoTitle",
+      render: (seoTitle: string) => {
+        return (
+          <p
+            title={seoTitle}
+            className="truncate max-w-[250px] overflow-hidden"
+          >
+            {seoTitle}
+          </p>
         );
       },
     },
@@ -85,21 +105,16 @@ const AllPosts = () => {
       key: "status",
       render: (status: string) => {
         return (
-          <div className="flex gap-[6px]">
-            {status === "Publish" ? (
-              <span className="rounded bg-green-600 inline-flex text-xs px-2 py-[2px] text-white">
-                {status}
-              </span>
-            ) : (
-              <span className="rounded bg-red-600 inline-flex text-xs px-2 py-[2px] text-white">
-                {status}
-              </span>
-            )}
-          </div>
+          <span
+            className={`rounded text-xs px-2 py-[2px] text-white ${
+              status === "Publish" ? "bg-green-600" : "bg-red-600"
+            }`}
+          >
+            {status}
+          </span>
         );
       },
     },
-
     {
       title: "Created Date",
       dataIndex: "createdAt",
@@ -124,18 +139,12 @@ const AllPosts = () => {
     access = "admin",
     search = "",
   }: TQuery) => {
-    const query: TQuery = {
-      limit,
-      access,
-      search,
-    };
-
+    const query: TQuery = { limit, access, search };
     const queryString = new URLSearchParams(
       Object.fromEntries(Object.entries(query).filter(([_, v]) => v != null))
     ).toString();
 
     try {
-      setIsLoading(true);
       const { data } = await axios.get(`/posts?${queryString}`);
       if (data?.success) {
         setPosts(data?.payload?.posts);
@@ -148,15 +157,21 @@ const AllPosts = () => {
     }
   };
 
+  // Debounced search
   useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      handleCallAPI({ search: searchTerm });
+    }, 500);
+
+    return () => clearTimeout(delaySearch);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setIsLoading(true);
     handleCallAPI({});
   }, [axios]);
 
-  const handleSearch = () => {
-    handleCallAPI({ search: search });
-  };
-
-  // handle delete post
+  // Handle delete post
   const handleDelete = async () => {
     try {
       setIsDeleteLoading(true);
@@ -166,18 +181,15 @@ const AllPosts = () => {
         setPosts((prev) => prev?.filter((d) => d?._id !== isSelected?._id));
         onClose();
       } else {
-        toast.error("Somthing wrong");
+        toast.error("Something went wrong");
       }
     } catch (error) {
-      toast.error("Somthing wrong");
+      toast.error("Something went wrong");
     }
   };
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex w-full justify-between items-center py-3 px-3 rounded shadow-md bg-white">
-        <p className="text-lg font-semibold text-slate-600">Posts</p>
-      </div>
       <div className="flex justify-between items-center">
         <Link
           href={`/admin/post`}
@@ -190,21 +202,15 @@ const AllPosts = () => {
           <input
             placeholder="Search..."
             type="search"
-            onChange={(e) => setSearch(e.target.value)}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="border-slate-300 border py-1 px-2 focus-visible:outline-none focus-visible:border-primary rounded-l"
           />
-          <button
-            type="button"
-            onClick={() => handleSearch()}
-            className="py-1 px-2 bg-primary text-white rounded-r"
-          >
-            Search
-          </button>
         </div>
       </div>
       <div>
         {isLoading ? (
-          <p>Loading</p>
+          <p>Loading...</p>
         ) : (
           <CustomTable dataSource={posts} columns={columns} />
         )}
@@ -225,12 +231,12 @@ const AllPosts = () => {
             <>
               <ModalBody>
                 <p className="text-center text-base md:text-lg">
-                  Are you sure want to delete this content?
+                  Are you sure you want to delete this content?
                 </p>
               </ModalBody>
               <ModalFooter className="flex justify-center">
                 <Button
-                  className="bg-red-100 text-red-500 rounded  "
+                  className="bg-red-100 text-red-500 rounded"
                   variant="light"
                   onPress={onClose}
                 >

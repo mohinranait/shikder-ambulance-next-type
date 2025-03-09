@@ -73,6 +73,7 @@ const QuillEditor: FC<Props> = ({ editorValue, setEditorValue }) => {
               ],
             },
           ],
+          [{ align: [] }],
         ],
         handlers: {
           image: imageHandler,

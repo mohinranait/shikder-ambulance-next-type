@@ -34,7 +34,7 @@ const NewPost = () => {
   const [isView, setIsView] = useState<boolean>(false);
   const [updatePost, setUpdatePost] = useState<TPostFormData | null>();
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
-  const [content, setContent] = useState<string>("# Hello");
+  const [content, setContent] = useState<string>("");
   const editorRef = useRef<MDXEditorMethods>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [isSlug, setIsSlug] = useState<string>("");
@@ -181,7 +181,7 @@ const NewPost = () => {
               name="postTitle"
               type="text"
               labelCss="text-lg"
-              label={params?.get("link") ? "Post title" : "Add new Post"}
+              label={params?.get("link") ? "Post name" : "Add new Post"}
               placeholder="Add title"
               className="focus-visible:border-primary py-[4px] text-[20px]"
               value={form?.postTitle}

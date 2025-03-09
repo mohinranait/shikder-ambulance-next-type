@@ -1,7 +1,7 @@
 "use client";
 import { Image, User, Users } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import Next.js route detection
+import { usePathname } from "next/navigation";
 import React, { FC, useCallback } from "react";
 import { FaPenRuler } from "react-icons/fa6";
 import {
