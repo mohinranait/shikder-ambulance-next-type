@@ -3,7 +3,13 @@ import CallSvgIcon from "@/components/svg/CallSvgIcon";
 import Image from "next/image";
 import React from "react";
 import { Card, CardBody } from "@nextui-org/react";
-
+import dynamic from "next/dynamic";
+const GoogleMapComponent = dynamic(
+  () => import("@/components/utils/GoogleMap"),
+  {
+    ssr: false,
+  }
+);
 export const metadata = {
   title: "Contact Us | 24/7 Support",
   description:
@@ -125,31 +131,22 @@ const ContactUs = () => {
         </div>
       </section>
 
-      <section
-        className="py-[100px] dark:bg-background-white"
-        style={{ backgroundImage: `url('/images/background/contact-bg.png')` }}
-      >
+      <section className="py-[100px] bg-white">
         <div className="container mx-auto max-w-[1200px]">
           <div className="grid grid-cols-1 items-center gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-10">
             <div>
+              <GoogleMapComponent />
+            </div>
+            <div>
               <div className="form-wrapper">
-                <h2 className="text-white mb-2 text-2xl font-semibold">
+                <h2 className="text-slate-900 mb-2 text-2xl font-semibold">
                   Get Touch{" "}
                 </h2>
-                <p className="text-white text-base font-medium mb-8 md:pr-16 ">
+                <p className="text-slate-700 text-base font-medium mb-8 md:pr-16 ">
                   Lorem ipsum dolor sit amet consectetur adipisicing
                 </p>
                 <ContactUsForm />
               </div>
-            </div>
-            <div>
-              <Image
-                className="right-img desktop-img rounded-lg lg:rounded-none"
-                src={"/images/contact-img.webp"}
-                alt="contact img"
-                height={645}
-                width={880}
-              />
             </div>
           </div>
         </div>

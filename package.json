@@ -19,6 +19,7 @@
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
+    "@react-google-maps/api": "^2.20.6",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
     "framer-motion": "^11.5.6",
