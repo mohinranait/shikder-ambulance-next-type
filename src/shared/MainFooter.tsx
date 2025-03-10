@@ -44,7 +44,7 @@ const MainFooter = () => {
             <footer className="footer-link">
               <div className="grid  sm:grid-cols-4 gap-12">
                 <div className="col-span-2 lg:col-span-1">
-                  <h4 className="title text-slate-100">Social Media</h4>
+                  <h4 className="title text-slate-100">Follow Social Media</h4>
                   <ul className="link-list flex items-center gap-2">
                     <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
                       <Link
@@ -86,7 +86,7 @@ const MainFooter = () => {
                     <li className="flex items-center gap-1">
                       <ChevronsRight className="text-white" size={16} />
                       <Link className="link" href={"/ac-ambulance-service"}>
-                        Ac, Non-Ac Ambulance
+                        Ac Ambulance Service
                       </Link>
                     </li>
                     <li className="flex items-center gap-1">
@@ -147,11 +147,11 @@ const MainFooter = () => {
                           />
                         </g>
                       </svg>
-                      +123 456 76543
+                      01627-669222
                     </h2>
                   </div>
                   <div className="contact-box">
-                    <h5>Call us directly</h5>
+                    <h5>WhatsApp: Call & SMS</h5>
                     <h2>
                       <svg
                         width="14"
@@ -171,7 +171,7 @@ const MainFooter = () => {
                           />
                         </g>
                       </svg>
-                      +123 456 76543
+                      017100-60020
                     </h2>
                   </div>
                 </div>
@@ -181,9 +181,9 @@ const MainFooter = () => {
           <div className=" border-t border-slate-800">
             <div className="small-footer py-[12px] container px-3 md:px-0 justify-center">
               <p className="text-gray text-center text-sm ">
-                Copyright © 2023
+                Copyright-2025 ©
                 <span className="text-slate-300"> Shikderambulance</span>.
-                Developed by <span className="text-slate-300">Rentsheba</span>{" "}
+                Developed by <span className="text-slate-300">Shikder It Ltd</span>{" "}
                 All rights reserved.
               </p>
             </div>
