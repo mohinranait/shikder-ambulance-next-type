@@ -10,14 +10,14 @@ export const metadata = {
   openGraph: {
     title: "Best Ambulance Service in Dhaka | 24/7 Support",
     description: "We provide 24/7 emergency ambulance service in Dhaka.",
-    url: "https://yourwebsite.com",
-    siteName: "Your Ambulance Service",
+    url: "https://shikderambulance.com",
+    siteName: "Shikder Ambulance",
     images: [
       {
-        url: "https://yourwebsite.com/your-image.jpg",
+        url: `${process.env.NEXT_PUBLIC_URL}/images/ambulnace.jpg`,
         width: 1200,
         height: 630,
-        alt: "Ambulance Service Banner",
+        alt: "Shikder Ambulance Service Banner",
       },
     ],
     type: "website",

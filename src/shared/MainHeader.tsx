@@ -17,6 +17,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
 import { ChevronDown, Menu } from "lucide-react";
+import Image from "next/image";
 // import { usePathname } from "next/navigation";
 
 const MainHeader: FC = () => {
@@ -33,7 +34,7 @@ const MainHeader: FC = () => {
       <div className="container flex items-center ">
         <NavbarBrand>
           <Link href={"/"} className="font-bold text-inherit">
-            SKA
+            <Image src={"/Shikder-ambulance-service-logo-260-66.png"} width={260} height={66} alt="Shikder Ambulance Logo" />
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -49,7 +50,7 @@ const MainHeader: FC = () => {
                       radius="sm"
                       variant="light"
                     >
-                      Features
+                      Service
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu
