@@ -8,7 +8,7 @@ interface HeaderMenus {
 
 export const headerMenus: HeaderMenus[] = [
     { _id: '1', path: '/', label: "Home" },
-    { _id: '2', path: '/about-us', label: "About" },
+    { _id: '2', path: '/about-us', label: "About Us" },
     {
         _id: '5', path: '#', label: "Service", children: [
             { _id: '1', path: '/ac-ambulance-service', label: "Ac Ambulance" },
@@ -17,8 +17,8 @@ export const headerMenus: HeaderMenus[] = [
             { _id: '4', path: '/icu-ambulance-service', label: "ICU Ambulance" },
         ]
     },
-    { _id: '3', path: '/contact-us', label: "Contact" },
-    { _id: '4', path: '/blogs', label: "Blog" },
+    { _id: '3', path: '/contact-us', label: "Contact Us" },
+
 ]
 
 
