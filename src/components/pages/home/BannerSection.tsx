@@ -5,7 +5,7 @@ const BannerSection = () => {
   return (
     <section
       className="bg-no-repeat bg-cover bg-right-bottom overflow-hidden relative "
-      // style={{ background: `url('/images/background/hero.png')` }}
+    // style={{ background: `url('/images/background/hero.png')` }}
     >
       {/* <span className="flex w-[300px] top-4 h-[200px] bg-primary bg-opacity-80 backdrop-blur-2xl absolute"></span> */}
       {/* <span className="flex w-[300px] bottom-4 right-10 h-[200px] bg-opacity-80 bg-primary backdrop-blur-2xl absolute"></span> */}
@@ -14,12 +14,12 @@ const BannerSection = () => {
       <div className=" bg-opacity-50 backdrop-blur-[100px]">
         <div className="container py-10 xl:min-h-[500px] 2xl:min-h-[600px] flex items-center justify-center">
           <div className="">
-            <h1 className="text-3xl sm:text-4xl dark:text-white md:text-6xl text-black font-semibold text-center">
+            <h1 className="text-3xl sm:text-4xl leading-[72px] dark:text-white md:text-6xl text-black font-semibold text-center">
               Shikder{" "}
               <span className=" font-bold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
                 Ambulance Service
               </span>{" "}
-              <br /> The Best Reliable 24/7
+              <br /> Best Reliable 24/7
             </h1>
             <p className="text-base text-black text-center dark:text-white">
               Welcome to Shikder Ambulance Service in Dhaka, Bangladesh. Looking

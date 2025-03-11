@@ -5,14 +5,14 @@ import React from 'react'
 
 
 export const metadata = {
-    title: "Best NON-AC Ambulance Service in Dhaka | 24/7 Support",
-    description: "We provide 24/7 emergency ambulance service in Dhaka. Contact us for quick medical transportation.",
-    keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance"],
+    title: "Non-AC Ambulance Service in Dhaka, Bangladesh",
+    description: "Non-AC Ambulance Service in Bangladesh. We provide emergency Non-Ac Ambulance in the all districts of Bangladesh. When you need Ambulance then Contact us.",
+    keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance", "Non-AC Ambulance Service", ""],
     openGraph: {
-        title: "Best Ambulance Service in Dhaka | 24/7 Support",
-        description: "We provide 24/7 emergency ambulance service in Dhaka.",
-        url: "https://yourwebsite.com",
-        siteName: "Your Ambulance Service",
+        title: "BNon-AC Ambulance Service in Dhaka, Bangladesh",
+        description: "Non-AC Ambulance Service in Bangladesh. We provide emergency Non-Ac Ambulance in the all districts of Bangladesh. When you need Ambulance then Contact us.",
+        url: "https://shikderambulance.com",
+        siteName: "Shikder Ambulance",
         images: [
             {
                 url: "https://yourwebsite.com/your-image.jpg",
@@ -39,10 +39,6 @@ const NonAcAmbulance = () => {
                         <div className="">
                             <h1 className="text-3xl mb-3 sm:leading-[80px] sm:text-4xl dark:text-white md:text-6xl text-black font-semibold text-center">
                                 Non-Ac Ambulance service in Bangladesh
-                                <br />
-                                <span className=" font-bold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-                                    The Best Reliable 24/7
-                                </span>{" "}
 
                             </h1>
                             <p className="text-base text-black text-center dark:text-white">
@@ -51,7 +47,7 @@ const NonAcAmbulance = () => {
                             <div className="flex items-center justify-center gap-4 mt-4">
                                 <Button size="lg" className="bg-secondary text-white">
                                     <Link href={'tel:01710060020'}>
-                                        Contact Us Now
+                                        Contact Now
                                     </Link>
                                 </Button>
                             </div>
@@ -62,7 +58,7 @@ const NonAcAmbulance = () => {
 
             <section className='mb-4 pt-8'>
                 <div className='container mb-4'>
-                    <h2 className='text-center text-2xl md:text-4xl font-bold '> Emergency Non-Ac Ambulance service in Dhaka</h2>
+                    <h2 className='text-center text-2xl md:text-4xl font-bold '> Emergency Non-Ac Ambulance Service in Bangladesh</h2>
                     <div className="grid md:grid-cols-2 gap-2 mt-5">
                         <div>
                             <h3 className=' text-2xl font-semibold mb-3'>Non-Ac Ambulance service</h3>
@@ -78,7 +74,7 @@ const NonAcAmbulance = () => {
                     </div>
                 </div>
                 <div className="container mb-4">
-                    <h3 className=' text-2xl font-semibold mb-3 '> Emergency Non-Ac Ambulance service in Bangladesh</h3>
+                    <h3 className=' text-2xl font-semibold mb-3 '> Emergency Non-Ac Ambulance in Dhaka</h3>
                     <p>Emergency Ac Ambulance service is available in Dhaka City. This ambulance company provide Emergency ambulance service 24 hours in a day, 7 Days a week, and 365 days a year. The Emergency ambulance in cheap rent of ambulance services. We provide always a Standard ambulance with the proper requirements. Contact us to Get an Emergency ambulance service anywhere in Bangladesh. Fast ambulance service provider Company in Dhaka City. If you need an emergency ambulance than contact us.</p>
                 </div>
 
@@ -108,16 +104,22 @@ const NonAcAmbulance = () => {
 
             <section className='mb-5'>
                 <div className="container">
-                    <h3 className='text-xl font-semibold mb-2'>Ovrview of Ac ambulance</h3>
+                    <h3 className='text-xl font-bold mb-2'>Ovrview of Non-Ac Ambulance</h3>
                     <ul className='space-y-2'>
                         <li>
-                            <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+                            <p> <span className='font-semibold '>Patient Comfort: </span> Enhances comfort during transport, especially long distances.</p>
                         </li>
                         <li>
-                            <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+                            <p> <span className='font-semibold '>Temperature Control:  </span> Maintains a cool, stable environment for patient comfort.</p>
                         </li>
                         <li>
-                            <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+                            <p> <span className='font-semibold '>Increased Cost: </span> Typically more expensive than non-AC ambulances..</p>
+                        </li>
+                        <li>
+                            <p> <span className='font-semibold '>Medical Stability: </span>  Helps regulate body temperature for certain medical conditions.</p>
+                        </li>
+                        <li>
+                            <p> <span className='font-semibold '>Available 24/7: </span> Anytime, Anywhere is Available in Bangladesh.</p>
                         </li>
                     </ul>
                 </div>

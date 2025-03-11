@@ -11,12 +11,11 @@ const Reviews = () => {
   return (
     <>
       <section className="py-10 bg-white dark:bg-black home_category_section ">
-        <div className="container ">
-          <div className="mb-4 lg:w-1/2 mx-auto ">
+        <div className="container">
+          <div className="mb-4 lg:w-1/2 mx-auto">
             <h2 className="text-3xl font-semibold text-center">Reviews</h2>
             <p className="text-center">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-              dolores?
+              Many customers rely on reviews before choosing a service.
             </p>
           </div>
           <div className="   mt-10">
@@ -73,9 +72,7 @@ const Reviews = () => {
                     </div>
                     <div className="lg:w-1/2">
                       <p className="text-center text-gray text-base ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sapiente, itaque impedit doloremque accusantium minima
-                        nostrum. Eveniet tempora fugit quod perferendis.
+                        "The ambulance arrived incredibly quickly, which made all the difference."
                       </p>
                     </div>
                   </div>

@@ -6,7 +6,7 @@ import React from 'react'
 export const metadata = {
   title: "Best Ac Ambulance Service in Dhaka | 24/7 Support",
   description: "We provide 24/7 emergency ambulance service in Dhaka. Contact us for quick medical transportation.",
-  keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance"],
+  keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance", "Ac ambulance service", "Best Ac Ambulance"],
   openGraph: {
     title: "Best Ambulance Service in Dhaka | 24/7 Support",
     description: "We provide 24/7 emergency ambulance service in Dhaka.",
@@ -60,7 +60,7 @@ const AcAmbulance = () => {
 
       <section className='mb-4 pt-8'>
         <div className='container mb-4'>
-          <h2 className='text-center text-2xl md:text-4xl font-bold '> Best Ac Ambulance Service</h2>
+          <h2 className='text-center text-2xl md:text-4xl font-bold '> Best Ac Ambulance Service in Bangladesh</h2>
           <div className="grid md:grid-cols-2 gap-2 mt-5">
             <div>
               <h3 className=' text-2xl font-semibold mb-3'>Ac Ambulance Service</h3>
@@ -77,21 +77,26 @@ const AcAmbulance = () => {
           <p>Emergency Ac Ambulance service is available in Dhaka City. This ambulance company provide Emergency ambulance service 24 hours in a day, 7 Days a week, and 365 days a year. The Emergency ambulance in cheap rent of ambulance services. We provide always a Standard ambulance with the proper requirements. Contact us to Get an Emergency ambulance service anywhere in Bangladesh. Fast ambulance service provider Company in Dhaka City. If you need an emergency ambulance than contact us.</p>
         </div>
 
-
       </section>
 
       <section className='mb-5'>
         <div className="container">
-          <h3 className='text-xl font-semibold mb-2'>Ovrview of Ac ambulance</h3>
+          <h3 className='text-xl font-bold mb-2'>Ovrview of Ac Ambulance</h3>
           <ul className='space-y-2'>
             <li>
-              <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+              <p> <span className='font-semibold '>Patient Comfort: </span> Enhances comfort during transport, especially long distances.</p>
             </li>
             <li>
-              <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+              <p> <span className='font-semibold '>Temperature Control:  </span> Maintains a cool, stable environment for patient comfort.</p>
             </li>
             <li>
-              <p> <span className='font-semibold '>Available 24/7: </span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima illo dolorem provident ut deleniti mollitia consectetur, quae voluptas sed fugiat.</p>
+              <p> <span className='font-semibold '>Increased Cost: </span> Typically more expensive than non-AC ambulances..</p>
+            </li>
+            <li>
+              <p> <span className='font-semibold '>Medical Stability: </span>  Helps regulate body temperature for certain medical conditions.</p>
+            </li>
+            <li>
+              <p> <span className='font-semibold '>Available 24/7: </span> Anytime, Anywhere is Available.</p>
             </li>
           </ul>
         </div>

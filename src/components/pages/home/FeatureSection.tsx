@@ -32,8 +32,7 @@ const FeatureSection: React.FC = () => {
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">Features</h2>
           <p className="text-center">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-            dolores?
+            The Best Ambulance Service is Available in Anytime, Anywhere in Bangladesh.
           </p>
         </div>
         <div className="   mt-10">

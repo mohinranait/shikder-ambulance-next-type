@@ -4,6 +4,8 @@ import Image from "next/image";
 import React from "react";
 import { Card, CardBody } from "@nextui-org/react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import ContactForm from "@/components/utils/ContactForm";
 const GoogleMapComponent = dynamic(
   () => import("@/components/utils/GoogleMap"),
   {
@@ -35,6 +37,21 @@ export const metadata = {
 const ContactUs = () => {
   return (
     <>
+      <section className="bg-primary">
+        <div className="container py-16">
+          <h1 className="text-white text-4xl font-semibold text-center">Contact US: Shikder Ambulance Service</h1>
+          <ul className="flex items-center gap-2 pt-4 justify-center">
+            <li>
+              <Link href='/' className="font-medium text-base text-slate-200">Home</Link>
+            </li>
+            <li className="font-medium text-base text-slate-200">/</li>
+            <li className="font-medium text-base text-slate-200">Contact Us</li>
+          </ul>
+        </div>
+      </section>
+
+      <ContactForm />
+
       <section className="contact-wrapper dark:bg-background-white">
         <div className="container max-w-[1200px]">
           <div className="lg:10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
@@ -128,27 +145,6 @@ const ContactUs = () => {
             height={68}
             alt="Icon"
           />
-        </div>
-      </section>
-
-      <section className="py-[100px] bg-white">
-        <div className="container mx-auto max-w-[1200px]">
-          <div className="grid grid-cols-1 items-center gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-10">
-            <div>
-              <GoogleMapComponent />
-            </div>
-            <div>
-              <div className="form-wrapper">
-                <h2 className="text-slate-900 mb-2 text-2xl font-semibold">
-                  Get Touch{" "}
-                </h2>
-                <p className="text-slate-700 text-base font-medium mb-8 md:pr-16 ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing
-                </p>
-                <ContactUsForm />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </>

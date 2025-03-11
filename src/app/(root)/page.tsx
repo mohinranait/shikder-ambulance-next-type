@@ -8,6 +8,7 @@ import ServiceFeature from "@/components/pages/home/ServiceFeature";
 import ServicesSection from "@/components/pages/home/ServicesSection";
 import StaticContent from "@/components/pages/home/StaticContent";
 import WhyChooseMe from "@/components/pages/home/WhyChooseMe";
+import ContactForm from "@/components/utils/ContactForm";
 export const metadata = {
   title: "Shikder Ambulance Service in Dhaka | 24/7 Support",
   description:
@@ -38,6 +39,7 @@ const Home = () => {
       <ServicesSection />
       <AboutSection />
       <WhyChooseMe />
+      <ContactForm />
       <StaticContent />
       <FeatureSection />
       <Reviews />

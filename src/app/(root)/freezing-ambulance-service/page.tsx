@@ -4,15 +4,14 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata = {
-  title: "Freezing Ambulance Service in Dhaka | 24/7 Support",
-  description:
-    "We provide 24/7 emergency ambulance service in Dhaka. Contact us for quick medical transportation.",
-  keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance"],
+  title: "Freezing Ambulance Service in Dhaka",
+  description: "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
+  keywords: ["freezing ambulance service", "freezing ambulance", "Dhaka freezing ambulance", "dead body carrier Ambulance"],
   openGraph: {
-    title: "Best Ambulance Service in Dhaka | 24/7 Support",
-    description: "We provide 24/7 emergency ambulance service in Dhaka.",
-    url: "https://yourwebsite.com",
-    siteName: "Your Ambulance Service",
+    title: "Freezing Ambulance Service in Dhaka",
+    description: "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
+    url: "https://shikderambulance.com/freezing-ambulance-service",
+    siteName: "Shikder Ambulance",
     images: [
       {
         url: "https://yourwebsite.com/your-image.jpg",
@@ -35,18 +34,10 @@ const FreezingAmbulance = () => {
           <div className="container py-10 xl:min-h-[500px] 2xl:min-h-[600px] flex items-center justify-center">
             <div className="">
               <h1 className="text-3xl mb-3 sm:leading-[80px] sm:text-4xl dark:text-white md:text-6xl text-black font-semibold text-center">
-                Freezing Ambulance service in Dhaka, 01710060020
-                <br />
-                <span className=" font-bold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-                  The Best Reliable 24/7
-                </span>{" "}
+                Freezing Ambulance service in Dhaka
               </h1>
               <p className="text-base text-black text-center dark:text-white">
-                Freezing Ambulance service in Dhaka, Bangladesh. It is a dead
-                body carrier ambulance. It has freezing box in it. The freezer
-                ambulance can intact the dead body several hours and days. We
-                Provide different types of ambulance service. We Are Just A Call
-                Away.{" "}
+                Freezing Ambulance service in Dhaka, Bangladesh. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days. We Provide different types of ambulance service. We Are Just A Call Away. {" "}
               </p>
               <div className="flex items-center justify-center gap-4 mt-4">
                 <Button size="lg" className="bg-secondary text-white">
@@ -63,12 +54,12 @@ const FreezingAmbulance = () => {
           <h2 className="text-center text-2xl md:text-4xl font-bold ">
             Latest Freezing Ambulance service in Dhaka
           </h2>
-          <div className="grid md:grid-cols-2 gap-2 mt-5">
+          <div className="grid md:grid-cols-2 gap-5 mt-5">
             <div>
               <h3 className=" text-2xl font-semibold mb-3">
                 Freezing Ambulance service
               </h3>
-              <p className="mb-2 text-sm">
+              <p className="mb-2 text-sm text-justify">
                 We provide freezer ambulance service in Dhaka and all districts
                 of Bangladesh. 24/7 hours ambulance service is available in
                 Dhaka. Moving a dead body should be carefully handled as it is a
@@ -79,7 +70,7 @@ const FreezingAmbulance = () => {
                 ambulance temperature as per your need.{" "}
               </p>
 
-              <p className="text-sm">
+              <p className="text-sm text-justify">
                 We also provide different type of like: Ac ambulance, Non-Ac
                 ambulance, and ICU Ambulance service so if you need any types of
                 ambulance then you may contact us. If you want to move your near
@@ -92,18 +83,44 @@ const FreezingAmbulance = () => {
             <div>
               <Image
                 src={"/images/ambulnace.jpg"}
-                width={500}
+                width={600}
                 height={400}
                 alt="Ac Ambulance Service"
               />
             </div>
           </div>
         </div>
-        <div className="container mb-4">
+
+        <div className="container lg:max-w-[1000px] py-8">
+          <h2 className="text-3xl font-bold text-center"> Types of Freezing Ambulance</h2>
+          <div className="grid md:grid-cols-2  mt-4  gap-5 ">
+            <div className="border border-slate-200 rounded p-5 bg-blue-100">
+              <h3 className="text-xl font-semibold mb-2"> Single Cabin Freezing Ambulance Services </h3>
+              <p className="text-justify mb-3"> Freezing Ambulance service in Dhaka. It is a dead body carrier ambulance with a frozen box. Freezing an ambulance is the best way to preserve the deceased body for extended periods, spanning hours to days. We provide single and Double-Cabin freezing Ambulances </p>
+              <div className="flex justify-center">
+                <Link href={'/'}>
+                  <Button className="bg-primary text-white">Learn More...</Button>
+                </Link>
+              </div>
+
+            </div>
+            <div className="border border-slate-200 rounded p-5 bg-blue-100" >
+              <h3 className="text-xl font-semibold"> Double Cabin Freezing Ambulance Service </h3>
+              <p className="text-justify mb-3"> Double Cabin Freezing Ambulance service in Dhaka. It is a dead body carrier ambulance with a frozen box. Freezing an ambulance is the best way to preserve the deceased body for extended periods, spanning hours to days. We provide single and Double-Cabin freezing Ambulances</p>
+              <div className="flex justify-center">
+                <Link href={'/'}>
+                  <Button className="bg-primary text-white">Learn More...</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div className="container mb-8">
           <h3 className=" text-2xl font-semibold mb-3 ">
             Dead body carrier freezing Ambulance service in Dhaka
           </h3>
-          <p>
+          <p className="text-justify">
             A freezing ambulance is a kind of vehicle that is made to carry a
             dead body. It has a freezing compartment inside the vehicle that is
             perfect to contain a dead body and the ice compartment protects the
@@ -114,7 +131,7 @@ const FreezingAmbulance = () => {
             require to transport the dead body from one side to another, you can
             find a freezing ambulance service to do the job perfectly.{" "}
           </p>
-          <p>
+          <p className="text-justify">
             A freezer ambulance is a dead body carrier ambulance. It has
             freezing box in it. The freezer ambulance can intact the dead body
             several hours and days. People who want to keep their relatives dead
@@ -125,7 +142,7 @@ const FreezingAmbulance = () => {
           </p>
         </div>
 
-        <div className="container grid md:grid-cols-2 gap-3">
+        <div className="container grid md:grid-cols-2 mb-7 gap-3">
           <div>
             <h3 className="text-xl font-semibold ">
               Details of freezer Ambulance
@@ -177,14 +194,14 @@ const FreezingAmbulance = () => {
               Freezing Ambulance Available Area of Dhaka
             </h3>
             <div className="space-y-2">
-              <p>
+              <p className="text-justify">
                 freezing Ambulance Mogbazar, Ramna freezing Ambulance, Mohakhali
                 freezing Ambulance, The dead body carrier Ambulance service.
                 frozen box Ambulance, lash bahi ambulance. frozen ambulance
                 number, freezing ambulance Airport, Dhaka Airport Ambulance.
               </p>
 
-              <p>
+              <p className="text-justify">
                 Shikder Ambulance service is 24/7 Available. Dhaka Airport
                 freezing Ambulance in anytime. We Provide different types of
                 ambulance service. We Are Just A Call Away. Contact Us Now

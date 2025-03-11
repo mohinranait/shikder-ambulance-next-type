@@ -64,20 +64,22 @@ const AboutSection = () => {
                 </div>
               </div>
               <div className="order-1 lg:order-2 lg:col-span-2 p-8">
-                <h2 className="text-4xl font-bold mb-4 ">About me</h2>
+                <h2 className="text-4xl font-bold mb-4 ">About Ambulance</h2>
                 <p className="text-gray text-base font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Similique doloremque amet impedit quidem architecto cumque
-                  minus provident nesciunt ab aliquam.
+                  Shikder Ambulance is the largest and trusted Company in Bangladesh. We provide all types of Ambulances. The best quality Ambulance is available in Bangladesh. We offered you to get an ambulance in comfortable price from anywhere in anytime.
                 </p>
-                <p className="text-gray text-base font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Similique doloremque amet impedit quidem architecto cumque
-                  minus provident nesciunt ab aliquam.
-                </p>
+
+                <ul className="list-disc pl-5">
+                  <li> 24/7 Support</li>
+                  <li> All Districts Ambulance Service</li>
+                  <li> The different typs of Ambulances</li>
+                  <li> Expert driver, and Assistant</li>
+                  <li> Cheap Price, Quality Ambulance</li>
+                </ul>
+
+
                 <div className="flex items-center  gap-4 mt-4">
-                  <Button className="bg-primary text-white">Call Now</Button>
-                  <Button className="bg-secondary text-white">Explore</Button>
+                  <Button className="bg-primary text-white"> Call Now </Button>
                 </div>
               </div>
             </div>
