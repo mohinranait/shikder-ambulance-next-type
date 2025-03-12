@@ -1,13 +1,9 @@
 import { getSinglePostBySlug } from "@/actions/postApi";
 import BlogView from "@/components/pages/blogs/BlogView";
 import { TPostFormData } from "@/types/post.types";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
 import React from "react";
-type Props = {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
 
 export async function generateMetadata({
   params,
