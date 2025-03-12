@@ -92,7 +92,7 @@ const FreezingAmbulance = () => {
         </div>
 
         <div className="container lg:max-w-[1000px] py-8">
-          <h2 className="text-3xl font-bold text-center"> Types of Freezing Ambulance</h2>
+          <h2 className="text-3xl font-bold text-center"> Types of Freezing it's Ambulance</h2>
           <div className="grid md:grid-cols-2  mt-4  gap-5 ">
             <div className="border border-slate-200 rounded p-5 bg-blue-100">
               <h3 className="text-xl font-semibold mb-2"> Single Cabin Freezing Ambulance Services </h3>
