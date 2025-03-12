@@ -5,11 +5,18 @@ import React from "react";
 
 export const metadata = {
   title: "Freezing Ambulance Service in Dhaka",
-  description: "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
-  keywords: ["freezing ambulance service", "freezing ambulance", "Dhaka freezing ambulance", "dead body carrier Ambulance"],
+  description:
+    "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
+  keywords: [
+    "freezing ambulance service",
+    "freezing ambulance",
+    "Dhaka freezing ambulance",
+    "dead body carrier Ambulance",
+  ],
   openGraph: {
     title: "Freezing Ambulance Service in Dhaka",
-    description: "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
+    description:
+      "Freezing Ambulance Service in Dhaka. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days.",
     url: "https://shikderambulance.com/freezing-ambulance-service",
     siteName: "Shikder Ambulance",
     images: [
@@ -37,7 +44,11 @@ const FreezingAmbulance = () => {
                 Freezing Ambulance service in Dhaka
               </h1>
               <p className="text-base text-black text-center dark:text-white">
-                Freezing Ambulance service in Dhaka, Bangladesh. It is a dead body carrier ambulance. It has freezing box in it. The freezer ambulance can intact the dead body several hours and days. We Provide different types of ambulance service. We Are Just A Call Away. {" "}
+                Freezing Ambulance service in Dhaka, Bangladesh. It is a dead
+                body carrier ambulance. It has freezing box in it. The freezer
+                ambulance can intact the dead body several hours and days. We
+                Provide different types of ambulance service. We Are Just A Call
+                Away.{" "}
               </p>
               <div className="flex items-center justify-center gap-4 mt-4">
                 <Button size="lg" className="bg-secondary text-white">
@@ -92,29 +103,54 @@ const FreezingAmbulance = () => {
         </div>
 
         <div className="container lg:max-w-[1000px] py-8">
-          <h2 className="text-3xl font-bold text-center"> Types of Freezing it's Ambulance</h2>
+          <h2 className="text-3xl font-bold text-center">
+            {" "}
+            Types of Freezing it is Ambulance
+          </h2>
           <div className="grid md:grid-cols-2  mt-4  gap-5 ">
             <div className="border border-slate-200 rounded p-5 bg-blue-100">
-              <h3 className="text-xl font-semibold mb-2"> Single Cabin Freezing Ambulance Services </h3>
-              <p className="text-justify mb-3"> Freezing Ambulance service in Dhaka. It is a dead body carrier ambulance with a frozen box. Freezing an ambulance is the best way to preserve the deceased body for extended periods, spanning hours to days. We provide single and Double-Cabin freezing Ambulances </p>
+              <h3 className="text-xl font-semibold mb-2">
+                {" "}
+                Single Cabin Freezing Ambulance Services{" "}
+              </h3>
+              <p className="text-justify mb-3">
+                {" "}
+                Freezing Ambulance service in Dhaka. It is a dead body carrier
+                ambulance with a frozen box. Freezing an ambulance is the best
+                way to preserve the deceased body for extended periods, spanning
+                hours to days. We provide single and Double-Cabin freezing
+                Ambulances{" "}
+              </p>
               <div className="flex justify-center">
-                <Link href={'/'}>
-                  <Button className="bg-primary text-white">Learn More...</Button>
+                <Link href={"/"}>
+                  <Button className="bg-primary text-white">
+                    Learn More...
+                  </Button>
                 </Link>
               </div>
-
             </div>
-            <div className="border border-slate-200 rounded p-5 bg-blue-100" >
-              <h3 className="text-xl font-semibold"> Double Cabin Freezing Ambulance Service </h3>
-              <p className="text-justify mb-3"> Double Cabin Freezing Ambulance service in Dhaka. It is a dead body carrier ambulance with a frozen box. Freezing an ambulance is the best way to preserve the deceased body for extended periods, spanning hours to days. We provide single and Double-Cabin freezing Ambulances</p>
+            <div className="border border-slate-200 rounded p-5 bg-blue-100">
+              <h3 className="text-xl font-semibold">
+                {" "}
+                Double Cabin Freezing Ambulance Service{" "}
+              </h3>
+              <p className="text-justify mb-3">
+                {" "}
+                Double Cabin Freezing Ambulance service in Dhaka. It is a dead
+                body carrier ambulance with a frozen box. Freezing an ambulance
+                is the best way to preserve the deceased body for extended
+                periods, spanning hours to days. We provide single and
+                Double-Cabin freezing Ambulances
+              </p>
               <div className="flex justify-center">
-                <Link href={'/'}>
-                  <Button className="bg-primary text-white">Learn More...</Button>
+                <Link href={"/"}>
+                  <Button className="bg-primary text-white">
+                    Learn More...
+                  </Button>
                 </Link>
               </div>
             </div>
           </div>
-
         </div>
         <div className="container mb-8">
           <h3 className=" text-2xl font-semibold mb-3 ">
