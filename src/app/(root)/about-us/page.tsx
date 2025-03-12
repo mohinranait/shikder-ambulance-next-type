@@ -1,4 +1,5 @@
 import AboutSection from "@/components/pages/home/AboutSection";
+import { ambulanceTypes } from "@/const-data/statick";
 import { Button } from "@nextui-org/button";
 import {
   Ambulance,
@@ -26,9 +27,9 @@ export const metadata = {
     "Shikder Ambulance",
   ],
   openGraph: {
-    title: "Best Ambulance Service in Dhaka | 24/7 Support",
-    description: "We provide 24/7 emergency ambulance service in Dhaka.",
-    url: "https://shikderambulance.com",
+    title: "About Us: Shikder Ambulance 24/7",
+    description: "Shikder Ambulance is the best Ambulance Company in Bangladesh. We provide the different types of Ambulances in the all districts of Bangladesh. Visite to learn more About Us.",
+    url: "https://shikderambulance.com/about-us",
     siteName: "Shikder Ambulance",
     images: [
       {
@@ -42,56 +43,7 @@ export const metadata = {
   },
 };
 
-const ambulanceTypes = [
-  {
-    _id: "1",
-    icon: <Car className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-  {
-    _id: "2",
-    icon: <Ambulance className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-  {
-    _id: "3",
-    icon: <CarFront className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-  {
-    _id: "4",
-    icon: <Cross className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-  {
-    _id: "5",
-    icon: <Cross className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-  {
-    _id: "6",
-    icon: <Cross className="text-primary" size={30} />,
-    title: "Ac ambulance service",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
-    url: "/",
-  },
-];
+
 
 const AboutPage = async () => {
   return (
@@ -99,11 +51,10 @@ const AboutPage = async () => {
       <section className="bg-primary">
         <div className="container py-16 ">
           <h1 className="text-white mb-2 text-4xl font-semibold text-center">
-            About US: Shikder Ambulance Service
+            About Us: Shikder Ambulance Service
           </h1>
-          <p className="text-center text-slate-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            autem earum laudantium qui accusantium sit.
+          <p className="text-center text-slate-300 ">
+            Shikder Ambulance is the best Ambulance Company in Bangladesh. We provide the different types of Ambulances in the all districts of Bangladesh. Visite to learn more About Us.
           </p>
           <ul className="flex items-center gap-2 pt-2 justify-center">
             <li>
@@ -118,25 +69,23 @@ const AboutPage = async () => {
       </section>
       <section className="py-10">
         <div className="container">
-          <h2 className="text-center text-xl font-bold">
-            About Shikder ambulance
+          <h2 className="text-center text-4xl font-bold mb-3">
+            Shikder Ambulance Services in Bangladesh
           </h2>
-          <p className="text-center ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-            doloribus.
+          <p className="text-center mb-3">
+            The largest and Trusted Ambulance provider company.
           </p>
           <div className="grid md:grid-cols-2 mt-5 gap-5">
             <div>
-              <h3 className="text-base font-bold">About us</h3>
+              <h3 className="text-2xl font-bold mb-2">About Shikder Ambulance</h3>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil
-                voluptatum vitae ratione quaerat beatae amet.
+                Shikder Ambulance Service in Bangladesh. The Largest and Trusted Ambulance Company in Bangladesh. We provide different types of Ambulances. We are always ready to provide emergency ambulance service in all over Bangladesh.
               </p>
               <ul className="list-disc mt-2 pl-5">
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
+                <li><b>Service Time:</b> 24/7 Available.</li>
+                <li><b>Service Area:</b> All districts of Bangladesh</li>
+                <li><b>Customer Responsive:</b> We provide customer service with friendly and very responsive.</li>
+                <li><b>Quality:</b> The Best Quality Ambulance is Available.</li>
               </ul>
             </div>
             <div>
@@ -150,10 +99,11 @@ const AboutPage = async () => {
           </div>
         </div>
       </section>
-      <section>
+
+      <section className="py-10">
         <div className="container ">
-          <h2 className="text-2xl font-bold text-center">
-            Type of your service
+          <h2 className="text-3xl font-bold text-center">
+            Types of Ambulance Services
           </h2>
           <div className="grid md:grid-cols-2 mt-3 lg:grid-cols-3 gap-5">
             {ambulanceTypes?.map((item, index) => (
@@ -186,30 +136,49 @@ const AboutPage = async () => {
 
       <section className="py-10">
         <div className="container">
-          <h2 className="text-center text-xl font-bold">
-            About Shikder ambulance
+          <h2 className="text-center text-3xl font-bold mb-3">
+            Emergency Ambulance Services in Bangladesh
           </h2>
           <p className="text-center ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-            doloribus.
+            The Largest and Trusted Ambulance Company
           </p>
           <div className=" mt-5">
             <div>
-              <h3 className="text-base font-bold">About us</h3>
+              <h3 className="font-bold text-2xl mb-3">Welcome to Shikder Ambulance </h3>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil
-                voluptatum vitae ratione quaerat beatae amet. Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Nihil voluptatum vitae
-                ratione quaerat beatae amet.
+                Shikder Ambulance, your go-to choice for Emergency Ambulance Service! Our team is dedicated to providing timely and efficient medical transportation whenever you need it. Trust us to ensure you reach your destination safely and comfortably.
+              </p>
+            </div>
+          </div>
+
+          <div className=" mt-5">
+            <div>
+              <h3 className="font-bold text-2xl mb-3">Rapid Response Time</h3>
+              <p>
+                This is the cornerstone. Minimizing the time from receiving a call to arriving on scene is absolutely vital. This involves:
               </p>
               <ul className="list-disc mt-2 pl-5">
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
+                <li>Efficient dispatch systems.</li>
+                <li>Strategic ambulance placement.</li>
+                <li>Real-time traffic and navigation optimization.</li>
+                <li>Highly trained drivers capable of safe, rapid transit.</li>
               </ul>
             </div>
           </div>
+
+          <div className=" mt-5">
+            <div>
+              <h3 className="font-bold text-2xl mb-3">Reliability and Availability</h3>
+              <p>
+                An emergency service must be consistently available. This means:
+              </p>
+              <ul className="list-disc mt-2 pl-5">
+                <li>24/7 coverage.</li>
+                <li>A sufficient fleet of well-maintained ambulances.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
     </>

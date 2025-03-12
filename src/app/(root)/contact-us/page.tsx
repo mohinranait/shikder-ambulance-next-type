@@ -13,15 +13,14 @@ const GoogleMapComponent = dynamic(
   }
 );
 export const metadata = {
-  title: "Contact Us | 24/7 Support",
-  description:
-    "We provide 24/7 emergency ambulance service in Dhaka. Contact us for quick medical transportation.",
-  keywords: ["ambulance service", "emergency ambulance", "Dhaka ambulance"],
+  title: "Contact Us: Shikder Ambulance Service",
+  description: "Shikder Ambulance Service in Bangladesh. We provide different types of Ambulances. The Largest and Trusted Ambulacne Company in Bangladesh. When you need Ambulance the Contact Us.",
+  keywords: ["Shikder Ambulance service", "emergency ambulance", "Dhaka ambulance"],
   openGraph: {
-    title: "Best Ambulance Service 24/7",
-    description: "We provide 24/7 emergency ambulance service in Dhaka.",
+    title: "Contact Us: Shikder Ambulance Service",
+    description: "Shikder Ambulance Service in Bangladesh. We provide different types of Ambulances. The Largest and Trusted Ambulacne Company in Bangladesh. When you need Ambulance the Contact Us.",
     url: "https://shikderambulance.com",
-    siteName: "Shikder Ambulance Service",
+    siteName: "Shikder Ambulance",
     images: [
       {
         url: "https://yourwebsite.com/your-image.jpg",
@@ -39,7 +38,8 @@ const ContactUs = () => {
     <>
       <section className="bg-primary">
         <div className="container py-16">
-          <h1 className="text-white text-4xl font-semibold text-center">Contact US: Shikder Ambulance Service</h1>
+          <h1 className="text-white text-4xl font-semibold text-center mb-2">Contact Us: Shikder Ambulance Service</h1>
+          <p className="container text-white text-center"> Shikder Ambulance Service in Dhaka. We provide different types of Ambulances. Whe you need emergency ambulance then directly Contact Us. Online Booking is Available.</p>
           <ul className="flex items-center gap-2 pt-4 justify-center">
             <li>
               <Link href='/' className="font-medium text-base text-slate-200">Home</Link>
@@ -61,9 +61,8 @@ const ContactUs = () => {
                   <div className="icon-box">
                     <CallSvgIcon />
                   </div>
-                  <h1 className="text-text-title">Contact Number</h1>
-                  <p className="text-text-gray">+8801 754 123 456</p>
-                  <p className="text-text-gray">+8801 754 123 456</p>
+                  <h3 className="text-text-title font-bold text-3xl mb-2">Contact Number</h3>
+                  <p className="text-text-gray">017100-60020</p>
                 </div>
               </CardBody>
             </Card>
@@ -97,9 +96,8 @@ const ContactUs = () => {
                       />
                     </svg>
                   </div>
-                  <h1 className="text-text-title">Email Address</h1>
-                  <p className="text-text-gray">info@gmail.us</p>
-                  <p className="text-text-gray">info@gmail.us</p>
+                  <h3 className="text-text-title font-bold text-3xl mb-2">Email Address</h3>
+                  <p className="text-text-gray">rentsheba@gmail.com</p>
                 </div>
               </CardBody>
             </Card>
@@ -124,12 +122,9 @@ const ContactUs = () => {
                       />
                     </svg>
                   </div>
-                  <h1 className="text-text-title">Hours of Support</h1>
+                  <h3 className="text-text-title font-bold text-3xl mb-2">Hours of Support</h3>
                   <p className="text-text-gray">
-                    Monday - Friday: 08:30 AM - 11:30 PM
-                  </p>
-                  <p className="text-text-gray">
-                    Saturday - Sunday: 10:30 AM - 08:30 PM
+                    Open: 24/7
                   </p>
                 </div>
               </CardBody>

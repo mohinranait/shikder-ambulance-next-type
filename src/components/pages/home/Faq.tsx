@@ -74,7 +74,7 @@ const Faq = () => {
                 aria-label={`Accordion ${index}`}
                 title={<p className="text-white text-left">{item?.title}</p>}
                 className="bg-slate-100 bg-opacity-15 p-1 pl-4 rounded-lg  text-white"
-                // indicator={<FaBars />}
+              // indicator={<FaBars />}
               >
                 {item?.content}
               </AccordionItem>

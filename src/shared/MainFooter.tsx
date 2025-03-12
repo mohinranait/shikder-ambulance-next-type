@@ -42,6 +42,14 @@ const MainFooter = () => {
                   Contact Us
                 </Link>
               </li>
+              <li className="leading-[10px]">
+                <Link
+                  href="/privacy-policy"
+                  className="px-3 leading-[12px] text-sm text-slate-500 hover:text-white"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="container">
