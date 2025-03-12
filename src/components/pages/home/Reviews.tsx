@@ -72,7 +72,8 @@ const Reviews = () => {
                     </div>
                     <div className="lg:w-1/2">
                       <p className="text-center text-gray text-base ">
-                        "The ambulance arrived incredibly quickly, which made all the difference."
+                        The ambulance arrived incredibly quickly, which made all
+                        the difference.
                       </p>
                     </div>
                   </div>
