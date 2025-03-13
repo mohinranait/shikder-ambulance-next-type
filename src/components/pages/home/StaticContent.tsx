@@ -8,7 +8,7 @@ const StaticContent = () => {
       <div className="container pb-4">
         <div className="mb-4 lg:w-1/2 mx-auto ">
           <h2 className="text-3xl font-semibold text-center">
-            Best Ambulance Services is A Lifeline in Emergencies
+            Emergency Ambulance Services in Bangladesh
           </h2>
         </div>
       </div>
@@ -24,7 +24,7 @@ const StaticContent = () => {
         </div>
         <div>
           <div className="">
-            <h3 className="text-xl font-semibold text-slate-800">
+            <h3 className="text-2xl font-bold text-slate-800">
               The Best Ac Ambulance service in Dhaka
             </h3>
             <p className="text-sm">
@@ -64,7 +64,7 @@ const StaticContent = () => {
       <div className="container mb-4 ">
         <div>
           <div className="mt-4">
-            <h3 className="text-xl font-semibold text-slate-800">
+            <h3 className="text-2xl font-bold text-slate-800">
               Non-Ac Ambulance service in Bangladesh
             </h3>
             <p>
@@ -133,9 +133,9 @@ const StaticContent = () => {
       <div className="container mb-4 grid lg:grid-cols-2 gap-4">
         <div>
           <div className="mt-4">
-            <h3 className="text-xl font-semibold text-slate-800">
-              The Freezing Ambulance in Dhaka
-            </h3>
+            <h2 className="text-3xl font-bold text-slate-800 mb-2">
+              Freezing AmbulanceService in Dhaka
+            </h2>
             <p className="mb-3 text-sm">
               The <strong>Freezing Ambulance Service in Dhaka</strong> sets a
               new standard for emergency medical transport in the city.
@@ -177,7 +177,7 @@ const StaticContent = () => {
       <div className="container mb-4 ">
         <div>
           <div className="mt-4">
-            <h3 className="text-xl font-semibold text-slate-800">
+            <h3 className="text-2xl font-bold text-slate-800 mb-2">
               Dead body Carrier Freezer Van and Ambulance service
             </h3>
             <p>
@@ -254,12 +254,13 @@ const StaticContent = () => {
         </div>
       </div>
 
-      <div className="container mb-4 ">
-        <ul className="mt-4 space-y-2">
+      <div className="container mb-6 ">
+        <ul className="mt-4 space-y-6">
           <li>
-            <p className="text-xl font-semibold">
-              The Basic Life Support ICU Ambulance service
-            </p>
+            <h2 className="text-4xl font-bold text-center mb-6">
+              Life Support ICU Ambulance service in Dhaka
+            </h2>
+            <h3 className="text-2xl font-bold mb-3"> Life Support ICU Ambulance</h3>
             <p className="">
               Life support ambulance services encompass various types of
               specialized care to address different medical needs. Here are some
@@ -274,9 +275,9 @@ const StaticContent = () => {
           </li>
 
           <li>
-            <p className="text-xl font-semibold">
+            <h3 className="text-2xl font-semibold">
               Basic Life Support Ambulance Services (BLS)
-            </p>
+            </h3>
             <p className="">
               BLS ambulances offer essential medical care, including first aid,
               oxygen administration, wound management, and basic patient
@@ -286,9 +287,9 @@ const StaticContent = () => {
           </li>
 
           <li>
-            <p className="text-xl font-semibold">
+            <h3 className="text-2xl font-semibold">
               Advanced Life Support Ambulances Services (ALS)
-            </p>
+            </h3>
             <p className="">
               Equipped with advanced medical equipment and staffed by highly
               trained paramedics, these ambulances provide critical care
@@ -298,9 +299,9 @@ const StaticContent = () => {
           </li>
 
           <li>
-            <p className="text-xl font-semibold">
+            <h3 className="text-2xl font-bold mb-2">
               Cardiac Life Support Ambulances Services
-            </p>
+            </h3>
             <p className="">
               Cardiac life support ambulances play a pivotal role in the swift
               and effective response to cardiac emergencies, which are among the
@@ -313,9 +314,9 @@ const StaticContent = () => {
           </li>
 
           <li>
-            <p className="text-xl font-semibold">
+            <h3 className="text-2xl font-bold mb-2">
               ICU Ambulance services (Intensive Care Unit)
-            </p>
+            </h3>
             <p className="">
               The ICU (Intensive Care Unit) ambulance services provide advanced
               critical care on wheels. These specialized ambulances are equipped
@@ -327,9 +328,9 @@ const StaticContent = () => {
           </li>
 
           <li>
-            <p className="text-xl font-semibold">
+            <h3 className="text-2xl font-bold mb-2">
               NICU Ambulance Service (Neonatal Intensive Care Unit)
-            </p>
+            </h3>
             <p className="">
               NICU (Neonatal Intensive Care Unit) ambulance services are a vital
               component of neonatal healthcare, specializing in the safe and
@@ -342,11 +343,11 @@ const StaticContent = () => {
         </ul>
       </div>
 
-      <div className="container ">
+      <div className="container">
         <div className="mt-4 mb-6">
-          <h3 className="text-xl mb-2 text-center font-semibold text-slate-800">
+          <h2 className="text-3xl mb-2 text-center font-bold text-slate-800">
             Book An Emergency Ambulance Service
-          </h3>
+          </h2>
           <p className="text-center">
             Are you in need of a reliable{" "}
             <Link
@@ -371,17 +372,17 @@ const StaticContent = () => {
 
         <div>
           <div className="mt-2">
-            <h3 className="text-xl font-semibold text-slate-800">
+            <h3 className="text-xl font-bold text-slate-800">
               How Can I Book An Ambulance Service
             </h3>
           </div>
 
-          <ul className="mt-4">
+          <ul className="mt-2">
             <li>
               <p className="">
                 <span className="text-base font-semibold">
                   {" "}
-                  1.Emergency Contact:{" "}
+                  1. Emergency Contact:{" "}
                 </span>
                 The process usually kicks off with an emergency contact,
                 frequently made through a specialized hotline. Callers detail

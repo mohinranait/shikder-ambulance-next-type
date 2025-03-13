@@ -14,7 +14,7 @@ export const ambulanceTypes = [
         icon: <Ambulance className="text-primary" size={30} />,
         title: "Non-Ac Ambulance service",
         content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum?",
+            "Non-Ac Ambulance is Normal then Ac Ambulacne. it is low price then Ac Ambulance. 24/7 Ambulance is Available.",
         url: "/",
     },
     {
