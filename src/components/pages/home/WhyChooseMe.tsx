@@ -50,7 +50,7 @@ const WhyChooseMe = () => {
             width={400}
             height={300}
             alt="iamge"
-            src={"/images/ambulnace.jpg"}
+            src={"/images/Shikder-ambulance-service-ac-ambulance.jpg"}
             className="w-full"
           />
         </div>

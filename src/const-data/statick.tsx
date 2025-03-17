@@ -7,7 +7,7 @@ export const ambulanceTypes = [
         title: "Ac ambulance service",
         content:
             "The Ac Ambulance is the best to transport a patient a place to another. It is all Districts are available.",
-        url: "/",
+        url: "/ac-ambulance-service",
     },
     {
         _id: "2",
@@ -15,7 +15,7 @@ export const ambulanceTypes = [
         title: "Non-Ac Ambulance service",
         content:
             "Non-Ac Ambulance is Normal then Ac Ambulacne. it is low price then Ac Ambulance. 24/7 Ambulance is Available.",
-        url: "/",
+        url: "/non-ac-ambulance",
     },
     {
         _id: "3",
@@ -23,7 +23,7 @@ export const ambulanceTypes = [
         title: "Basic Life Support (BLS) Ambulances",
         content:
             "Basic Life Support ambulances are a crucial part of emergency medical services, providing essential care.",
-        url: "/",
+        url: "/icu-ambulance-service",
     },
     {
         _id: "4",
@@ -39,7 +39,7 @@ export const ambulanceTypes = [
         title: "Freezing Ambulance service",
         content:
             "It is the best way to save or carry the dead body. It has a frozen box. Use this save the dead body.",
-        url: "/",
+        url: "/freezing-ambulance-service",
     },
     {
         _id: "6",

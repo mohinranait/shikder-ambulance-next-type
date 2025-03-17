@@ -168,7 +168,7 @@ const StaticContent = () => {
             width={400}
             height={300}
             alt="iamge"
-            src={"/images/ambulnace.jpg"}
+            src={"/images/Shikder-Ambulance Service-freezing-ambulance.jpg"}
             className="w-full"
           />
         </div>
@@ -372,17 +372,17 @@ const StaticContent = () => {
 
         <div>
           <div className="mt-2">
-            <h3 className="text-xl font-bold text-slate-800">
-              How Can I Book An Ambulance Service
+            <h3 className="text-2xl font-bold text-slate-800">
+              How Can I Book An Ambulance?
             </h3>
           </div>
 
-          <ul className="mt-2">
-            <li>
+          <ul className="mt-2 list-decimal">
+            <li className="mb-4">
               <p className="">
                 <span className="text-base font-semibold">
                   {" "}
-                  1. Emergency Contact:{" "}
+                  Emergency Contact:{" "}
                 </span>
                 The process usually kicks off with an emergency contact,
                 frequently made through a specialized hotline. Callers detail
@@ -390,10 +390,10 @@ const StaticContent = () => {
                 medical help needed.
               </p>
             </li>
-            <li>
+            <li className="mb-4">
               <p className="">
                 <span className="text-base font-semibold">
-                  2. Ambulance Selection:{" "}
+                  Ambulance Selection:{" "}
                 </span>
                 Based on the information provided by the caller and the
                 evaluation by the dispatcher, the system chooses the suitable
@@ -403,10 +403,10 @@ const StaticContent = () => {
               </p>
             </li>
 
-            <li>
+            <li className="mb-4">
               <p className="">
                 <span className="text-base font-semibold">
-                  3. Provide Destination:{" "}
+                  Provide Destination:{" "}
                 </span>
                 When booking an ambulance, it is essential to provide accurate
                 destination information to ensure that the ambulance crew can
@@ -416,10 +416,10 @@ const StaticContent = () => {
               </p>
             </li>
 
-            <li>
+            <li className="mb-4">
               <p className="">
                 <span className="text-base font-semibold">
-                  3. Multi-Channel Access:{" "}
+                  Multi-Channel Access:{" "}
                 </span>
                 The system facilitates emergency calls through multiple
                 channels, encompassing phone calls, text messages, and WhatsApp.

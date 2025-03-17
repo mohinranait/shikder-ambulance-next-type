@@ -61,35 +61,29 @@ const MainFooter = () => {
                     <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
                       <Link
                         className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
-                        href={"/"}
+                        href={"https://www.facebook.com/shikderambulance"} target="_blank"
                       >
                         <FaFacebookF />
                       </Link>
                     </li>
+
                     <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
                       <Link
                         className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
-                        href={"/"}
-                      >
-                        <FiTwitter />
-                      </Link>
-                    </li>
-                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
-                      <Link
-                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
-                        href={"/"}
-                      >
-                        <FaYoutube />
-                      </Link>
-                    </li>
-                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
-                      <Link
-                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
-                        href={"/"}
+                        href={"https://www.linkedin.com/in/shikder-ambulance/"}
                       >
                         <FaLinkedin />
                       </Link>
                     </li>
+                    <li className="w-[36px] flex items-center group justify-center hover:border-white hover:text-white h-[36px] rounded-full border border-slate-600">
+                      <Link
+                        className="link group-hover:text-white w-[36px] h-[36px] flex items-center justify-center"
+                        href={"https://www.youtube.com/@shikderambulance"}
+                      >
+                        <FaYoutube />
+                      </Link>
+                    </li>
+
                   </ul>
                 </div>
                 <div className="col-span-2 lg:col-span-1">

@@ -40,7 +40,7 @@ const ServiceFeature = () => {
               Facilities of Shikder Ambulance
             </h3>
           </div>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-1 list-disc">
             <li>
               <p className="text-base font-medium text-slate-700">
                 Compatitib pricing, High quality service
@@ -73,7 +73,7 @@ const ServiceFeature = () => {
             width={400}
             height={300}
             alt="iamge"
-            src={"/images/ambulnace.jpg"}
+            src={"/images/Shikder-ambulance-service-ac-ambulance.jpg"}
             className="w-full"
           />
         </div>
