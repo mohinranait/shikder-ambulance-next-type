@@ -37,6 +37,18 @@ const menuItems = [
     ],
   },
   {
+    label: "Money Receipt",
+    icon: <LayoutList size={16} />,
+    subMenu: [
+      { label: "New Receipt", icon: <MdOutlineNewLabel />, path: "/admin/money-receipt/create" },
+      {
+        label: "All Receipt",
+        icon: <MdOutlineAlignHorizontalLeft />,
+        path: "/admin/money-receipt/manage",
+      },
+    ],
+  },
+  {
     label: "Media",
     icon: <Image size={18} />,
     path: "/admin/file-media",
