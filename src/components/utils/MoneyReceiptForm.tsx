@@ -50,27 +50,8 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
   });
 
   // handle submit form
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    generatePDF();
-  };
-
-  // Function to generate PDF
-  const generatePDF = async () => {
-    const receiptElement = document.getElementById("money_receip");
-    if (!receiptElement) return;
-
-    const canvas = await html2canvas(receiptElement, {
-      scale: 2,
-      width: 700,
-      height: 580,
-      useCORS: true,
-    });
-    const imgData = canvas.toDataURL("image/png");
-
-    const pdf = new jsPDF("l", "px", [700, 580]);
-    pdf.addImage(imgData, "PNG", 0, 0, 700, 580);
-    pdf.save("money_receipt.pdf");
 
     // Upload PDF to server
     if (data?._id) {
@@ -101,11 +82,30 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
         if (data?.success) {
           toast.success("Success");
           resetForm();
+          generatePDF();
         }
       } catch (error) {
         console.error("Error uploading PDF:", error);
       }
     }
+  };
+
+  // Function to generate PDF
+  const generatePDF = async () => {
+    const receiptElement = document.getElementById("money_receip");
+    if (!receiptElement) return;
+
+    const canvas = await html2canvas(receiptElement, {
+      scale: 2,
+      width: 700,
+      height: 580,
+      useCORS: true,
+    });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("l", "px", [700, 580]);
+    pdf.addImage(imgData, "PNG", 0, 0, 700, 580);
+    pdf.save("money_receipt.pdf");
   };
 
   const resetForm = () => {
@@ -375,16 +375,20 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
               type="submit"
               className="bg-primary text-white rounded px-6"
             >
-              Save and Download
+              {!data?._id ? "Save and Download" : "Update"}
             </Button>
           </div>
         </div>
       </form>
 
-      <div>
-        <p className="text-2xl font-semibold text-center mb-4">Preview</p>
-      </div>
-      <PDFComponent data={form} />
+      {!data?._id && (
+        <>
+          <div>
+            <p className="text-2xl font-semibold text-center mb-4">Preview</p>
+          </div>
+          <PDFComponent data={form} />
+        </>
+      )}
     </div>
   );
 };
