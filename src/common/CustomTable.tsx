@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 
 // Define column type
-type Column = {
+export type Column = {
   title: string;
   dataIndex: string;
   key: string;
