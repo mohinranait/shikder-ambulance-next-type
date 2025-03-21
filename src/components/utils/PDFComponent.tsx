@@ -28,27 +28,27 @@ const PDFComponent = ({ data: form }: Props) => {
           <div className="">
             <div className="flex justify-between ">
               <div>
+                <h1 className="uppercase text-left text-[27px] font-bold  mb-1 text-primary">
+                  Shikder Ambulance Service
+                </h1>
+                <p className=" text-base text-left  font-bold">
+                  Address: Eskaton Road, Mogbazar, Dhaka-1217
+                </p>
+                <p className=" text-base text-left font-bold">
+                  Helpline: 01710060020, 01911148584
+                </p>
+                <p className=" text-base text-left italic  font-semibold">
+                  www.shikderambulance.com
+                </p>
+              </div>
+              <div>
                 <Image
                   src={"/logo.jpg"}
-                  className="w-[120px] h-[120px] z-0 mx-auto "
+                  className="w-[125px] h-[125px] z-0 mx-auto "
                   width={200}
                   height={200}
                   alt="logo"
                 />
-              </div>
-              <div>
-                <p className="uppercase text-right text-[26px] font-bold  mb-1 text-primary">
-                  Shikder Ambulance Service
-                </p>
-                <p className=" text-base text-right  font-medium">
-                  Address: Eskaton Road, Mogbazar, Dhaka-1217
-                </p>
-                <p className=" text-base text-right   font-medium">
-                  Helpline: 01710060020, 01911148584
-                </p>
-                <p className=" text-base text-right italic  font-medium">
-                  www.shikderambulance.com
-                </p>
               </div>
             </div>
 
@@ -62,7 +62,7 @@ const PDFComponent = ({ data: form }: Props) => {
               <p>
                 <span className="font-semibold ">SL.No: </span> {form.uid}
               </p>
-              <p className="">
+              <p className="mr-3">
                 <span className="font-semibold ">Date: </span>
                 {dayjs(form.date).format("DD/MM/YYYY")}
               </p>
@@ -108,7 +108,7 @@ const PDFComponent = ({ data: form }: Props) => {
             </div>
             <div className="grid grid-cols-2 gap-2">
               <p>
-                <span className="font-semibold">Service:</span>{" "}
+                <span className="font-semibold">Service Type:</span>{" "}
                 {form?.serviceType}
               </p>
               <p>

@@ -365,7 +365,7 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
                   value="Dead body"
                   selected={form?.serviceType === "Dead body"}
                 >
-                  Dead body
+                  Dead Body
                 </option>
               </select>
             </div>
