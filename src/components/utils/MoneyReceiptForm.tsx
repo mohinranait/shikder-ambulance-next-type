@@ -98,13 +98,13 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
     const canvas = await html2canvas(receiptElement, {
       scale: 2,
       width: 700,
-      height: 580,
+      height: 620,
       useCORS: true,
     });
     const imgData = canvas.toDataURL("image/png");
 
-    const pdf = new jsPDF("l", "px", [700, 580]);
-    pdf.addImage(imgData, "PNG", 0, 0, 700, 580);
+    const pdf = new jsPDF("l", "px", [700, 620]);
+    pdf.addImage(imgData, "PNG", 0, 0, 700, 620);
     pdf.save("money_receipt.pdf");
   };
 
