@@ -31,7 +31,7 @@ type TProps = {
 const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
   const axios = useAxios();
   const currentTime = new Date(Date.now());
-  console.log("data", data);
+  const [customField, setCustomField] = useState("select");
 
   const [form, setForm] = useState({
     uid: data?.uid ? data?.uid : generateUID(),
@@ -119,7 +119,7 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
       address: "",
       destination: "",
       carType: "",
-      carNo: "",
+      carNo: "Dhaka Metro Cha: 75-0426",
       date: dayjs(currentTime),
       paymentMethod: "",
       serviceType: "",
@@ -225,20 +225,83 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
                 </option>
               </select>
             </div>
-            <InputElement
-              name="carNo"
-              label="Car No"
-              type="text"
-              placeholder="Car No"
-              className="border-slate-200 !border focus-visible:border-1 focus-visible:border-primary"
-              value={form?.carNo}
-              onChange={(e) =>
-                setForm((prev) => ({
-                  ...prev,
-                  carNo: e,
-                }))
-              }
-            />
+            <div>
+              <div className="flex items-center gap-3">
+                <label htmlFor="">Car No</label>
+                <div className="flex gap-3">
+                  <div className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      id="select"
+                      value={"select"}
+                      name="carNoType"
+                      checked={customField === "select"}
+                      onChange={(e) => setCustomField("select")}
+                    />
+                    <label
+                      htmlFor="select"
+                      className="text-xs cursor-pointer text-slate-600"
+                    >
+                      Select
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      id="custom"
+                      value={"custom"}
+                      name="carNoType"
+                      onChange={(e) => setCustomField("custom")}
+                    />
+                    <label
+                      htmlFor="custom"
+                      className="text-xs cursor-pointer text-slate-600"
+                    >
+                      Custom
+                    </label>
+                  </div>
+                </div>
+              </div>
+              {customField === "select" ? (
+                <select
+                  name=""
+                  id=""
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, carNo: e.target.value }))
+                  }
+                  className="w-full py-[14px] rounded border border-slate-300 focus-visible:border-primary focus-visible:outline-none focus:outline-none px-2"
+                >
+                  <option
+                    value="Dhaka Metro Cha: 75-0426"
+                    selected={form?.carNo === "Dhaka Metro Cha: 75-0426"}
+                  >
+                    Dhaka Metro Cha: 75-0426
+                  </option>
+
+                  <option
+                    value="Dhaka Metro Sha: 00-0776"
+                    selected={form?.carNo === "Dhaka Metro Sha: 00-0776"}
+                  >
+                    Dhaka Metro Sha: 00-0776
+                  </option>
+                </select>
+              ) : (
+                <InputElement
+                  name="carNo"
+                  // label="Car No"
+                  type="text"
+                  placeholder="Car No"
+                  className="border-slate-200 !border focus-visible:border-1 focus-visible:border-primary"
+                  value={form?.carNo}
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      carNo: e,
+                    }))
+                  }
+                />
+              )}
+            </div>
           </div>
           <div className="">
             <InputElement

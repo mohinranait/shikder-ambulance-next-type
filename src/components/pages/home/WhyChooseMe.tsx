@@ -12,7 +12,7 @@ const WhyChooseMe = () => {
           <p className="text-center">The best Service and Trusted Company.</p>
         </div>
       </div>
-      <div className="container grid lg:grid-cols-2">
+      <div className="container grid gap-6 lg:grid-cols-2">
         <div>
           <div className="mt-4">
             <h3 className="text-xl font-semibold text-slate-800">
@@ -28,7 +28,7 @@ const WhyChooseMe = () => {
             <h3 className="text-xl font-semibold text-slate-800">
               Different Kinds of Ambulances
             </h3>
-            <p>
+            <p className="text-justify">
               Ambulances are crafted in diverse types, each tailored to address
               distinct medical requirements and scenarios. Let is explore some
               varieties of ambulances.
@@ -38,7 +38,7 @@ const WhyChooseMe = () => {
             <h3 className="text-xl font-semibold text-slate-800">
               Quality and Low-Cost
             </h3>
-            <p>
+            <p className="text-justify">
               In search of a cost-effective ambulance service? Look no further
               Ambulance is your go-to for top-notch emergency transportation at
               budget-friendly rates.

@@ -21,27 +21,25 @@ const BlogView: FC<Props> = ({ blog }) => {
   return (
     <main className="mb-20">
       <section
-        className={`${!bgImage && 'bg-[#dfdffff7]'}`}
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className={`bg-primary`}
+        // style={{
+        //   backgroundImage: `url(${bgImage})`,
+        //   backgroundRepeat: "no-repeat",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        // }}
       >
         <div className={`${bgImage && "bg-slate-900 bg-opacity-75"} `}>
           <div className="container justify-center flex items-center  md:min-h-[calc(100vh-200px)] py-20 lg:px-32 xl:px-48 ">
             <div className="flex flex-col gap-3">
               <h1
-                className={`text-center font-bold text-3xl md:text-4xl lg:text-5xl  mb-3 ${bgImage ? "text-white" : "text-slate-950"
-                  } `}
+                className={`text-center font-bold text-3xl md:text-4xl lg:text-5xl  mb-3 
+                 text-white
+                 `}
               >
                 {blog?.seoTitle || blog?.postTitle}
               </h1>
-              <p
-                className={`lg:px-20 text-center  ${bgImage ? "text-slate-400" : "text-slate-600"
-                  }`}
-              >
+              <p className={`lg:px-20 text-center  text-slate-200 `}>
                 {blog?.seoDescription}
               </p>
               {blog?.contactNumber && (
@@ -64,13 +62,14 @@ const BlogView: FC<Props> = ({ blog }) => {
           {(blog?.layouts?.isSidebar === "left" ||
             blog?.layouts?.isSidebar === "both") && <LeftSidebar />}
           <div
-            className={` ${blog?.layouts?.isSidebar === "left" ||
+            className={` ${
+              blog?.layouts?.isSidebar === "left" ||
               blog?.layouts?.isSidebar === "right"
-              ? "lg:col-span-2 xl:col-span-3"
-              : blog?.layouts?.isSidebar === "none"
+                ? "lg:col-span-2 xl:col-span-3"
+                : blog?.layouts?.isSidebar === "none"
                 ? "lg:col-span-2 xl:col-span-4"
                 : "lg:col-span-2 xl:col-span-2"
-              } flex flex-col gap-3 `}
+            } flex flex-col gap-3 `}
           >
             <MainBody blog={blog} />
             {blog?.layouts?.comments && <CommentSection blog={blog} />}
