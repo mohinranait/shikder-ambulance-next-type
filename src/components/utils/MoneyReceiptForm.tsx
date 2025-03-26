@@ -11,13 +11,12 @@ import { TReceipt } from "@/types/receip.type";
 
 const generateUID = () => {
   const now = new Date();
-
-  const year = now.getFullYear() % 10; // Last digit of the year
-  const month = (now.getMonth() + 1) % 10; // Month (1-12) mod 10
-  const date = now.getDate() % 10; // Date mod 10
-  const hour = now.getHours() % 10; // Hour mod 10
-  const minute = now.getMinutes() % 10; // Minute mod 10
-  const second = now.getSeconds() % 10; // Second mod 10
+  const year = now.getFullYear() % 10;
+  const month = (now.getMonth() + 1) % 10;
+  const date = now.getDate() % 10;
+  const hour = now.getHours() % 10;
+  const minute = now.getMinutes() % 10;
+  const second = now.getSeconds() % 10;
 
   return `${year}${month}${date}${hour}${minute}${second}`;
 };
