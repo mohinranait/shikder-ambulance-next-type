@@ -4,7 +4,6 @@ import { Tabs, Tab, Button } from "@nextui-org/react";
 import ImageContainer from "./ImageContainer";
 import UploadImage from "@/common/UploadImage";
 import { getAllMedia } from "@/actions/postApi";
-import { log } from "node:console";
 import { TMediaType } from "@/types/media.type";
 import Image from "next/image";
 import { useImg } from "@/providers/ImageProvider";
@@ -24,7 +23,7 @@ const MediaContainer = () => {
     })();
   }, []);
   return (
-    <div>
+    <div className="  max-h-[calc(100vh-100px)] overflow-y-auto">
       <div className="flex w-full flex-col">
         <Tabs
           aria-label="Options"

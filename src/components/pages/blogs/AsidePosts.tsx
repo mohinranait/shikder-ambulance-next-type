@@ -1,11 +1,16 @@
-import { getPosts } from "@/actions/postApi";
 import { TPostFormData } from "@/types/post.types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+const BASE_URL = process.env.NEXT_PUBLIC_URL;
 
 const AsidePosts = async () => {
-  const data = await getPosts({ limit: "5", access: "user" });
+  const res = await fetch(`${BASE_URL}/api/posts?limit=5&access=user`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+
+  // const data = await getPosts({ limit: "5", access: "user" });
   const posts = data?.payload?.posts;
   return (
     <ul className="flex flex-col gap-3">

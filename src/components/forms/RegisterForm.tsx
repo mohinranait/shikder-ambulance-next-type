@@ -91,8 +91,6 @@ const RegisterForm = () => {
     }
   };
 
-  console.log(error);
-
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <h1 className="text-2xl text-slate-800 font-semibold">Register</h1>

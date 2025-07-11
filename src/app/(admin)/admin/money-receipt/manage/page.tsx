@@ -1,7 +1,6 @@
 "use client";
 
 import CustomTable, { Column } from "@/common/CustomTable";
-import useAxios from "@/hooks/useAxios";
 import { Cross, Delete, Edit, Eye, Plus, Trash, X } from "lucide-react";
 import moment from "moment";
 import Link from "next/link";
@@ -20,6 +19,7 @@ import {
 import PDFComponent from "@/components/utils/PDFComponent";
 import { TReceipt } from "@/types/receip.type";
 import MoneyReceiptForm from "@/components/utils/MoneyReceiptForm";
+import { deleteReceiptById, getAllReceipts } from "@/actions/moneyReceiptApi";
 
 export type TMoneyReceipt = {
   _id: string;
@@ -58,7 +58,6 @@ const MoneyReceiptManage = () => {
   const [receipts, setReceipts] = useState<TReceipt[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const axios = useAxios();
 
   // Search table data
   const filteredReceipts = receipts.filter((receipt) =>
@@ -73,13 +72,12 @@ const MoneyReceiptManage = () => {
     (async function () {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`/money_receipt`);
+        const data = await getAllReceipts();
         if (data.success) {
           setReceipts(data?.payload?.receipts);
           setIsLoading(false);
         }
       } catch (error) {
-        console.log();
         setIsLoading(false);
       }
     })();
@@ -88,7 +86,8 @@ const MoneyReceiptManage = () => {
   // Delete receipt
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`/money_receipt/${isSelected?._id}`);
+      if (!isSelected?._id) return;
+      const data = await deleteReceiptById(isSelected?._id);
       if (data.success) {
         setReceipts((prev) =>
           prev.filter((item) => item?._id !== isSelected?._id)

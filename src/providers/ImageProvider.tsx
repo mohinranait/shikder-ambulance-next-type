@@ -14,7 +14,6 @@ export const ImageContext = createContext<TImgProviderType | null>(null);
 const ImageProvider = ({ children }: { children: React.ReactNode }) => {
   const [selectedImage, setSelectedImage] = useState<TMediaType | null>(null);
   const [imageModal, setImageModal] = useState<boolean>(false);
-  console.log(selectedImage);
 
   const imgObj: TImgProviderType = {
     selectedImage,

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import CommentForm from "./CommentForm";
 import ShowAllComments from "./ShowAllComments";
-import { BASE_URL } from "@/config/accessEnv";
 import { TPostFormData } from "@/types/post.types";
+import { getAllCommentByPostId } from "@/actions/commentApi";
 type TCommentType = {
   _id: string;
   autor?: string;
@@ -19,10 +19,9 @@ type Props = {
 };
 
 const CommentSection: FC<Props> = async ({ blog }) => {
-  const res = await fetch(`${BASE_URL}/comments?postId=${blog?._id}`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
+  if (!blog?._id) return;
+  const data = await getAllCommentByPostId(blog?._id);
+
   const comments: TCommentType[] = data?.payload?.comments;
   return (
     <div>

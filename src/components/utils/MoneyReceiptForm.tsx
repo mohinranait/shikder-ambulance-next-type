@@ -8,6 +8,7 @@ import jsPDF from "jspdf";
 import useAxios from "@/hooks/useAxios";
 import dayjs from "dayjs";
 import { TReceipt } from "@/types/receip.type";
+import { createReceipt, updateReceiptById } from "@/actions/moneyReceiptApi";
 
 const generateUID = () => {
   const now = new Date();
@@ -57,12 +58,11 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
     if (data?._id) {
       try {
         if (!data?._id) return;
-        const { data: getRes } = await axios.patch(
-          `/money_receipt/${data?._id}`,
-          {
-            ...form,
-          }
-        );
+
+        const getRes = await updateReceiptById({
+          data: { ...form },
+          id: data?._id,
+        });
 
         if (getRes?.success) {
           toast.success("Success");
@@ -75,9 +75,7 @@ const MoneyReceiptForm = ({ data, close, setIsSelected }: TProps) => {
       }
     } else {
       try {
-        const { data } = await axios.post(`/money_receipt`, {
-          ...form,
-        });
+        const data = await createReceipt({ ...form });
 
         if (data?.success) {
           toast.success("Success");
