@@ -7,10 +7,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import useAxios from "@/hooks/useAxios";
+import { useRouter } from "next/navigation";
 import { TUser } from "@/types/usersTypes";
 import PageLoader from "@/components/loader/PageLoader";
+import { getAuthUser, logoutUser } from "@/actions/userApi";
 
 type TContextType = {
   user: TUser | null;
@@ -27,14 +27,13 @@ type Props = {
 };
 
 const AuthProvider: FC<Props> = ({ children }) => {
-  const axios = useAxios();
   const router = useRouter();
   const [user, setUser] = useState<TUser | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const signOut = async () => {
     try {
-      const { data } = await axios.post(`/user/logout`, {});
+      const data = await logoutUser();
       if (data?.success) {
         setUser(null);
         router.push(`/login`);
@@ -47,7 +46,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`/user`);
+        const data = await getAuthUser();
         if (data?.success) {
           setUser(data.payload);
         } else {

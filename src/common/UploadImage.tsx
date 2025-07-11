@@ -1,10 +1,9 @@
 "use client";
-import useAxios from "@/hooks/useAxios";
 import { TMediaType } from "@/types/media.type";
 import React, { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { BiLoaderCircle } from "react-icons/bi";
+import { uploadToCloud } from "@/actions/mediaApi";
 
 type Props = {
   setAllImages: React.Dispatch<React.SetStateAction<TMediaType[]>>;
@@ -12,7 +11,6 @@ type Props = {
 };
 const UploadImage: FC<Props> = ({ setAllImages, setParentTab }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const axios = useAxios();
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const fl = e.target.files[0];
@@ -22,9 +20,7 @@ const UploadImage: FC<Props> = ({ setAllImages, setParentTab }) => {
 
       try {
         setIsLoading(true);
-        const { data } = await axios.post("/upload", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
+        const data = await uploadToCloud(formData);
         if (data?.success) {
           const file = data?.payload?.file;
           setAllImages((prev) => [file, ...prev]);
@@ -33,6 +29,8 @@ const UploadImage: FC<Props> = ({ setAllImages, setParentTab }) => {
           setIsLoading(false);
         }
       } catch (error) {
+        console.log(error);
+
         toast.error("Somthing wrong");
         setIsLoading(false);
       }
@@ -51,7 +49,7 @@ const UploadImage: FC<Props> = ({ setAllImages, setParentTab }) => {
           ) : (
             <>
               <IoCloudUploadOutline size={30} />
-              <p className="text-sm">Feature Image</p>
+              <p className="text-sm">Upload Image</p>
             </>
           )}
         </div>

@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useAxios from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
+import { loginUser } from "@/actions/userApi";
 
 const LoginForm = () => {
   const { user, setUser } = useAuth();
@@ -34,7 +35,7 @@ const LoginForm = () => {
 
     try {
       setIsLoading(true);
-      const { data } = await axios.post("/user/login", form);
+      const data = await loginUser(form);
 
       if (data.success) {
         setIsLoading(false);

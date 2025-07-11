@@ -1,6 +1,5 @@
 import { TMediaType } from "@/types/media.type";
 import Image from "next/image";
-import { log } from "node:console";
 import React, { FC, useState } from "react";
 
 type Props = {

@@ -77,9 +77,6 @@ const ContactUsForm = () => {
     }
   };
 
-  console.log({ form });
-  console.log({ error });
-
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div className="grid lg:grid-cols-2 gap-4  ">

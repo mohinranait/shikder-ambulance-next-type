@@ -19,6 +19,11 @@ import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { TagsInput } from "react-tag-input-component";
+import {
+  createPost,
+  getSinglePostBySlug,
+  updatePostById,
+} from "@/actions/postApi";
 
 const QuillEditor = dynamic(() => import("@/components/elements/QuillEditor"), {
   ssr: false,
@@ -30,7 +35,6 @@ const NewPost = () => {
   const router = useRouter();
   const params = useSearchParams();
   const urlSlug = params?.get("link");
-  const axios = useAxios();
   const [isView, setIsView] = useState<boolean>(false);
   const [updatePost, setUpdatePost] = useState<TPostFormData | null>();
   const [isEditSlug, setIsEditSlug] = useState<boolean>(false);
@@ -96,10 +100,14 @@ const NewPost = () => {
     try {
       setFormLoading(true);
       if (params?.get("link")) {
-        const { data } = await axios.patch(`/post/${updatePost?._id}`, {
-          ...form,
-          content,
-          seoKeyword: tags,
+        if (!updatePost?._id) return;
+        const data = await updatePostById({
+          data: {
+            ...form,
+            content,
+            seoKeyword: tags,
+          },
+          id: updatePost?._id,
         });
         if (data?.success) {
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
@@ -109,11 +117,12 @@ const NewPost = () => {
           toast.error(data?.message || "Somthing wrong");
         }
       } else {
-        const { data } = await axios.post(`/post`, {
+        const data = await createPost({
           ...form,
           content,
           seoKeyword: tags,
         });
+
         if (data?.success) {
           setUpdatePost(data?.payload?.post);
           router.push(`${path}?link=${data?.payload?.post?.slug}`);
@@ -128,13 +137,11 @@ const NewPost = () => {
     }
   };
 
-  console.log({ form });
-
   useEffect(() => {
     if (urlSlug) {
       (async function () {
         try {
-          const { data } = await axios.get(`/post/${urlSlug}`);
+          const data = await getSinglePostBySlug(urlSlug);
           if (data?.success) {
             setUpdatePost(data?.payload?.post);
             setIsSlug(data?.payload?.post?.slug);
@@ -147,7 +154,7 @@ const NewPost = () => {
         }
       })();
     }
-  }, [urlSlug, axios]);
+  }, [urlSlug]);
 
   return (
     <div className="flex post-form flex-col gap-4">
@@ -241,7 +248,6 @@ const NewPost = () => {
               )}
             </p>
           </div>
-
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 ">
           <div className="xl:col-span-2 2xl:col-span-3 flex flex-col gap-3 ">

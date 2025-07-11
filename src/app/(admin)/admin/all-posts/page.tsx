@@ -16,6 +16,7 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import { deletePostById, getPosts } from "@/actions/postApi";
 
 type TQuery = {
   limit?: string;
@@ -140,12 +141,9 @@ const AllPosts = () => {
     search = "",
   }: TQuery) => {
     const query: TQuery = { limit, access, search };
-    const queryString = new URLSearchParams(
-      Object.fromEntries(Object.entries(query).filter(([_, v]) => v != null))
-    ).toString();
 
     try {
-      const { data } = await axios.get(`/posts?${queryString}`);
+      const data = await getPosts(query);
       if (data?.success) {
         setPosts(data?.payload?.posts);
       }
@@ -169,13 +167,16 @@ const AllPosts = () => {
   useEffect(() => {
     setIsLoading(true);
     handleCallAPI({});
-  }, [axios]);
+  }, []);
 
   // Handle delete post
   const handleDelete = async () => {
     try {
+      if (!isSelected?._id) {
+        return;
+      }
       setIsDeleteLoading(true);
-      const { data } = await axios.delete(`/post/${isSelected?._id}`);
+      const data = await deletePostById(isSelected?._id);
       if (data?.success) {
         setIsDeleteLoading(false);
         setPosts((prev) => prev?.filter((d) => d?._id !== isSelected?._id));

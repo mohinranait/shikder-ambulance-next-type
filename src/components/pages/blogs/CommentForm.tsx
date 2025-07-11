@@ -1,6 +1,6 @@
 "use client";
+import { createComment } from "@/actions/commentApi";
 import InputElement from "@/components/elements/InputElement";
-import { instance } from "@/hooks/useAxios";
 import { useAuth } from "@/providers/AuthProvider";
 import { TPostFormData } from "@/types/post.types";
 import { Button } from "@nextui-org/button";
@@ -34,10 +34,9 @@ const CommentForm: FC<Props> = ({ blog }) => {
 
     try {
       setIsLoading(true);
-      const { data } = await instance.post(
-        `/comment/${user?._id ? user?._id : "not-auth"}`,
-        form
-      );
+
+      const commentId = user?._id ? user?._id : "not-auth";
+      const data = await createComment({ data: form, userId: commentId });
       if (data?.success) {
         setForm({
           content: "",
