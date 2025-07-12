@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
-import { jwtSecret } from "./constants";
+import { JWT_SECRET } from "@/config/accessEnv";
 
 
 export function getAuthUser() {
@@ -12,7 +12,7 @@ export function getAuthUser() {
   }
 
   try {
-    const decoded = jwt.verify(token, jwtSecret);
+    const decoded = jwt.verify(token, JWT_SECRET as string);
     return decoded; 
   } catch (err: unknown) {
     throw new Error("Unauthorized: Invalid token");

@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
+import { DB_URL } from "./accessEnv"
 
-const MONGODB_URI = process.env.NEXT_PUBLIC_DB_URL!
+const MONGODB_URI = DB_URL as string;
 
 if (!MONGODB_URI) {
   throw new Error("Please define the NEXT_PUBLIC_DB_URL environment variable inside .env")

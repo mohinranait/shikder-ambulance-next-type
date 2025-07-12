@@ -1,8 +1,8 @@
+import { BASE_URL } from "@/config/accessEnv";
 import { TPostFormData } from "@/types/post.types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-const BASE_URL = process.env.NEXT_PUBLIC_URL;
 
 const AsidePosts = async () => {
   const res = await fetch(`${BASE_URL}/api/posts?limit=5&access=user`, {

@@ -2,19 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import Media from "@/models/Media"; 
 import connectDB from "@/config/mongodb";
 import { getAuthUser } from "@/services/isAuth";
-import { IncomingForm } from "formidable";
-// import cloudinary from "@/config/loudinary";
 import { writeFile } from "fs/promises";
 import path from "path";
 import os from "os";
 
 import { v2 as cloudinary } from "cloudinary";
 import { nanoid } from "nanoid";
+import { CLOUDINARY_KEY, CLOUDINARY_NAME, CLOUDINARY_SECRET } from "@/config/accessEnv";
 
 cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_KEY,
-  api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_SECRET,
+  cloud_name: CLOUDINARY_NAME,
+  api_key: CLOUDINARY_KEY,
+  api_secret: CLOUDINARY_SECRET,
 });
 
 

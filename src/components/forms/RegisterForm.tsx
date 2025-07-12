@@ -3,7 +3,6 @@ import React, { FormEvent, useState } from "react";
 import InputElement from "../elements/InputElement";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { BASE_URL } from "@/config/accessEnv";
 import { userRegistrationSchemaValidation } from "@/velidations/registrationSchema";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
@@ -54,7 +53,7 @@ const RegisterForm = () => {
       setError({});
 
       setIsLoading(true);
-      const res = await fetch(`${BASE_URL}/user/create`, {
+      const res = await fetch(`/api/user/register`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

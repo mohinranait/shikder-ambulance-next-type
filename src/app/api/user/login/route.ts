@@ -5,9 +5,10 @@ import connectDB from "@/config/mongodb";
 import User from "@/models/User";
 import { loginSchema } from "@/schema/login.schema";
 import { serialize } from "cookie";
+import { JWT_SECRET, NODE_ENV } from "@/config/accessEnv";
 
-const jwtSecret = process.env.NEXT_PUBLIC_JWT_SECRET as string;
-const productionMode = process.env.NEXT_PUBLIC_NODE_ENV;
+const jwtSecret = JWT_SECRET as string;
+const productionMode = NODE_ENV;
 
 export async function POST(request: NextRequest) {
   try {

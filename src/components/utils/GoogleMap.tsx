@@ -1,4 +1,5 @@
 "use client";
+import { GOOGLE_MAP } from "@/config/accessEnv";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { FC } from "react";
 
@@ -14,9 +15,7 @@ const center = {
 
 const GoogleMapComponent: FC = () => {
   return (
-    <LoadScript
-      googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-    >
+    <LoadScript googleMapsApiKey={GOOGLE_MAP || ""}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
         <Marker position={center} />
       </GoogleMap>

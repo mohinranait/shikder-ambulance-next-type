@@ -1,5 +1,5 @@
+import { BASE_URL } from "@/config/accessEnv";
 import { Tcomment } from "@/types/comment.type";
-const BASE_URL = process.env.NEXT_PUBLIC_URL;
   // Create new Receipt
 export const createComment = async ({data, userId}:{data:Tcomment, userId:string})=> {
   const res = await fetch(`/api/comment/${userId}`,{

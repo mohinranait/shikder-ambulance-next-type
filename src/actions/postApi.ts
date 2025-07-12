@@ -1,5 +1,6 @@
 
 
+import { BASE_URL } from "@/config/accessEnv";
 import { TPostFormData } from "@/types/post.types";
 type TQuery = {
     limit?: string;
@@ -7,7 +8,7 @@ type TQuery = {
     search?: string;
   };
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL;
+
 
   // Create new post
 export const createPost = async (data:TPostFormData)=> {

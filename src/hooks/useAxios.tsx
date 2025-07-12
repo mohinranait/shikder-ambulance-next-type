@@ -1,7 +1,6 @@
-import { BASE_URL } from "@/config/accessEnv";
 import axios from "axios";
 export const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: "http://localhost:3000",
   withCredentials: true,
 });
 

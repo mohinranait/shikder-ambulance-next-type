@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
+import { SMTP_USER as emailUser, SMTP_PASSWORD } from './accessEnv';
 
-const SMTP_USER = process.env.NEXT_PUBLIC_SMTP_USER;
-const SMTP_PASS = process.env.NEXT_PUBLIC_SMTP_PASSWORD;
+const SMTP_USER = emailUser;
+const SMTP_PASS = SMTP_PASSWORD;
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',

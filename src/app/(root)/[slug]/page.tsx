@@ -1,5 +1,6 @@
 import { getSinglePostBySlug } from "@/actions/postApi";
 import BlogView from "@/components/pages/blogs/BlogView";
+import { BASE_URL } from "@/config/accessEnv";
 import { TPostFormData } from "@/types/post.types";
 import { Metadata } from "next";
 
@@ -21,7 +22,7 @@ export async function generateMetadata({
     keywords: post?.seoKeyword,
 
     openGraph: {
-      url: `${process.env.NEXT_PUBLIC_URL}/${post?.slug}`,
+      url: `${BASE_URL}/${post?.slug}`,
       images: [previousImages || ""],
     },
   };
